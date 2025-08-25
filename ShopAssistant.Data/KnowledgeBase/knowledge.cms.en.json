@@ -1,0 +1,353 @@
+[
+	{
+		"id": 1,
+		"topic": "Order",
+		"language": "en",
+		"questions": [
+			"How can I pay for my order?",
+			"How can I pay for order?",
+			"How do I pay for my order online?",
+			"What payment methods do you support?",
+			"What payment methods can I use?",
+			"What payment types can I use?",
+			"Are there any other payment options?",
+			"Do you accept credit cards?",
+			"Can I pay with my debit card?",
+			"Is Visa accepted?",
+			"Which cards are allowed?",
+			"What cards are allowed?",
+			"Can I use PayPal to pay?",
+			"What forms of payment do you accept?",
+			"What types of payment do you accept?",
+			"Can I use a bank card to pay?"
+		],
+		"answer": "You can pay by Visa, MasterCard, debit card or PayPal."
+	},
+	{
+		"id": 2,
+		"topic": "Order",
+		"language": "en",
+		"questions": [
+			"Can I pay upon delivery?",
+			"Do you offer cash on delivery?",
+			"Is it possible to pay when my order arrives?",
+			"Can I pay after receiving the order?",
+			"Do you support payment at the door?"
+		],
+		"answer": "We do not offer payment upon delivery. Please use one of the available payment methods at checkout."
+	},
+	{
+		"id": 3,
+		"topic": "Shipping",
+		"language": "en",
+		"questions": [
+			"How long does shipping take?",
+			"How long does delivery take?",
+			"What is the delivery time?",
+			"How soon can I get my package?",
+			"How much is shipping?",
+			"What are your shipping times?",
+			"How quickly do you process orders?",
+			"How fast will my parcel reach me?"
+		],
+		"answer": "Shipping usually takes 3-5 business days within Norway."
+	},
+	{
+		"id": 4,
+		"topic": "Shipping",
+		"language": "en",
+		"questions": [
+			"Is shipping free?",
+			"What is the minimum order amount for free delivery?",
+			"How can I get free shipping?",
+			"When do you offer complimentary shipping?",
+			"How much do I need to spend for free delivery?"
+		],
+		"answer": "Orders exceeding 1,000 Norwegian krone (NOK) are delivered free of charge."
+	},
+	{
+		"id": 5,
+		"topic": "Shipping",
+		"language": "en",
+		"questions": [
+			"How are orders shipped?",
+			"Which shipping company do you use?",
+			"Who delivers my package?",
+			"Which carrier handles deliveries?",
+			"Through which company will my order be shipped?"
+		],
+		"answer": "Orders are shipped with trusted Norwegian carriers, such as Posten or Bring."
+	},
+	{
+		"id": 6,
+		"topic": "Shipping",
+		"language": "en",
+		"questions": [
+			"Do you ship internationally?",
+			"Can I order from outside Norway?",
+			"Is international shipping available?",
+			"Do you deliver to other countries?",
+			"Can products be shipped abroad?"
+		],
+		"answer": "Yes, we ship internationally. Shipping times and costs vary by country."
+	},
+	{
+		"id": 7,
+		"topic": "Returns",
+		"language": "en",
+		"questions": [
+			"How do I return a product?",
+			"How can I send items back?",
+			"What is your return policy?",
+			"How do I send a return?",
+			"What steps should I follow to return an item?"
+		],
+		"answer": "You can return any item within 30 days of delivery for a full refund. Please contact customer service to start the return process."
+	},
+	{
+		"id": 8,
+		"topic": "Returns",
+		"language": "en",
+		"questions": [
+			"Do I have to pay for return shipping?",
+			"Is return shipping free?",
+			"Who pays for return shipping?",
+			"Will I be charged for sending items back?",
+			"Is there a cost for returning products?"
+		],
+		"answer": "Customers are responsible for the cost of return shipping unless the product is faulty or the wrong item was delivered."
+	},
+	{
+		"id": 9,
+		"topic": "Returns",
+		"language": "en",
+		"questions": [
+			"Can I get a refund?",
+			"How long does it take to get a refund?",
+			"When will my money be refunded?",
+			"How soon will I receive a refund?"
+		],
+		"answer": "Refunds are issued within 5-7 business days after we receive your returned items."
+	},
+	{
+		"id": 10,
+		"topic": "Returns",
+		"language": "en",
+		"questions": [
+			"Can I exchange a product?",
+			"Is it possible to exchange an item?",
+			"How do I swap my item for another?",
+			"Can I replace my product with a different one?",
+			"Can I exchange my order for another size or color?"
+		],
+		"answer": "If you want to exchange a product, please return the original item and place a new order for the desired product."
+	},
+	{
+		"id": 11,
+		"topic": "Returns",
+		"language": "en",
+		"questions": [
+			"Can I trade my purchase for something else?",
+			"Do you offer trade-in options?",
+			"Is it possible to exchange my used product for another item?",
+			"Can I swap my order for store credit or another product?",
+			"Do you allow part-exchange or barter?"
+		],
+		"answer": "We do not offer trade-in, barter, or part-exchange services. Only standard returns for refund are accepted."
+	},
+	{
+		"id": 12,
+		"topic": "Warranty",
+		"language": "en",
+		"questions": [
+			"Is there a warranty on the products?",
+			"Do you offer a guarantee?",
+			"How long is the warranty period?",
+			"Do products come with a warranty?",
+			"What is the warranty duration?"
+		],
+		"answer": "All our products come with a one-year warranty covering manufacturing defects."
+	},
+	{
+		"id": 13,
+		"topic": "Warranty",
+		"language": "en",
+		"questions": [
+			"What does the warranty cover?",
+			"Is accidental damage covered?",
+			"Does the warranty include wear and tear?",
+			"What issues are included in the warranty?",
+			"Is misuse covered by the warranty?"
+		],
+		"answer": "The warranty covers only manufacturing defects. Accidental damage or normal wear and tear are not covered."
+	},
+	{
+		"id": 14,
+		"topic": "Warranty",
+		"language": "en",
+		"questions": [
+			"How do I claim the warranty?",
+			"What is the process for warranty claims?",
+			"How do I request a warranty repair?",
+			"How can I submit a warranty claim?"
+		],
+		"answer": "Contact customer service with your order number and details of the issue to make a warranty claim."
+	},
+	{
+		"id": 15,
+		"topic": "Account",
+		"language": "en",
+		"questions": [
+			"How can I reset my password?",
+			"I forgot my password, what should I do?",
+			"How do I change my password?",
+			"Where do I go to reset my password?",
+			"What should I do if I can't remember my password?"
+		],
+		"answer": "Click on 'Forgot password' on the login page and follow the instructions to reset your password."
+	},
+	{
+		"id": 16,
+		"topic": "Account",
+		"language": "en",
+		"questions": [
+			"How do I update my account information?",
+			"How do I create an account?",
+			"Can I delete my account?",
+			"How can I modify my account details?",
+			"Where do I sign up for an account?"
+		],
+		"answer": "You can update your information or delete your account in your account settings. To create an account, click 'Sign up' on the login page."
+	},
+	{
+		"id": 17,
+		"topic": "Support",
+		"language": "en",
+		"questions": [
+			"How can I contact support?",
+			"Is there a customer service phone number?",
+			"How do I get help?",
+			"How can I reach customer service?",
+			"Where can I find your contact details?",
+			"Do you offer live chat?",
+			"How do I speak with customer support?",
+			"What is the best way to reach your support team?"
+		],
+		"answer": "You can contact our support team via the contact form or call us at 800-123-456."
+	},
+	{
+		"id": 18,
+		"topic": "ProductAvailability",
+		"language": "en",
+		"questions": [
+			"Is this product in stock?",
+			"When will the item be available again?",
+			"Do you have this item available?",
+			"Is this item currently available?",
+			"How can I check if a product is available?",
+			"Can I find out if this product is in stock?",
+			"Will this item be restocked soon?"
+		],
+		"answer": "Product availability is shown on the product page. If out of stock, you can sign up to be notified when it's available again."
+	},
+	{
+		"id": 19,
+		"topic": "DiscountsAndPromotions",
+		"language": "en",
+		"questions": [
+			"Are there any ongoing discounts?",
+			"Do you offer promo codes?",
+			"How can I use a discount code?",
+			"Are there any special offers right now?",
+			"Where can I enter my coupon code?",
+			"How do I get a discount?",
+			"Do you have any sales?",
+			"Are there any current promotions?",
+			"How do I apply a promo code at checkout?"
+		],
+		"answer": "You can find current discounts and enter promo codes at checkout. Subscribe to our newsletter for special offers."
+	},
+	{
+		"id": 20,
+		"topic": "OrderTracking",
+		"language": "en",
+		"questions": [
+			"How can I track my order?",
+			"When will I get my tracking number?",
+			"Where can I find my order tracking information?",
+			"Will I be notified about my order shipment?",
+			"How do I know when my order has been shipped?"
+		],
+		"answer": "You will receive a tracking number by email once your order has shipped."
+	},
+	{
+		"id": 21,
+		"topic": "OrderCancellation",
+		"language": "en",
+		"questions": [
+			"Can I cancel my order?",
+			"How do I cancel my order?",
+			"Is it possible to stop my order?",
+			"Can I change or cancel my order after placing it?",
+			"How do I withdraw my order?",
+			"Can I reverse my order?"
+		],
+		"answer": "You can cancel your order before it ships. Please contact customer service as soon as possible."
+	},
+	{
+		"id": 22,
+		"topic": "ChangingOrders",
+		"language": "en",
+		"questions": [
+			"Can I change my order?",
+			"How do I change the shipping address?",
+			"Can I add or remove items from my order?",
+			"How do I update my order details?",
+			"Is it possible to modify my order?",
+			"How can I change my delivery information?"
+		],
+		"answer": "You can change your order before it is shipped. Please contact support to make changes."
+	},
+	{
+		"id": 23,
+		"topic": "GiftCards",
+		"language": "en",
+		"questions": [
+			"Do you sell gift cards?",
+			"How can I buy a gift card?",
+			"Can I use a gift card for my purchase?",
+			"How do I redeem a gift card?",
+			"Can I get a voucher for your store?",
+			"How are gift cards used at checkout?"
+		],
+		"answer": "Yes, we offer gift cards. You can purchase and redeem them during checkout."
+	},
+	{
+		"id": 24,
+		"topic": "StoreLocations",
+		"language": "en",
+		"questions": [
+			"Do you have physical stores?",
+			"Where are your stores located?",
+			"Can I pick up my order in-store?",
+			"Is in-store pickup available?",
+			"Do you have any brick-and-mortar locations?",
+			"Can I collect my purchase at a shop?"
+		],
+		"answer": "We are an online store only and do not have physical locations."
+	},
+	{
+		"id": 25,
+		"topic": "ProductInformation",
+		"language": "en",
+		"questions": [
+			"Where can I find more information about a product?",
+			"Is there a size guide?",
+			"Can I get more details about this item?",
+			"Is there a manual or instructions included?",
+			"Where can I see product specifications?",
+			"Can I read more about product features?"
+		],
+		"answer": "You can find detailed product information and size guides on each product page."
+	}
+]

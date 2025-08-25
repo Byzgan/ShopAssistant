@@ -1,0 +1,1007 @@
+[
+  {
+    "Id": 0,
+    "Question": "hvordan kan jeg betale for bestillingen min",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 1,
+    "Question": "hvilke betalingsmetoder st\u00F8tter dere",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 2,
+    "Question": "hvilke betalingsmetoder kan jeg bruke",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 3,
+    "Question": "hvilke typer betaling kan jeg bruke",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 4,
+    "Question": "finnes det noen andre betalingsalternativer",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 5,
+    "Question": "godtar dere kredittkort",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 6,
+    "Question": "kan jeg betale med bankkortet mitt",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 7,
+    "Question": "er visa akseptert",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 8,
+    "Question": "hvilke kort er tillatt",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 9,
+    "Question": "hvilke kort kan jeg bruke",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 10,
+    "Question": "kan jeg bruke paypal til \u00E5 betale",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 11,
+    "Question": "hvilke betalingsformer aksepterer dere",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 12,
+    "Question": "hvilke typer betaling aksepterer dere",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 13,
+    "Question": "kan jeg bruke et bankkort for \u00E5 betale",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 14,
+    "Question": "kan jeg betale ved levering",
+    "KnowledgeId": 2
+  },
+  {
+    "Id": 15,
+    "Question": "tilbyr dere postoppkrav",
+    "KnowledgeId": 2
+  },
+  {
+    "Id": 16,
+    "Question": "er det mulig \u00E5 betale n\u00E5r bestillingen ankommer",
+    "KnowledgeId": 2
+  },
+  {
+    "Id": 17,
+    "Question": "kan jeg betale etter \u00E5 ha mottatt varen",
+    "KnowledgeId": 2
+  },
+  {
+    "Id": 18,
+    "Question": "st\u00F8tter dere betaling ved d\u00F8ren",
+    "KnowledgeId": 2
+  },
+  {
+    "Id": 19,
+    "Question": "hvor lang tid tar frakten",
+    "KnowledgeId": 3
+  },
+  {
+    "Id": 20,
+    "Question": "hva er leveringstiden",
+    "KnowledgeId": 3
+  },
+  {
+    "Id": 21,
+    "Question": "hvor raskt kan jeg f\u00E5 pakken min",
+    "KnowledgeId": 3
+  },
+  {
+    "Id": 22,
+    "Question": "hva koster frakt",
+    "KnowledgeId": 3
+  },
+  {
+    "Id": 23,
+    "Question": "hva er deres leveringstider",
+    "KnowledgeId": 3
+  },
+  {
+    "Id": 24,
+    "Question": "hvor raskt behandler dere bestillinger",
+    "KnowledgeId": 3
+  },
+  {
+    "Id": 25,
+    "Question": "hvor fort kommer pakken frem",
+    "KnowledgeId": 3
+  },
+  {
+    "Id": 26,
+    "Question": "er frakt gratis",
+    "KnowledgeId": 4
+  },
+  {
+    "Id": 27,
+    "Question": "hva er minste bestillingsbel\u00F8p for gratis levering",
+    "KnowledgeId": 4
+  },
+  {
+    "Id": 28,
+    "Question": "hvordan kan jeg f\u00E5 gratis frakt",
+    "KnowledgeId": 4
+  },
+  {
+    "Id": 29,
+    "Question": "n\u00E5r tilbyr dere gratis frakt",
+    "KnowledgeId": 4
+  },
+  {
+    "Id": 30,
+    "Question": "hvor mye m\u00E5 jeg handle for \u00E5 f\u00E5 gratis levering",
+    "KnowledgeId": 4
+  },
+  {
+    "Id": 31,
+    "Question": "hvordan sendes bestillinger",
+    "KnowledgeId": 5
+  },
+  {
+    "Id": 32,
+    "Question": "hvilket fraktselskap bruker dere",
+    "KnowledgeId": 5
+  },
+  {
+    "Id": 33,
+    "Question": "hvem leverer pakken min",
+    "KnowledgeId": 5
+  },
+  {
+    "Id": 34,
+    "Question": "hvilken transport\u00F8r h\u00E5ndterer leveransene",
+    "KnowledgeId": 5
+  },
+  {
+    "Id": 35,
+    "Question": "hvilket selskap frakter varene mine",
+    "KnowledgeId": 5
+  },
+  {
+    "Id": 36,
+    "Question": "sender dere til utlandet",
+    "KnowledgeId": 6
+  },
+  {
+    "Id": 37,
+    "Question": "kan jeg bestille fra utlandet",
+    "KnowledgeId": 6
+  },
+  {
+    "Id": 38,
+    "Question": "er internasjonal frakt tilgjengelig",
+    "KnowledgeId": 6
+  },
+  {
+    "Id": 39,
+    "Question": "leverer dere til andre land",
+    "KnowledgeId": 6
+  },
+  {
+    "Id": 40,
+    "Question": "kan varer sendes til utlandet",
+    "KnowledgeId": 6
+  },
+  {
+    "Id": 41,
+    "Question": "hvordan returnerer jeg et produkt",
+    "KnowledgeId": 7
+  },
+  {
+    "Id": 42,
+    "Question": "hvordan kan jeg sende varer i retur",
+    "KnowledgeId": 7
+  },
+  {
+    "Id": 43,
+    "Question": "hva er deres returpolicy",
+    "KnowledgeId": 7
+  },
+  {
+    "Id": 44,
+    "Question": "hvordan sender jeg en retur",
+    "KnowledgeId": 7
+  },
+  {
+    "Id": 45,
+    "Question": "hvilke steg m\u00E5 jeg f\u00F8lge for \u00E5 returnere en vare",
+    "KnowledgeId": 7
+  },
+  {
+    "Id": 46,
+    "Question": "m\u00E5 jeg betale for returfrakt",
+    "KnowledgeId": 8
+  },
+  {
+    "Id": 47,
+    "Question": "er returfrakt gratis",
+    "KnowledgeId": 8
+  },
+  {
+    "Id": 48,
+    "Question": "hvem betaler for returfrakt",
+    "KnowledgeId": 8
+  },
+  {
+    "Id": 49,
+    "Question": "blir jeg belastet for \u00E5 sende varer tilbake",
+    "KnowledgeId": 8
+  },
+  {
+    "Id": 50,
+    "Question": "koster det noe \u00E5 returnere produkter",
+    "KnowledgeId": 8
+  },
+  {
+    "Id": 51,
+    "Question": "kan jeg f\u00E5 pengene tilbake",
+    "KnowledgeId": 9
+  },
+  {
+    "Id": 52,
+    "Question": "hvor lang tid tar det \u00E5 f\u00E5 refusjon",
+    "KnowledgeId": 9
+  },
+  {
+    "Id": 53,
+    "Question": "n\u00E5r blir pengene refundert",
+    "KnowledgeId": 9
+  },
+  {
+    "Id": 54,
+    "Question": "hvor raskt f\u00E5r jeg refusjon",
+    "KnowledgeId": 9
+  },
+  {
+    "Id": 55,
+    "Question": "kan jeg bytte et produkt",
+    "KnowledgeId": 10
+  },
+  {
+    "Id": 56,
+    "Question": "er det mulig \u00E5 bytte en vare",
+    "KnowledgeId": 10
+  },
+  {
+    "Id": 57,
+    "Question": "hvordan bytter jeg en vare",
+    "KnowledgeId": 10
+  },
+  {
+    "Id": 58,
+    "Question": "kan jeg bytte til en annen st\u00F8rrelse eller farge",
+    "KnowledgeId": 10
+  },
+  {
+    "Id": 59,
+    "Question": "hvordan kan jeg bytte varen min",
+    "KnowledgeId": 10
+  },
+  {
+    "Id": 60,
+    "Question": "kan jeg bytte til noe annet",
+    "KnowledgeId": 11
+  },
+  {
+    "Id": 61,
+    "Question": "tilbyr dere innbytte",
+    "KnowledgeId": 11
+  },
+  {
+    "Id": 62,
+    "Question": "er det mulig \u00E5 bytte brukte varer mot andre produkter",
+    "KnowledgeId": 11
+  },
+  {
+    "Id": 63,
+    "Question": "kan jeg bytte til butikkreditt eller en annen vare",
+    "KnowledgeId": 11
+  },
+  {
+    "Id": 64,
+    "Question": "godtar dere delbytte eller byttehandel",
+    "KnowledgeId": 11
+  },
+  {
+    "Id": 65,
+    "Question": "er det garanti p\u00E5 produktene",
+    "KnowledgeId": 12
+  },
+  {
+    "Id": 66,
+    "Question": "tilbyr dere garanti",
+    "KnowledgeId": 12
+  },
+  {
+    "Id": 67,
+    "Question": "hvor lang er garantiperioden",
+    "KnowledgeId": 12
+  },
+  {
+    "Id": 68,
+    "Question": "f\u00F8lger det garanti med produktene",
+    "KnowledgeId": 12
+  },
+  {
+    "Id": 69,
+    "Question": "hva er garantil\u00F8petiden",
+    "KnowledgeId": 12
+  },
+  {
+    "Id": 70,
+    "Question": "hva dekker garantien",
+    "KnowledgeId": 13
+  },
+  {
+    "Id": 71,
+    "Question": "dekkes uhellsskader",
+    "KnowledgeId": 13
+  },
+  {
+    "Id": 72,
+    "Question": "inkluderer garantien slitasje",
+    "KnowledgeId": 13
+  },
+  {
+    "Id": 73,
+    "Question": "hvilke feil dekkes av garantien",
+    "KnowledgeId": 13
+  },
+  {
+    "Id": 74,
+    "Question": "dekkes feil bruk av garantien",
+    "KnowledgeId": 13
+  },
+  {
+    "Id": 75,
+    "Question": "hvordan benytter jeg garantien",
+    "KnowledgeId": 14
+  },
+  {
+    "Id": 76,
+    "Question": "hvordan g\u00E5r jeg frem for \u00E5 reklamere",
+    "KnowledgeId": 14
+  },
+  {
+    "Id": 77,
+    "Question": "hvordan ber jeg om reparasjon p\u00E5 garanti",
+    "KnowledgeId": 14
+  },
+  {
+    "Id": 78,
+    "Question": "hvordan kan jeg melde inn en garantisak",
+    "KnowledgeId": 14
+  },
+  {
+    "Id": 79,
+    "Question": "hvordan tilbakestiller jeg passordet mitt",
+    "KnowledgeId": 15
+  },
+  {
+    "Id": 80,
+    "Question": "jeg har glemt passordet hva gj\u00F8r jeg",
+    "KnowledgeId": 15
+  },
+  {
+    "Id": 81,
+    "Question": "hvordan endrer jeg passordet mitt",
+    "KnowledgeId": 15
+  },
+  {
+    "Id": 82,
+    "Question": "hvor kan jeg tilbakestille passordet",
+    "KnowledgeId": 15
+  },
+  {
+    "Id": 83,
+    "Question": "hva gj\u00F8r jeg hvis jeg ikke husker passordet mitt",
+    "KnowledgeId": 15
+  },
+  {
+    "Id": 84,
+    "Question": "hvordan oppdaterer jeg kontoinformasjon",
+    "KnowledgeId": 16
+  },
+  {
+    "Id": 85,
+    "Question": "hvordan oppretter jeg konto",
+    "KnowledgeId": 16
+  },
+  {
+    "Id": 86,
+    "Question": "kan jeg slette kontoen min",
+    "KnowledgeId": 16
+  },
+  {
+    "Id": 87,
+    "Question": "hvordan endrer jeg kontodetaljer",
+    "KnowledgeId": 16
+  },
+  {
+    "Id": 88,
+    "Question": "hvor kan jeg registrere konto",
+    "KnowledgeId": 16
+  },
+  {
+    "Id": 89,
+    "Question": "hvordan kontakter jeg kundeservice",
+    "KnowledgeId": 17
+  },
+  {
+    "Id": 90,
+    "Question": "har dere et telefonnummer til kundeservice",
+    "KnowledgeId": 17
+  },
+  {
+    "Id": 91,
+    "Question": "hvordan f\u00E5r jeg hjelp",
+    "KnowledgeId": 17
+  },
+  {
+    "Id": 92,
+    "Question": "hvordan kommer jeg i kontakt med kundeservice",
+    "KnowledgeId": 17
+  },
+  {
+    "Id": 93,
+    "Question": "hvor finner jeg kontaktinformasjon",
+    "KnowledgeId": 17
+  },
+  {
+    "Id": 94,
+    "Question": "tilbyr dere live chat",
+    "KnowledgeId": 17
+  },
+  {
+    "Id": 95,
+    "Question": "hvordan snakker jeg med kundest\u00F8tte",
+    "KnowledgeId": 17
+  },
+  {
+    "Id": 96,
+    "Question": "hva er beste m\u00E5te \u00E5 n\u00E5 support p\u00E5",
+    "KnowledgeId": 17
+  },
+  {
+    "Id": 97,
+    "Question": "er produktet p\u00E5 lager",
+    "KnowledgeId": 18
+  },
+  {
+    "Id": 98,
+    "Question": "n\u00E5r er varen tilgjengelig igjen",
+    "KnowledgeId": 18
+  },
+  {
+    "Id": 99,
+    "Question": "har dere denne varen p\u00E5 lager",
+    "KnowledgeId": 18
+  },
+  {
+    "Id": 100,
+    "Question": "er denne varen tilgjengelig n\u00E5",
+    "KnowledgeId": 18
+  },
+  {
+    "Id": 101,
+    "Question": "hvordan sjekker jeg om et produkt er tilgjengelig",
+    "KnowledgeId": 18
+  },
+  {
+    "Id": 102,
+    "Question": "kan jeg finne ut om produktet er p\u00E5 lager",
+    "KnowledgeId": 18
+  },
+  {
+    "Id": 103,
+    "Question": "blir varen snart tilgjengelig igjen",
+    "KnowledgeId": 18
+  },
+  {
+    "Id": 104,
+    "Question": "er det noen tilbud n\u00E5",
+    "KnowledgeId": 19
+  },
+  {
+    "Id": 105,
+    "Question": "tilbyr dere rabattkoder",
+    "KnowledgeId": 19
+  },
+  {
+    "Id": 106,
+    "Question": "hvordan bruker jeg rabattkode",
+    "KnowledgeId": 19
+  },
+  {
+    "Id": 107,
+    "Question": "er det spesialtilbud akkurat n\u00E5",
+    "KnowledgeId": 19
+  },
+  {
+    "Id": 108,
+    "Question": "hvor kan jeg skrive inn kupongkode",
+    "KnowledgeId": 19
+  },
+  {
+    "Id": 109,
+    "Question": "hvordan f\u00E5r jeg rabatt",
+    "KnowledgeId": 19
+  },
+  {
+    "Id": 110,
+    "Question": "har dere salg",
+    "KnowledgeId": 19
+  },
+  {
+    "Id": 111,
+    "Question": "er det kampanjer n\u00E5",
+    "KnowledgeId": 19
+  },
+  {
+    "Id": 112,
+    "Question": "hvordan legger jeg inn rabattkode i kassen",
+    "KnowledgeId": 19
+  },
+  {
+    "Id": 113,
+    "Question": "hvordan kan jeg spore bestillingen min",
+    "KnowledgeId": 20
+  },
+  {
+    "Id": 114,
+    "Question": "n\u00E5r f\u00E5r jeg sporingsnummeret mitt",
+    "KnowledgeId": 20
+  },
+  {
+    "Id": 115,
+    "Question": "hvor finner jeg informasjon om sporing av bestillingen min",
+    "KnowledgeId": 20
+  },
+  {
+    "Id": 116,
+    "Question": "blir jeg varslet n\u00E5r bestillingen min er sendt",
+    "KnowledgeId": 20
+  },
+  {
+    "Id": 117,
+    "Question": "hvordan vet jeg n\u00E5r bestillingen min er sendt",
+    "KnowledgeId": 20
+  },
+  {
+    "Id": 118,
+    "Question": "kan jeg kansellere bestillingen",
+    "KnowledgeId": 21
+  },
+  {
+    "Id": 119,
+    "Question": "hvordan kansellerer jeg bestillingen",
+    "KnowledgeId": 21
+  },
+  {
+    "Id": 120,
+    "Question": "er det mulig \u00E5 stoppe bestillingen",
+    "KnowledgeId": 21
+  },
+  {
+    "Id": 121,
+    "Question": "kan jeg endre eller kansellere etter at jeg har bestilt",
+    "KnowledgeId": 21
+  },
+  {
+    "Id": 122,
+    "Question": "hvordan trekker jeg bestillingen",
+    "KnowledgeId": 21
+  },
+  {
+    "Id": 123,
+    "Question": "kan jeg angre bestillingen",
+    "KnowledgeId": 21
+  },
+  {
+    "Id": 124,
+    "Question": "kan jeg endre bestillingen",
+    "KnowledgeId": 22
+  },
+  {
+    "Id": 125,
+    "Question": "hvordan endrer jeg leveringsadresse",
+    "KnowledgeId": 22
+  },
+  {
+    "Id": 126,
+    "Question": "kan jeg legge til eller fjerne varer fra bestillingen",
+    "KnowledgeId": 22
+  },
+  {
+    "Id": 127,
+    "Question": "hvordan oppdaterer jeg bestillingsdetaljer",
+    "KnowledgeId": 22
+  },
+  {
+    "Id": 128,
+    "Question": "er det mulig \u00E5 endre bestillingen",
+    "KnowledgeId": 22
+  },
+  {
+    "Id": 129,
+    "Question": "hvordan endrer jeg leveringsinformasjon",
+    "KnowledgeId": 22
+  },
+  {
+    "Id": 130,
+    "Question": "selger dere gavekort",
+    "KnowledgeId": 23
+  },
+  {
+    "Id": 131,
+    "Question": "hvordan kj\u00F8per jeg gavekort",
+    "KnowledgeId": 23
+  },
+  {
+    "Id": 132,
+    "Question": "kan jeg bruke gavekort til \u00E5 betale",
+    "KnowledgeId": 23
+  },
+  {
+    "Id": 133,
+    "Question": "hvordan l\u00F8ser jeg inn gavekort",
+    "KnowledgeId": 23
+  },
+  {
+    "Id": 134,
+    "Question": "kan jeg f\u00E5 et verdikort til butikken",
+    "KnowledgeId": 23
+  },
+  {
+    "Id": 135,
+    "Question": "hvordan brukes gavekort i kassen",
+    "KnowledgeId": 23
+  },
+  {
+    "Id": 136,
+    "Question": "har dere fysiske butikker",
+    "KnowledgeId": 24
+  },
+  {
+    "Id": 137,
+    "Question": "hvor ligger butikkene deres",
+    "KnowledgeId": 24
+  },
+  {
+    "Id": 138,
+    "Question": "kan jeg hente bestilling i butikk",
+    "KnowledgeId": 24
+  },
+  {
+    "Id": 139,
+    "Question": "tilbyr dere henting i butikk",
+    "KnowledgeId": 24
+  },
+  {
+    "Id": 140,
+    "Question": "har dere noen fysiske utsalgssteder",
+    "KnowledgeId": 24
+  },
+  {
+    "Id": 141,
+    "Question": "kan jeg hente varene mine i butikk",
+    "KnowledgeId": 24
+  },
+  {
+    "Id": 142,
+    "Question": "hvor finner jeg mer informasjon om et produkt",
+    "KnowledgeId": 25
+  },
+  {
+    "Id": 143,
+    "Question": "finnes det st\u00F8rrelsesguide",
+    "KnowledgeId": 25
+  },
+  {
+    "Id": 144,
+    "Question": "kan jeg f\u00E5 mer informasjon om varen",
+    "KnowledgeId": 25
+  },
+  {
+    "Id": 145,
+    "Question": "f\u00F8lger det med bruksanvisning",
+    "KnowledgeId": 25
+  },
+  {
+    "Id": 146,
+    "Question": "hvor kan jeg se produktspecifikasjoner",
+    "KnowledgeId": 25
+  },
+  {
+    "Id": 147,
+    "Question": "kan jeg lese mer om produktegenskaper",
+    "KnowledgeId": 25
+  },
+  {
+    "Id": 148,
+    "Question": "hvordan legger jeg til et nytt produkt",
+    "KnowledgeId": 1001
+  },
+  {
+    "Id": 149,
+    "Question": "hvor kan jeg opprette et nytt produkt",
+    "KnowledgeId": 1001
+  },
+  {
+    "Id": 150,
+    "Question": "hvordan setter jeg produktdetaljer som navn pris og beskrivelse",
+    "KnowledgeId": 1001
+  },
+  {
+    "Id": 151,
+    "Question": "hvordan legger jeg til varianter eller alternativer for et produkt",
+    "KnowledgeId": 1001
+  },
+  {
+    "Id": 152,
+    "Question": "hvilke trinn er n\u00F8dvendige for \u00E5 legge ut et nytt produkt",
+    "KnowledgeId": 1001
+  },
+  {
+    "Id": 153,
+    "Question": "hvordan kan jeg inkludere produktvarianter",
+    "KnowledgeId": 1001
+  },
+  {
+    "Id": 154,
+    "Question": "hvordan laster jeg opp produktbilder",
+    "KnowledgeId": 1002
+  },
+  {
+    "Id": 155,
+    "Question": "hvor kan jeg legge til eller endre produktbilder",
+    "KnowledgeId": 1002
+  },
+  {
+    "Id": 156,
+    "Question": "kan jeg oppdatere flere bilder samtidig",
+    "KnowledgeId": 1002
+  },
+  {
+    "Id": 157,
+    "Question": "hvordan legger jeg til bilder p\u00E5 et produkt",
+    "KnowledgeId": 1002
+  },
+  {
+    "Id": 158,
+    "Question": "er det mulig \u00E5 erstatte produktbilder",
+    "KnowledgeId": 1002
+  },
+  {
+    "Id": 159,
+    "Question": "hvordan setter jeg opp rabatter eller kampanjer",
+    "KnowledgeId": 1003
+  },
+  {
+    "Id": 160,
+    "Question": "hvor kan jeg legge til en rabattkode",
+    "KnowledgeId": 1003
+  },
+  {
+    "Id": 161,
+    "Question": "hvordan planlegger jeg et salg for produkter",
+    "KnowledgeId": 1003
+  },
+  {
+    "Id": 162,
+    "Question": "kan jeg begrense rabatter til spesifikke produkter eller kategorier",
+    "KnowledgeId": 1003
+  },
+  {
+    "Id": 163,
+    "Question": "hvordan konfigurerer jeg spesialtilbud",
+    "KnowledgeId": 1003
+  },
+  {
+    "Id": 164,
+    "Question": "hvor administrerer jeg kampanjekoder",
+    "KnowledgeId": 1003
+  },
+  {
+    "Id": 165,
+    "Question": "hvordan konfigurerer jeg betalingsmetoder",
+    "KnowledgeId": 1004
+  },
+  {
+    "Id": 166,
+    "Question": "hvor kan jeg aktivere eller deaktivere betalingsalternativer",
+    "KnowledgeId": 1004
+  },
+  {
+    "Id": 167,
+    "Question": "kan jeg integrere paypal eller stripe",
+    "KnowledgeId": 1004
+  },
+  {
+    "Id": 168,
+    "Question": "hvordan endrer jeg betalingsinnstillinger",
+    "KnowledgeId": 1004
+  },
+  {
+    "Id": 169,
+    "Question": "hvordan aktiverer jeg ulike betalingstyper",
+    "KnowledgeId": 1004
+  },
+  {
+    "Id": 170,
+    "Question": "hvor kan jeg sette opp betalingstilbydere",
+    "KnowledgeId": 1004
+  },
+  {
+    "Id": 171,
+    "Question": "hvordan setter jeg opp fraktmetoder",
+    "KnowledgeId": 1005
+  },
+  {
+    "Id": 172,
+    "Question": "hvor kan jeg administrere fraktalternativer",
+    "KnowledgeId": 1005
+  },
+  {
+    "Id": 173,
+    "Question": "kan jeg sette ulike fraktrater",
+    "KnowledgeId": 1005
+  },
+  {
+    "Id": 174,
+    "Question": "hvordan tilbyr jeg gratis frakt over et visst bel\u00F8p",
+    "KnowledgeId": 1005
+  },
+  {
+    "Id": 175,
+    "Question": "hvordan justerer jeg fraktpriser",
+    "KnowledgeId": 1005
+  },
+  {
+    "Id": 176,
+    "Question": "hvor kan jeg konfigurere leveringsmetoder",
+    "KnowledgeId": 1005
+  },
+  {
+    "Id": 177,
+    "Question": "hvordan betaler jeg for bestillingen min i portalen",
+    "KnowledgeId": 1006
+  },
+  {
+    "Id": 178,
+    "Question": "hvordan kobler jeg butikken til google eller facebook",
+    "KnowledgeId": 1006
+  },
+  {
+    "Id": 179,
+    "Question": "hvor setter jeg opp google analytics eller facebook pixel",
+    "KnowledgeId": 1006
+  },
+  {
+    "Id": 180,
+    "Question": "hvordan aktiverer jeg integrasjoner med sosiale medier",
+    "KnowledgeId": 1006
+  },
+  {
+    "Id": 181,
+    "Question": "kan jeg kj\u00F8re annonser direkte fra portalen",
+    "KnowledgeId": 1006
+  },
+  {
+    "Id": 182,
+    "Question": "hvordan kan jeg koble butikken min til google",
+    "KnowledgeId": 1006
+  },
+  {
+    "Id": 183,
+    "Question": "er det mulig \u00E5 koble til facebookannonsering",
+    "KnowledgeId": 1006
+  },
+  {
+    "Id": 184,
+    "Question": "hvordan kan jeg se og behandle kundeordrer",
+    "KnowledgeId": 1007
+  },
+  {
+    "Id": 185,
+    "Question": "hvor ser jeg ventende eller fullf\u00F8rte bestillinger",
+    "KnowledgeId": 1007
+  },
+  {
+    "Id": 186,
+    "Question": "hvordan oppdaterer jeg ordrestatus feks sendt levert",
+    "KnowledgeId": 1007
+  },
+  {
+    "Id": 187,
+    "Question": "kan jeg skrive ut fakturaer eller pakkesedler",
+    "KnowledgeId": 1007
+  },
+  {
+    "Id": 188,
+    "Question": "hvordan administrerer jeg kundeordrer",
+    "KnowledgeId": 1007
+  },
+  {
+    "Id": 189,
+    "Question": "hvor kan jeg f\u00E5 tilgang til ordredetaljer",
+    "KnowledgeId": 1007
+  },
+  {
+    "Id": 190,
+    "Question": "hvordan behandler jeg refusjoner",
+    "KnowledgeId": 1008
+  },
+  {
+    "Id": 191,
+    "Question": "kan jeg refundere deler av en bestilling",
+    "KnowledgeId": 1008
+  },
+  {
+    "Id": 192,
+    "Question": "hvor administrerer jeg refusjoner og returer",
+    "KnowledgeId": 1008
+  },
+  {
+    "Id": 193,
+    "Question": "hvordan utsteder jeg en delvis refusjon",
+    "KnowledgeId": 1008
+  },
+  {
+    "Id": 194,
+    "Question": "hvor kan jeg se status for refusjoner",
+    "KnowledgeId": 1008
+  },
+  {
+    "Id": 195,
+    "Question": "hvordan tilbakestiller jeg passordet mitt for portalen",
+    "KnowledgeId": 1009
+  },
+  {
+    "Id": 196,
+    "Question": "hva om jeg har glemt adminpassordet mitt",
+    "KnowledgeId": 1009
+  },
+  {
+    "Id": 197,
+    "Question": "hvordan kan jeg hjelpe ansatte med \u00E5 tilbakestille passordene sine",
+    "KnowledgeId": 1009
+  },
+  {
+    "Id": 198,
+    "Question": "hvor kan jeg gjenopprette innloggingen til portalen",
+    "KnowledgeId": 1009
+  },
+  {
+    "Id": 199,
+    "Question": "hvordan kan jeg hjelpe andre med \u00E5 endre passord",
+    "KnowledgeId": 1009
+  },
+  {
+    "Id": 200,
+    "Question": "hvordan oppdaterer jeg epostadressen min",
+    "KnowledgeId": 1010
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "not_found": "Sorry, I couldn't find a relevant answer.",
+  "request_processed": "Thank you! Your request is being processed.",
+  "internal_error": "Sorry, there was an internal error. Please contact support.",
+  "unsupported_language": "Unsupported language. Please choose English or Norwegian.",
+  "unknown_field": "Sorry, a required field is missing in the dialog scenario. Please contact support.",
+  "not_authenticated": "Sorry, you are not authenticated. Please log in.",
+  "clarify_ambiguity": "Just to be sure, did you mean:",
+  "category_clarification_no_context": "Sorry, I couldn't identify your request context for category selection. Please start a new query."
+}

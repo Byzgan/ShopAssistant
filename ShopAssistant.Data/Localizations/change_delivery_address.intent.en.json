@@ -1,0 +1,12 @@
+{
+  "AskOrderNumber": "Please provide your order number.",
+  "OrderCheckInProgress": "Thank you! I will now check if your order can be updated. Please wait a moment.",
+  "ChangeNotAllowed": "Sorry, it is not possible to change the delivery address for this order.",
+  "AskNewAddress": "Please provide your new address.",
+  "AddressChangeCancelled": "Address change has been cancelled.",
+  "ChangeAddressError": "An error occurred while changing the address: {0}",
+  "ChangeAddressFailed": "Failed to change address for order {0}. Please verify the order number and try again.",
+  "ChangeAddressSuccess": "Delivery address for order {0} has been changed to: {1}. You will receive a confirmation email shortly.",
+  "InvalidOrderNumber": "The provided order number is invalid or not found.",
+  "ConfirmationRequired": "Please confirm if you want to change the delivery address (yes/no)."
+}

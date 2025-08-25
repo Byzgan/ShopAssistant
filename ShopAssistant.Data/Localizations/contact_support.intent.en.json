@@ -1,0 +1,6 @@
+{
+  "MissingIssueType": "Please specify the type of issue you are reporting.",
+  "MissingDescription": "Please describe your issue in detail.",
+  "MissingPreferredContact": "Please specify how you wish to be contacted.",
+  "Success": "Your support request has been received. Type: {0}. Description: {1}. We will contact you via: {2}."
+}

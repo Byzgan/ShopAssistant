@@ -1,0 +1,6 @@
+{
+  "LatestOrderStatus": "Status for din siste bestilling: {0}",
+  "AskOrderNumber": "Vennligst oppgi ordrenummeret ditt.",
+  "OrderNotFound": "Fant ingen bestilling med nummer {0}.",
+  "OrderStatus": "Status for bestilling {0}: {1}"
+}

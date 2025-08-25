@@ -1,0 +1,7 @@
+{
+  "AskProductType": "Hvilken type produkt er du interessert i?",
+  "AskBrand": "Ser du etter et spesifikt merke for {0}?<span style='color: #666;'>(Skriv <em>\"Nei\"</em> hvis du ikke har noen preferanser)</span>",
+  "NoResults": "<span style='color: red;'>Beklager, jeg fant ingen {0} fra {1}.</span>",
+  "NoResults_NoBrand": "<span style='color: red;'>Beklager, jeg fant ingen {0}.</span>",
+  "ResultsHeader": "Her er noen av produktene jeg fant:"
+}

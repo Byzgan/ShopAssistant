@@ -1,0 +1,62 @@
+[
+  {
+    "topic": "ChangingOrders",
+    "allowedRoles": ["Admin", "User", "Anonymous"]
+  },
+  {
+    "topic": "DiscountsAndPromotions",
+    "allowedRoles": ["Admin", "User", "Anonymous"]
+  },
+  {
+    "topic": "GiftCards",
+    "allowedRoles": ["Admin", "User", "Anonymous"]
+  },
+  {
+    "topic": "OrderCancellation",
+    "allowedRoles": ["Admin", "User", "Anonymous"]
+  },
+  {
+    "topic": "OrderTracking",
+    "allowedRoles": ["Admin", "User", "Anonymous"]
+  },
+  {
+    "topic": "ProductAvailability",
+    "allowedRoles": ["Admin", "User", "Anonymous"]
+  },
+  {
+    "topic": "Returns",
+    "allowedRoles": ["Admin", "User", "Anonymous"]
+  },
+  {
+    "topic": "Shipping",
+    "allowedRoles": ["Admin", "User", "Anonymous"]
+  },
+  {
+    "topic": "StoreLocations",
+    "allowedRoles": ["Admin", "User", "Anonymous"]
+  },
+  {
+    "topic": "Support",
+    "allowedRoles": ["Admin", "User", "Anonymous"]
+  },
+  {
+    "topic": "Warranty",
+    "allowedRoles": ["Admin", "User", "Anonymous"]
+  },
+  {
+    "topic": "ProductInformation",
+    "allowedRoles": ["Admin", "User", "Anonymous"]
+  },
+  {
+    "topic": "Account",
+    "allowedRoles": ["Admin", "User"]
+  },
+  {
+    "topic": "Order",
+    "allowedRoles": ["Admin", "User"]
+  },
+  {
+    "topic": "Portal",
+    "allowedRoles": ["Admin"]
+  }
+]

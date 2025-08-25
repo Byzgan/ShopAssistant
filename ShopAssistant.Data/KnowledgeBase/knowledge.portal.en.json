@@ -1,0 +1,168 @@
+
+	{
+		"id": 1001,
+		"topic": "Portal",
+		"language": "en",
+		"questions": [
+			"How do I add a new product?",
+			"Where can I create a new product?",
+			"How do I set product details like name, price, and description?",
+			"How do I add variants or options to a product?",
+			"What steps are needed to list a new product?",
+			"How can I include product variations?"
+		],
+		"answer": "Go to the <a href=\"#\" class=\"link-tag\">Products section in the portal</a>, click 'Add product', and fill in the required details. You can add variants or options when editing the product."
+	},
+	{
+		"id": 1002,
+		"topic": "Portal",
+		"language": "en",
+		"questions": [
+			"How do I upload product images?",
+			"Where can I add or change product photos?",
+			"Can I update multiple images at once?",
+			"How do I add pictures to a product?",
+			"Is it possible to replace product images?"
+		],
+		"answer": "You can upload and manage product images on the product edit page in the portal. Multiple images can be added by clicking the 'Upload Images' button."
+	},
+	{
+		"id": 1003,
+		"topic": "Portal",
+		"language": "en",
+		"questions": [
+			"How do I set up discounts or promotions?",
+			"Where can I add a discount code?",
+			"How do I schedule a sale for products?",
+			"Can I limit discounts to specific products or categories?",
+			"How do I configure special offers?",
+			"Where do I manage promo codes?"
+		],
+		"answer": "Go to the <a href=\"#\" class=\"link-tag\">Discounts or Promotions section</a> in the portal. You can create new discount codes, set start/end dates, and choose which products or categories the discounts apply to."
+	},
+	{
+		"id": 1004,
+		"topic": "Portal",
+		"language": "en",
+		"questions": [
+			"How do I configure payment methods?",
+			"Where do I enable or disable payment options?",
+			"Can I integrate PayPal or Stripe?",
+			"How do I change payment settings?",
+			"How do I activate different payment types?",
+			"Where can I set up payment providers?"
+		],
+		"answer": "In the portal, go to <a href=\"#\" class=\"link-tag\">Settings &gt; Payments</a>. Here you can enable or disable payment methods and connect third-party services like Klarna or PayPal."
+	},
+	{
+		"id": 1005,
+		"topic": "Portal",
+		"language": "en",
+		"questions": [
+			"How do I set up shipping methods?",
+			"Where can I manage shipping options?",
+			"Can I set different shipping rates?",
+			"How do I offer free shipping over a certain amount?",
+			"How do I adjust shipping prices?",
+			"Where can I configure delivery methods?"
+		],
+		"answer": "Go to 'Settings' > 'Shipping' in the portal. You can add or edit shipping methods, set rates, and define conditions for free shipping."
+	},
+	{
+		"id": 1006,
+		"topic": "Portal",
+		"language": "en",
+		"questions": [
+			"How do I pay for my order in the portal?",
+			"How do I connect the store to Google or Facebook?",
+			"Where do I set up Google Analytics or Facebook Pixel?",
+			"How do I enable social media integrations?",
+			"Can I run ads directly from the portal?",
+			"How can I link my shop to Google?",
+			"Is it possible to connect with Facebook advertising?"
+		],
+		"answer": "Go to <a href=\"#\" class=\"link-tag\">Integrations</a> in the portal to connect Google, Facebook, and other services. Follow the instructions to link your accounts and add tracking or advertising features."
+	},
+	{
+		"id": 1007,
+		"topic": "Portal",
+		"language": "en",
+		"questions": [
+			"How can I view and process customer orders?",
+			"Where do I see pending or completed orders?",
+			"How do I update order status (e.g., shipped, delivered)?",
+			"Can I print invoices or packing slips?",
+			"How do I manage customer orders?",
+			"Where can I access order details?"
+		],
+		"answer": "In the 'Orders' section, you can view all orders, update their status, and print invoices or packing slips as needed."
+	},
+	{
+		"id": 1008,
+		"topic": "Portal",
+		"language": "en",
+		"questions": [
+			"How do I process refunds?",
+			"Can I refund part of an order?",
+			"Where do I manage refunds and returns?",
+			"How do I issue a partial refund?",
+			"Where can I see refund status?"
+		],
+		"answer": "Refunds can be managed in the order details page in the portal. You can issue full or partial refunds and update the order status accordingly."
+	},
+	{
+		"id": 1009,
+		"topic": "Portal",
+		"language": "en",
+		"questions": [
+			"How do I reset my portal password?",
+			"What if I forgot my admin password?",
+			"How can I help staff reset their passwords?",
+			"Where do I recover my portal login?",
+			"How do I assist others in changing passwords?"
+		],
+		"answer": "Click 'Forgot password?' on the portal login page and follow the instructions to reset your password. Admins can also reset passwords for staff in 'Users & Roles'."
+	},
+	{
+		"id": 1010,
+		"topic": "Portal",
+		"language": "en",
+		"questions": [
+			"How to update my email address?"
+		],
+		"answer": "You can update your email address in your account settings. Go to 'My Account', select 'Profile' and edit your email address. Remember to save your changes. You may be asked to verify your new email."
+	},
+	{
+		"id": 1011,
+		"topic": "Portal",
+		"language": "en",
+		"questions": [
+			"How do I connect PayPal to my store?",
+			"How to connect PayPal to my store?",
+			"How to set PayPal settings?",
+			"How to configure PayPal?",
+			"How to integrate PayPal?",
+			"How do I get PayPal working on my shop?",
+			"How do I set up PayPal for payments?",
+			"How do I link my PayPal account so customers can pay?",
+			"How do I link my shop to PayPal?",
+			"How do I link my store with my PayPal account?",
+			"How do I connect my storefront to PayPal?",
+			"How do I pair my shop and PayPal?",
+			"How do I integrate PayPal with my site?",
+			"How do I tie my store to PayPal?",
+			"How do I enable PayPal checkout on my site?",
+			"How do I turn on PayPal Checkout?",
+			"How do I add PayPal as a payment option?",
+			"How do I activate the PayPal button at checkout?",
+			"How do I let customers pay with PayPal?",
+			"How do I set up PayPal to accept payments?",
+			"How do I connect my site with PayPal?",
+			"How do I pair my shop with PayPal?",
+			"How do I integrate PayPal into my site?",
+			"How can I tie my store into PayPal?",
+			"How do I turn on PayPal Checkout for my site?"
+		],		
+        "answer": "To integrate PayPal with your site, go to <a href=\"#\" class=\"link-tag\">E-Store settings → Integrations → PayPal</a>:<br/><br/>1.&nbsp;Set <b>PayPal mode</b> to <b>Live</b>.<br/>2.&nbsp;Enter your Live <b>Client ID</b> and <b>Client Secret</b> from the PayPal Dashboard (<i>Apps &amp; Credentials → Live</i>).<br/>3.&nbsp;(Optional) Adjust <b>Connection timeout</b> and <b>Request retries</b>; default values work for most stores.<br/>4.&nbsp;Select a <b>Checkout template</b> and confirm the <b>Checkout complete pageID</b> that appears after payment.<br/>5.&nbsp;Ensure your <b>Return URLs</b> and any <b>Webhooks</b> point to your production domain.<br/>6.&nbsp;Set <b>Supported countries</b> and the <b>payment reservation/authorization period</b> to match your policy.<br/>7.&nbsp;Run a small live transaction to verify everything works.<br/><br/><a href=\"https://localhost:5513/KnowledgeBase/Images/paypal-config.png\" target=\"_blank\" rel=\"noopener\"><img src=\"https://localhost:5513/KnowledgeBase/Images/paypal-config.png\" alt=\"PayPal integration screen with empty values\" style=\"max-width:100%;height:auto;cursor:zoom-in;\" /></a><br/><br/>For more details, see the <a href=\"https://shop.com/docs/paypal/\" target=\"_blank\" rel=\"noopener\">PayPal integration guide</a>."
+	}
+]

@@ -1,0 +1,14 @@
+{
+	"Recommend": "Get recommendations",
+	"ProductSearch": "Find a product",
+	"ChangeDeliveryAddress": "Change delivery address",
+	"OrderStatus": "Check order status",
+	"DiscountsAndPromotions": "Discounts & promotions",
+	"AccountManagement": "Account management",
+	"DeliveryInfo": "Shipping & delivery info",
+	"PaymentOptions": "Payment methods",
+	"Refund": "Request a refund",
+	"OrderCancel": "Cancel an order",
+	"FAQ": "FAQ",
+	"Unknown": "Unknown"
+}

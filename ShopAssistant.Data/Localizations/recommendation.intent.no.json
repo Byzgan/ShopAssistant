@@ -1,0 +1,9 @@
+{
+  "AskCategory": "Hvilken type produkt ser du etter? <span style='color: #666;'>(f.eks. smarttelefon, nettbrett, osv.)</span>",
+  "AskSelectCategory": "Vennligst velg kategorien som passer best:",
+  "AskBudget": "Hva er ditt budsjett eller foretrukket prisklasse?",
+  "AskPreference": "Noen spesielle preferanser? <span style='color: #666;'>Miljøvennlig, populær, best vurdert? Skriv <em>'Nei'</em> hvis du ikke har noen preferanser.</span>",
+  "AskDiscountOnly": "Vil du bare se produkter med rabatt? <span style='color: #666;'>(ja/nei)</span>",
+  "ResultsHeader": "<h5>Her er noen anbefalinger:</h5>",
+  "NoResults": "<span style='color: red;'>Beklager, jeg fant ingen produkter som matcher dine kriterier.</span>"
+}

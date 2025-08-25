@@ -1,0 +1,7 @@
+{
+  "AskProductType": "What kind of product are you interested in?",
+  "AskBrand": "Are you looking for any specific brand of {0}? <span style='color: #666;'>(Type <em>\"No\"</em> if you have no preference)</span>",
+  "NoResults": "<span style='color: red;'>Sorry, I couldn't find any {0} by {1}.</span>",
+  "NoResults_NoBrand": "<span style='color: red;'>Sorry, I couldn't find any {0}.</span>",
+  "ResultsHeader": "Here are some of the products found:"
+}

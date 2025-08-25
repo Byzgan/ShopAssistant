@@ -1,0 +1,17 @@
+{
+  "Portal": "Portal",
+  "Order": "Bestilling",
+  "Shipping": "Frakt",
+  "Returns": "Retur",
+  "Warranty": "Garanti",
+  "Account": "Konto",
+  "Support": "Kundeservice",
+  "ProductAvailability": "Produkt tilgjengelighet",
+  "DiscountsAndPromotions": "Rabatter og kampanjer",
+  "OrderTracking": "Sporing av bestilling",
+  "OrderCancellation": "Kansellering av bestilling",
+  "ChangingOrders": "Endring av bestilling",
+  "GiftCards": "Gavekort",
+  "StoreLocations": "Butikksteder",
+  "ProductInformation": "Produktinformasjon"
+}

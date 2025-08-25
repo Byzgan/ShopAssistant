@@ -1,0 +1,6 @@
+{
+  "LatestOrderStatus": "Your latest order status: {0}",
+  "AskOrderNumber": "Please provide your order number.",
+  "OrderNotFound": "No order found with number {0}.",
+  "OrderStatus": "Order {0} status: {1}"
+}

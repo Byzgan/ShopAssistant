@@ -1,0 +1,17 @@
+{
+  "Portal": "Portal",
+  "Order": "Order",
+  "Shipping": "Shipping",
+  "Returns": "Returns",
+  "Warranty": "Warranty",
+  "Account": "Account",
+  "Support": "Support",
+  "ProductAvailability": "Product Availability",
+  "DiscountsAndPromotions": "Discounts and Promotions",
+  "OrderTracking": "Order Tracking",
+  "OrderCancellation": "Order Cancellation",
+  "ChangingOrders": "Changing Orders",
+  "GiftCards": "Gift Cards",
+  "StoreLocations": "Store Locations",
+  "ProductInformation": "Product Information"
+}

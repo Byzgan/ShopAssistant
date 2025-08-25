@@ -1,0 +1,135 @@
+[
+	{
+		"id": 1001,
+		"topic": "Portal",
+		"language": "no",
+		"questions": [
+			"Hvordan legger jeg til et nytt produkt?",
+			"Hvor kan jeg opprette et nytt produkt?",
+			"Hvordan setter jeg produktdetaljer som navn, pris og beskrivelse?",
+			"Hvordan legger jeg til varianter eller alternativer for et produkt?",
+			"Hvilke trinn er nødvendige for å legge ut et nytt produkt?",
+			"Hvordan kan jeg inkludere produktvarianter?"
+		],
+		"answer": "Gå til <a href=\"#\" class=\"link-tag\">Produktseksjonen i portalen</a>, klikk på 'Legg til produkt' og fyll inn de nødvendige detaljene. Du kan legge til varianter eller alternativer når du redigerer produktet."
+	},
+	{
+		"id": 1002,
+		"topic": "Portal",
+		"language": "no",
+		"questions": [
+			"Hvordan laster jeg opp produktbilder?",
+			"Hvor kan jeg legge til eller endre produktbilder?",
+			"Kan jeg oppdatere flere bilder samtidig?",
+			"Hvordan legger jeg til bilder på et produkt?",
+			"Er det mulig å erstatte produktbilder?"
+		],
+		"answer": "Du kan laste opp og administrere produktbilder på produktsiden for redigering i portalen. Flere bilder kan legges til ved å klikke på knappen 'Last opp bilder'."
+	},
+	{
+		"id": 1003,
+		"topic": "Portal",
+		"language": "no",
+		"questions": [
+			"Hvordan setter jeg opp rabatter eller kampanjer?",
+			"Hvor kan jeg legge til en rabattkode?",
+			"Hvordan planlegger jeg et salg for produkter?",
+			"Kan jeg begrense rabatter til spesifikke produkter eller kategorier?",
+			"Hvordan konfigurerer jeg spesialtilbud?",
+			"Hvor administrerer jeg kampanjekoder?"
+		],
+		"answer": "Gå til <a href=\"#\" class=\"link-tag\">Rabatt- eller kampanjeseksjonen</a> i portalen. Du kan opprette nye rabattkoder, angi start- og sluttdatoer, og velge hvilke produkter eller kategorier rabattene skal gjelde for."
+	},
+	{
+		"id": 1004,
+		"topic": "Portal",
+		"language": "no",
+		"questions": [
+			"Hvordan konfigurerer jeg betalingsmetoder?",
+			"Hvor kan jeg aktivere eller deaktivere betalingsalternativer?",
+			"Kan jeg integrere PayPal eller Stripe?",
+			"Hvordan endrer jeg betalingsinnstillinger?",
+			"Hvordan aktiverer jeg ulike betalingstyper?",
+			"Hvor kan jeg sette opp betalingstilbydere?"
+		],
+		"answer": "I portalen, gå til <a href=\"#\" class=\"link-tag\">Innstillinger &gt; Betalinger</a>. Her kan du aktivere eller deaktivere betalingsmetoder og koble til tredjepartstjenester som Klarna eller PayPal."
+	},
+	{
+		"id": 1005,
+		"topic": "Portal",
+		"language": "no",
+		"questions": [
+			"Hvordan setter jeg opp fraktmetoder?",
+			"Hvor kan jeg administrere fraktalternativer?",
+			"Kan jeg sette ulike fraktrater?",
+			"Hvordan tilbyr jeg gratis frakt over et visst beløp?",
+			"Hvordan justerer jeg fraktpriser?",
+			"Hvor kan jeg konfigurere leveringsmetoder?"
+		],
+		"answer": "Gå til 'Innstillinger' > 'Frakt' i portalen. Du kan legge til eller redigere fraktmetoder, sette priser og definere betingelser for gratis frakt."
+	},
+	{
+		"id": 1006,
+		"topic": "Portal",
+		"language": "no",
+		"questions": [
+			"Hvordan betaler jeg for bestillingen min i portalen?",
+			"Hvordan kobler jeg butikken til Google eller Facebook?",
+			"Hvor setter jeg opp Google Analytics eller Facebook Pixel?",
+			"Hvordan aktiverer jeg integrasjoner med sosiale medier?",
+			"Kan jeg kjøre annonser direkte fra portalen?",
+			"Hvordan kan jeg koble butikken min til Google?",
+			"Er det mulig å koble til Facebook-annonsering?"
+		],
+		"answer": "Gå til <a href=\"#\" class=\"link-tag\">Integrasjoner</a> i portalen for å koble til Google, Facebook og andre tjenester. Følg instruksjonene for å koble kontoene dine og legge til sporings- eller annonseringsfunksjoner."
+	},
+	{
+		"id": 1007,
+		"topic": "Portal",
+		"language": "no",
+		"questions": [
+			"Hvordan kan jeg se og behandle kundeordrer?",
+			"Hvor ser jeg ventende eller fullførte bestillinger?",
+			"Hvordan oppdaterer jeg ordrestatus (f.eks. sendt, levert)?",
+			"Kan jeg skrive ut fakturaer eller pakkesedler?",
+			"Hvordan administrerer jeg kundeordrer?",
+			"Hvor kan jeg få tilgang til ordredetaljer?"
+		],
+		"answer": "I 'Ordrer'-seksjonen kan du se alle bestillinger, oppdatere status og skrive ut fakturaer eller pakkesedler etter behov."
+	},
+	{
+		"id": 1008,
+		"topic": "Portal",
+		"language": "no",
+		"questions": [
+			"Hvordan behandler jeg refusjoner?",
+			"Kan jeg refundere deler av en bestilling?",
+			"Hvor administrerer jeg refusjoner og returer?",
+			"Hvordan utsteder jeg en delvis refusjon?",
+			"Hvor kan jeg se status for refusjoner?"
+		],
+		"answer": "Refusjoner kan administreres på ordredetaljsiden i portalen. Du kan utstede full eller delvis refusjon og oppdatere ordrestatusen deretter."
+	},
+	{
+		"id": 1009,
+		"topic": "Portal",
+		"language": "no",
+		"questions": [
+			"Hvordan tilbakestiller jeg passordet mitt for portalen?",
+			"Hva om jeg har glemt admin-passordet mitt?",
+			"Hvordan kan jeg hjelpe ansatte med å tilbakestille passordene sine?",
+			"Hvor kan jeg gjenopprette innloggingen til portalen?",
+			"Hvordan kan jeg hjelpe andre med å endre passord?"
+		],
+		"answer": "Klikk på 'Glemt passord?' på innloggingssiden til portalen og følg instruksjonene for å tilbakestille passordet ditt. Administratorer kan også tilbakestille passord for ansatte i 'Brukere og roller'."
+	},
+	{
+		"id": 1010,
+		"topic": "Portal",
+		"language": "no",
+		"questions": [
+			"Hvordan oppdaterer jeg e-postadressen min?"
+		],
+		"answer": "Du kan oppdatere e-postadressen din i kontoinnstillingene dine. Gå til 'Min konto', velg 'Profil' og rediger e-postadressen din. Husk å lagre endringene. Du kan bli bedt om å bekrefte den nye e-posten."
+	}
+]

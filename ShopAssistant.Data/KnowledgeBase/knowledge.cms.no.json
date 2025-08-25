@@ -1,0 +1,350 @@
+[
+  {
+    "id": 1,
+    "topic": "Order",
+    "language": "no",
+    "questions": [
+      "Hvordan kan jeg betale for bestillingen min?",
+      "Hvilke betalingsmetoder støtter dere?",
+      "Hvilke betalingsmetoder kan jeg bruke?",
+      "Hvilke typer betaling kan jeg bruke?",
+      "Finnes det noen andre betalingsalternativer?",
+      "Godtar dere kredittkort?",
+      "Kan jeg betale med bankkortet mitt?",
+      "Er Visa akseptert?",
+      "Hvilke kort er tillatt?",
+      "Hvilke kort kan jeg bruke?",
+      "Kan jeg bruke PayPal til å betale?",
+      "Hvilke betalingsformer aksepterer dere?",
+      "Hvilke typer betaling aksepterer dere?",
+      "Kan jeg bruke et bankkort for å betale?"
+    ],
+    "answer": "Du kan betale med Visa, MasterCard, bankkort eller PayPal."
+  },
+  {
+    "id": 2,
+    "topic": "Order",
+    "language": "no",
+    "questions": [
+      "Kan jeg betale ved levering?",
+      "Tilbyr dere postoppkrav?",
+      "Er det mulig å betale når bestillingen ankommer?",
+      "Kan jeg betale etter å ha mottatt varen?",
+      "Støtter dere betaling ved døren?"
+    ],
+    "answer": "Vi tilbyr ikke betaling ved levering. Bruk en av de tilgjengelige betalingsmetodene i kassen."
+  },
+  {
+    "id": 3,
+    "topic": "Shipping",
+    "language": "no",
+    "questions": [
+      "Hvor lang tid tar frakten?",
+      "Hva er leveringstiden?",
+      "Hvor raskt kan jeg få pakken min?",
+      "Hva koster frakt?",
+      "Hva er deres leveringstider?",
+      "Hvor raskt behandler dere bestillinger?",
+      "Hvor fort kommer pakken frem?"
+    ],
+    "answer": "Frakt tar vanligvis 3-5 virkedager innen Norge."
+  },
+  {
+    "id": 4,
+    "topic": "Shipping",
+    "language": "no",
+    "questions": [
+      "Er frakt gratis?",
+      "Hva er minste bestillingsbeløp for gratis levering?",
+      "Hvordan kan jeg få gratis frakt?",
+      "Når tilbyr dere gratis frakt?",
+      "Hvor mye må jeg handle for å få gratis levering?"
+    ],
+    "answer": "Bestillinger over 1 000 kroner leveres fraktfritt."
+  },
+  {
+    "id": 5,
+    "topic": "Shipping",
+    "language": "no",
+    "questions": [
+      "Hvordan sendes bestillinger?",
+      "Hvilket fraktselskap bruker dere?",
+      "Hvem leverer pakken min?",
+      "Hvilken transportør håndterer leveransene?",
+      "Hvilket selskap frakter varene mine?"
+    ],
+    "answer": "Bestillinger sendes med anerkjente norske fraktselskaper, som Posten eller Bring."
+  },
+  {
+    "id": 6,
+    "topic": "Shipping",
+    "language": "no",
+    "questions": [
+      "Sender dere til utlandet?",
+      "Kan jeg bestille fra utlandet?",
+      "Er internasjonal frakt tilgjengelig?",
+      "Leverer dere til andre land?",
+      "Kan varer sendes til utlandet?"
+    ],
+    "answer": "Ja, vi sender til utlandet. Leveringstid og kostnad varierer fra land til land."
+  },
+  {
+    "id": 7,
+    "topic": "Returns",
+    "language": "no",
+    "questions": [
+      "Hvordan returnerer jeg et produkt?",
+      "Hvordan kan jeg sende varer i retur?",
+      "Hva er deres returpolicy?",
+      "Hvordan sender jeg en retur?",
+      "Hvilke steg må jeg følge for å returnere en vare?"
+    ],
+    "answer": "Du kan returnere varer innen 30 dager etter levering for full refusjon. Kontakt kundeservice for å starte returprosessen."
+  },
+  {
+    "id": 8,
+    "topic": "Returns",
+    "language": "no",
+    "questions": [
+      "Må jeg betale for returfrakt?",
+      "Er returfrakt gratis?",
+      "Hvem betaler for returfrakt?",
+      "Blir jeg belastet for å sende varer tilbake?",
+      "Koster det noe å returnere produkter?"
+    ],
+    "answer": "Kunden er ansvarlig for returfrakt med mindre produktet er defekt eller feil vare er levert."
+  },
+  {
+    "id": 9,
+    "topic": "Returns",
+    "language": "no",
+    "questions": [
+      "Kan jeg få pengene tilbake?",
+      "Hvor lang tid tar det å få refusjon?",
+      "Når blir pengene refundert?",
+      "Hvor raskt får jeg refusjon?"
+    ],
+    "answer": "Refusjon utbetales innen 5-7 virkedager etter at vi har mottatt returnerte varer."
+  },
+  {
+    "id": 10,
+    "topic": "Returns",
+    "language": "no",
+    "questions": [
+      "Kan jeg bytte et produkt?",
+      "Er det mulig å bytte en vare?",
+      "Hvordan bytter jeg en vare?",
+      "Kan jeg bytte til en annen størrelse eller farge?",
+      "Hvordan kan jeg bytte varen min?"
+    ],
+    "answer": "Dersom du ønsker å bytte et produkt, returner originalvaren og legg inn en ny bestilling på ønsket vare."
+  },
+  {
+    "id": 11,
+    "topic": "Returns",
+    "language": "no",
+    "questions": [
+      "Kan jeg bytte til noe annet?",
+      "Tilbyr dere innbytte?",
+      "Er det mulig å bytte brukte varer mot andre produkter?",
+      "Kan jeg bytte til butikkreditt eller en annen vare?",
+      "Godtar dere delbytte eller byttehandel?"
+    ],
+    "answer": "Vi tilbyr ikke innbytte eller byttehandel. Kun vanlig retur mot refusjon aksepteres."
+  },
+  {
+    "id": 12,
+    "topic": "Warranty",
+    "language": "no",
+    "questions": [
+      "Er det garanti på produktene?",
+      "Tilbyr dere garanti?",
+      "Hvor lang er garantiperioden?",
+      "Følger det garanti med produktene?",
+      "Hva er garantiløpetiden?"
+    ],
+    "answer": "Alle våre produkter leveres med ett års garanti mot produksjonsfeil."
+  },
+  {
+    "id": 13,
+    "topic": "Warranty",
+    "language": "no",
+    "questions": [
+      "Hva dekker garantien?",
+      "Dekkes uhellsskader?",
+      "Inkluderer garantien slitasje?",
+      "Hvilke feil dekkes av garantien?",
+      "Dekkes feil bruk av garantien?"
+    ],
+    "answer": "Garantien dekker kun produksjonsfeil. Uhellsskader eller vanlig slitasje dekkes ikke."
+  },
+  {
+    "id": 14,
+    "topic": "Warranty",
+    "language": "no",
+    "questions": [
+      "Hvordan benytter jeg garantien?",
+      "Hvordan går jeg frem for å reklamere?",
+      "Hvordan ber jeg om reparasjon på garanti?",
+      "Hvordan kan jeg melde inn en garantisak?"
+    ],
+    "answer": "Kontakt kundeservice med ordrenummer og informasjon om problemet for å opprette en garantisak."
+  },
+  {
+    "id": 15,
+    "topic": "Account",
+    "language": "no",
+    "questions": [
+      "Hvordan tilbakestiller jeg passordet mitt?",
+      "Jeg har glemt passordet, hva gjør jeg?",
+      "Hvordan endrer jeg passordet mitt?",
+      "Hvor kan jeg tilbakestille passordet?",
+      "Hva gjør jeg hvis jeg ikke husker passordet mitt?"
+    ],
+    "answer": "Klikk på «Glemt passord» på innloggingssiden og følg instruksjonene for å tilbakestille passordet."
+  },
+  {
+    "id": 16,
+    "topic": "Account",
+    "language": "no",
+    "questions": [
+      "Hvordan oppdaterer jeg kontoinformasjon?",
+      "Hvordan oppretter jeg konto?",
+      "Kan jeg slette kontoen min?",
+      "Hvordan endrer jeg kontodetaljer?",
+      "Hvor kan jeg registrere konto?"
+    ],
+    "answer": "Du kan oppdatere informasjonen eller slette kontoen under kontoinnstillinger. For å opprette konto, klikk «Registrer deg» på innloggingssiden."
+  },
+  {
+    "id": 17,
+    "topic": "Support",
+    "language": "no",
+    "questions": [
+      "Hvordan kontakter jeg kundeservice?",
+      "Har dere et telefonnummer til kundeservice?",
+      "Hvordan får jeg hjelp?",
+      "Hvordan kommer jeg i kontakt med kundeservice?",
+      "Hvor finner jeg kontaktinformasjon?",
+      "Tilbyr dere live chat?",
+      "Hvordan snakker jeg med kundestøtte?",
+      "Hva er beste måte å nå support på?"
+    ],
+    "answer": "Du kan kontakte kundeservice via kontaktskjemaet eller ringe oss på 800-123-456."
+  },
+  {
+    "id": 18,
+    "topic": "ProductAvailability",
+    "language": "no",
+    "questions": [
+      "Er produktet på lager?",
+      "Når er varen tilgjengelig igjen?",
+      "Har dere denne varen på lager?",
+      "Er denne varen tilgjengelig nå?",
+      "Hvordan sjekker jeg om et produkt er tilgjengelig?",
+      "Kan jeg finne ut om produktet er på lager?",
+      "Blir varen snart tilgjengelig igjen?"
+    ],
+    "answer": "Lagerstatus vises på produktsiden. Hvis varen er utsolgt, kan du registrere deg for varsel når den blir tilgjengelig."
+  },
+  {
+    "id": 19,
+    "topic": "DiscountsAndPromotions",
+    "language": "no",
+    "questions": [
+      "Er det noen tilbud nå?",
+      "Tilbyr dere rabattkoder?",
+      "Hvordan bruker jeg rabattkode?",
+      "Er det spesialtilbud akkurat nå?",
+      "Hvor kan jeg skrive inn kupongkode?",
+      "Hvordan får jeg rabatt?",
+      "Har dere salg?",
+      "Er det kampanjer nå?",
+      "Hvordan legger jeg inn rabattkode i kassen?"
+    ],
+    "answer": "Du finner aktuelle tilbud og kan legge inn rabattkode i kassen. Meld deg på nyhetsbrev for spesialtilbud."
+  },
+  {
+    "id": 20,
+    "topic": "OrderTracking",
+    "language": "no",
+    "questions": [
+      "Hvordan kan jeg spore bestillingen min?",
+      "Når får jeg sporingsnummeret mitt?",
+      "Hvor finner jeg informasjon om sporing av bestillingen min?",
+      "Blir jeg varslet når bestillingen min er sendt?",
+      "Hvordan vet jeg når bestillingen min er sendt?"
+    ],
+    "answer": "Du vil motta et sporingsnummer på e-post når bestillingen din er sendt."
+  },
+  {
+    "id": 21,
+    "topic": "OrderCancellation",
+    "language": "no",
+    "questions": [
+      "Kan jeg kansellere bestillingen?",
+      "Hvordan kansellerer jeg bestillingen?",
+      "Er det mulig å stoppe bestillingen?",
+      "Kan jeg endre eller kansellere etter at jeg har bestilt?",
+      "Hvordan trekker jeg bestillingen?",
+      "Kan jeg angre bestillingen?"
+    ],
+    "answer": "Du kan kansellere bestillingen før den sendes. Kontakt kundeservice så raskt som mulig."
+  },
+  {
+    "id": 22,
+    "topic": "ChangingOrders",
+    "language": "no",
+    "questions": [
+      "Kan jeg endre bestillingen?",
+      "Hvordan endrer jeg leveringsadresse?",
+      "Kan jeg legge til eller fjerne varer fra bestillingen?",
+      "Hvordan oppdaterer jeg bestillingsdetaljer?",
+      "Er det mulig å endre bestillingen?",
+      "Hvordan endrer jeg leveringsinformasjon?"
+    ],
+    "answer": "Du kan endre bestillingen før den sendes. Kontakt support for endringer."
+  },
+  {
+    "id": 23,
+    "topic": "GiftCards",
+    "language": "no",
+    "questions": [
+      "Selger dere gavekort?",
+      "Hvordan kjøper jeg gavekort?",
+      "Kan jeg bruke gavekort til å betale?",
+      "Hvordan løser jeg inn gavekort?",
+      "Kan jeg få et verdikort til butikken?",
+      "Hvordan brukes gavekort i kassen?"
+    ],
+    "answer": "Ja, vi tilbyr gavekort. Du kan kjøpe og bruke gavekort i kassen."
+  },
+  {
+    "id": 24,
+    "topic": "StoreLocations",
+    "language": "no",
+    "questions": [
+      "Har dere fysiske butikker?",
+      "Hvor ligger butikkene deres?",
+      "Kan jeg hente bestilling i butikk?",
+      "Tilbyr dere henting i butikk?",
+      "Har dere noen fysiske utsalgssteder?",
+      "Kan jeg hente varene mine i butikk?"
+    ],
+    "answer": "Vi er kun en nettbutikk og har ikke fysiske utsalgssteder."
+  },
+  {
+    "id": 25,
+    "topic": "ProductInformation",
+    "language": "no",
+    "questions": [
+      "Hvor finner jeg mer informasjon om et produkt?",
+      "Finnes det størrelsesguide?",
+      "Kan jeg få mer informasjon om varen?",
+      "Følger det med bruksanvisning?",
+      "Hvor kan jeg se produktspecifikasjoner?",
+      "Kan jeg lese mer om produktegenskaper?"
+    ],
+    "answer": "Du finner detaljert produktinformasjon og størrelsesguide på produktsiden."
+  }
+]

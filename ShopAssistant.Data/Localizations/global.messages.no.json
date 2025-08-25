@@ -1,0 +1,9 @@
+{
+  "not_found": "Beklager, jeg kunne ikke finne et relevant svar.",
+  "request_processed": "Takk! Forespørselen din behandles.",
+  "internal_error": "Beklager, det oppstod en intern feil. Ta kontakt med support.",
+  "unknown_field": "Beklager, det mangler et nødvendig felt i dialogscenariet. Kontakt support.",
+  "not_authenticated": "Beklager, du er ikke autentisert. Vennligst logg inn.",
+  "clarify_ambiguity": "Bare for å være sikker, mente du:",
+  "category_clarification_no_context": "Beklager, jeg fant ikke sammenheng i forespørselen din for valg av kategori. Vennligst start en ny forespørsel."
+}

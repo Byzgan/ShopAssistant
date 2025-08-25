@@ -1,0 +1,9 @@
+{
+  "AskCategory": "What kind of product are you interested in? <span style='color: #666;'>(e.g. smartphone, tablet, etc.)</span>",
+  "AskSelectCategory": "Please select the category that best matches what you want:",
+  "AskBudget": "What's your budget or preferred price range?",
+  "AskPreference": "Any special preferences? <span style='color: #666;'>Eco-friendly, trending, top-rated? Write <em>'No'</em> if you don't have any preferences.</span>",
+  "AskDiscountOnly": "Do you want to see only products with a discount? <span style='color: #666;'>(yes/no)</span>",
+  "ResultsHeader": "<h5>Here are some recommendations:</h5>",
+  "NoResults": "<span style='color: red;'>Sorry, I couldn't find any products matching your criteria.</span>"
+}

@@ -1,0 +1,6 @@
+{
+  "MissingIssueType": "Vennligst angi hvilken type problem du rapporterer.",
+  "MissingDescription": "Beskriv problemet ditt i detalj.",
+  "MissingPreferredContact": "Vennligst oppgi hvordan du ønsker å bli kontaktet.",
+  "Success": "Din henvendelse er mottatt. Type: {0}. Beskrivelse: {1}. Vi kontakter deg via: {2}."
+}

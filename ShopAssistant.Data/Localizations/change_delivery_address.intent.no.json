@@ -1,0 +1,12 @@
+{
+  "AskOrderNumber": "Vennligst oppgi ordrenummeret ditt.",
+  "OrderCheckInProgress": "Takk! Jeg sjekker nå om bestillingen din kan endres. Vennligst vent et øyeblikk.",
+  "ChangeNotAllowed": "Beklager, det er ikke mulig å endre leveringsadressen for bestilling {0}.",
+  "AskNewAddress": "Vennligst oppgi din nye adresse.",
+  "AddressChangeCancelled": "Endring av adresse er avbrutt.",
+  "ChangeAddressError": "Det oppstod en feil ved endring av adressen: {0}",
+  "ChangeAddressFailed": "Klarte ikke å endre adressen for bestilling {0}. Vennligst kontroller ordrenummeret og prøv igjen.",
+  "ChangeAddressSuccess": "Leveringsadressen for bestilling {0} er endret til: {1}. Du vil snart motta en bekreftelse på e-post.",
+  "InvalidOrderNumber": "Det oppgitte ordrenummeret er ugyldig eller ikke funnet.",
+  "ConfirmationRequired": "Vennligst bekreft om du vil endre leveringsadressen (ja/nei)."
+}

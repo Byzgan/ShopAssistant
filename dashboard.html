@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Analytics Dashboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f6f7fa; color: #222; }
+        .container { max-width: 1150px; margin: 2rem auto; background: #fff; padding: 2.1rem 2.7rem; border-radius: 13px; box-shadow: 0 7px 26px #0011.07; }
+        h2 { font-size: 1.28rem; margin-top: 2.3rem; font-weight: 600; }
+        .flex-panels { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .faq-chart-panel {
+            flex: 1.6 1 300px;
+            min-width: 270px;
+            background: #f6faff;
+            padding: 1.5rem 1.2rem 1.5rem 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 8px #b6d0fd0c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .faq-stats-panel {
+            flex: 1 1 170px;
+            min-width: 180px;
+            background: #f9fafc;
+            padding: 1.3rem 1rem 1.1rem 1rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 8px #b6d0fd12;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: .5rem;
+        }
+        .stat-big { font-size: 2em; color: #18548f; font-weight: 700; margin-right: 0.6em; }
+        .stat-green { color: #18791b; }
+        .stat-red { color: #b9002d; }
+        .faq-legend { font-size: 0.99em; color: #468ac6; margin-top: .7em; }
+        .intent-section {
+            margin-top: 2.1rem;
+            display: flex;
+            gap: 2.4rem;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+        .intent-chart-wrap {
+            flex: 1.8 1 350px;
+            min-width: 320px;
+            background: #f7fbfd;
+            padding: 1.1rem 1.3rem 1.2rem 1.1rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 8px #0085.06;
+        }
+        .intent-table-wrap {
+            flex: 1 1 240px;
+            min-width: 210px;
+            background: #fcfdff;
+            padding: 0.7rem 1rem;
+            border-radius: 10px;
+            box-shadow: 0 1px 8px #b6d0fd11;
+            max-height: 410px;
+            overflow-y: auto;
+        }
+        .intent-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 1.01em;
+        }
+        .intent-table th {
+            position: sticky;
+            top: 0;
+            background: #e9f1fc;
+            font-weight: 600;
+            color: #205177;
+            border-bottom: 2px solid #beddfb;
+            padding: 0.55em 0.55em;
+            z-index: 2;
+        }
+        .intent-table td {
+            padding: 0.32em 0.5em;
+            border-bottom: 1px solid #f1f6fc;
+        }
+        .intent-table tr:last-child td { border-bottom: none; }
+        .intent-table tbody tr:hover { background: #f3f9ff; }
+        .intent-table thead th:first-child, .intent-table td:first-child { border-radius: 6px 0 0 6px; }
+        .intent-table thead th:last-child, .intent-table td:last-child { border-radius: 0 6px 6px 0; }
+        .chart-legend { text-align: right; font-size: 0.97em; margin-top: .6em; color: #4187b8; }
+        .chart-container { position: relative; min-height: 360px; height: 440px; width: 100%; }
+        .faq-chart-container { position: relative; height: 215px; width: 99%; }
+        .loading, .error, .empty { margin: 1.2rem 0; padding: 1rem; border-radius: 8px; }
+        .loading { background: #e6f2ff; color: #1d6ea3; }
+        .error { background: #ffeaea; color: #b9002d; border: 1px solid #fcb2b2; }
+        .empty { background: #f9f9f9; color: #868686; }
+        @media (max-width: 1100px) {
+            .container { padding: 1.1rem; }
+            .flex-panels, .intent-section { flex-direction: column; gap: 1.2rem; }
+            .faq-chart-panel, .faq-stats-panel, .intent-chart-wrap, .intent-table-wrap { width: 100%; min-width: 0; }
+        }
+        @media (max-width: 700px) {
+            .chart-container { height: 290px; min-height: 200px; }
+            .faq-chart-container { height: 160px; }
+        }
+        #tokenCollapse { border: 1px solid #e9eef5; border-radius: 18px; background: #f7fafd; padding: 1rem 0.75rem; box-shadow: 0 2px 10px 0 #e4ecfc22; transition: box-shadow 0.2s; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <b id="dashboardTitle">Shop Analytics Dashboard</b>
+        <select id="lang" class="form-select w-auto" style="max-width:120px;">
+            <option value="en">English</option>
+            <option value="no">Norsk</option>
+        </select>
+    </div>
+    <!-- JWT Token Section (collapsible) -->
+    <div class="mb-3">
+        <button class="btn btn-link px-0 py-0 d-inline-flex align-items-center gap-2" type="button"
+                data-bs-toggle="collapse" data-bs-target="#tokenCollapse" aria-expanded="false" aria-controls="tokenCollapse" id="tokenCollapseBtn">
+            <span id="tokenToggleIcon" class="fs-5" title="Show token settings" style="vertical-align: middle; line-height: 1;">🔒</span>
+            <span id="tokenToggleText" class="fw-semibold visually-hidden">Show token settings</span>
+        </button>
+        <div class="collapse mt-2" id="tokenCollapse">
+            <div class="d-flex gap-2 align-items-center flex-wrap" style="row-gap:8px;">
+                <input id="token" type="password" class="form-control" style="max-width:800px;" placeholder="JWT token">
+                <button id="showToken" class="btn btn-outline-secondary btn-sm" type="button" title="Show/Hide token" tabindex="-1">👁️</button>
+                <button id="copyToken" class="btn btn-outline-secondary btn-sm" type="button" title="Copy token" tabindex="-1">📋</button>
+                <button id="saveToken" class="btn btn-outline-primary btn-sm" type="button" title="Save token">💾</button>
+                <button id="clearToken" class="btn btn-outline-secondary btn-sm" type="button" title="Clear">🗑️</button>
+            </div>
+        </div>
+    </div>
+    <!-- Date range filter panel -->
+    <form id="filterForm" class="filter-panel mb-4" autocomplete="off">
+        <label>
+            <span id="fromLabel"></span>
+            <input type="date" id="fromDate" name="from">
+        </label>
+        <label style="margin-left: 1.4rem;">
+            <span id="toLabel"></span>
+            <input type="date" id="toDate" name="to">
+        </label>
+        <button type="submit" style="margin-left: 1.4rem;" id="applyBtn"></button>
+        <button type="button" id="resetBtn" style="margin-left: 0.6rem;"></button>
+    </form>
+
+    <!-- FAQ Panel: Chart + Stats -->
+    <div class="flex-panels" id="faqSection">
+        <div class="faq-chart-panel">
+            <div style="width:100%">
+                <canvas id="faqTopicChart"></canvas>
+            </div>
+            <div class="faq-legend" id="faqChartLegend"></div>
+        </div>
+        <div class="faq-stats-panel" id="faqStatsPanel">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <!-- INTENT SECTION -->
+    <h2 id="intentSectionTitle"></h2>
+    <div class="intent-section">
+        <div class="intent-chart-wrap">
+            <div class="chart-container">
+                <canvas id="intentBarChart"></canvas>
+            </div>
+        </div>
+        <div class="intent-table-wrap" id="intentTableWrap"></div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+// --- Translations with both normal and short variants ---
+const translations = {
+  en: {
+    dashboardTitle: "Shop Analytics Dashboard",
+    intentSectionTitle: "Intent Frequency",
+    intent: "Intent",
+    count: "Count",
+    noIntents: "No intent data.",
+    chartLegend: "Times each intent was detected",
+    faqAnswered: "Answered from FAQ",
+    faqUnanswered: "Not Answered",
+    faqTotal: "Total Questions",
+    answeredPercent: "Answered %",
+    unansweredPercent: "Unanswered %",
+    faqChartLegend: "FAQ answered / unanswered by topic",
+    from: "From",
+    to: "To",
+    apply: "Apply",
+    reset: "Reset",
+    unansweredQuestions: "Unanswered Questions",
+    date: "Date",
+    user: "User",
+    question: "Question",
+    language: "Language",
+    noUnanswered: "No unanswered questions.",
+    noUnansweredShort: "All answered!",
+    totalAnsweredLabel: "Total Answered",
+    notAnsweredTopicLabel: "Not Answered"
+  },
+  no: {
+    dashboardTitle: "Butikkens analysepanel",
+    intentSectionTitle: "Intensfrekvens",
+    intent: "Intensjon",
+    count: "Antall",
+    noIntents: "Ingen data for denne perioden.",
+    chartLegend: "Hvor mange ganger hver intensjon ble oppdaget",
+    faqAnswered: "Besvart fra FAQ",
+    faqUnanswered: "Ubesvart",
+    faqTotal: "Totale spørsmål",
+    answeredPercent: "Besvart %",
+    unansweredPercent: "Ubesvart %",
+    faqChartLegend: "FAQ besvart / ubesvart per emne",
+    from: "Fra",
+    to: "Til",
+    apply: "Bruk",
+    reset: "Nullstill",
+    unansweredQuestions: "Ubesvarte spørsmål",
+    date: "Dato",
+    user: "Bruker",
+    question: "Spørsmål",
+    language: "Språk",
+    noUnanswered: "Ingen ubesvarte spørsmål.",
+    noUnansweredShort: "Alt besvart!",
+    totalAnsweredLabel: "Totalt besvart",
+    notAnsweredTopicLabel: "Ubesvart"
+  }
+};
+
+
+// Helper to get translation, with optional short fallback
+function t(key, { short = false } = {}) {
+  const lang = document.getElementById('lang')?.value || 'en';
+  const dict = translations[lang] || translations.en;
+  if (short && key === 'noUnanswered') {
+    return dict.noUnansweredShort || translations.en.noUnansweredShort;
+  }
+  return dict[key] ?? translations.en[key] ?? key;
+}
+
+// --- Date filter defaults ---
+function setDefaultDateFilters() {
+    const now = new Date();
+    const first = new Date(now.getFullYear(), now.getMonth(), 1);
+    const last = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+    document.getElementById('fromDate').value = first.toISOString().split('T')[0];
+    document.getElementById('toDate').value = last.toISOString().split('T')[0];
+}
+
+/* --- JWT Token logic --- */
+const tokenInput = document.getElementById('token');
+const saveTokenBtn = document.getElementById('saveToken');
+const clearTokenBtn = document.getElementById('clearToken');
+const copyTokenBtn = document.getElementById('copyToken');
+const showTokenBtn = document.getElementById('showToken');
+const tokenCollapse = document.getElementById('tokenCollapse');
+const tokenToggleText = document.getElementById('tokenToggleText');
+const tokenToggleIcon = document.getElementById('tokenToggleIcon');
+if (tokenInput) tokenInput.value = localStorage.getItem("jwtToken") || "";
+if (tokenCollapse) {
+  tokenCollapse.addEventListener('show.bs.collapse', () => {
+      tokenToggleText.textContent = "Hide token settings";
+      tokenToggleIcon.textContent = "🔓";
+      tokenToggleIcon.setAttribute("title", "Hide token settings");
+  });
+  tokenCollapse.addEventListener('hide.bs.collapse', () => {
+      tokenToggleText.textContent = "Show token settings";
+      tokenToggleIcon.textContent = "🔒";
+      tokenToggleIcon.setAttribute("title", "Show token settings");
+  });
+}
+if (showTokenBtn) showTokenBtn.addEventListener('click', function () {
+    if (tokenInput.type === "password") {
+        tokenInput.type = "text";
+        showTokenBtn.innerText = "🙈";
+    } else {
+        tokenInput.type = "password";
+        showTokenBtn.innerText = "👁️";
+    }
+    tokenInput.focus();
+});
+if (copyTokenBtn) copyTokenBtn.addEventListener('click', function () {
+    if (!tokenInput.value) return;
+    navigator.clipboard.writeText(tokenInput.value).then(() => {
+        copyTokenBtn.classList.add("btn-success");
+        copyTokenBtn.innerText = "✔️";
+        setTimeout(() => {
+            copyTokenBtn.classList.remove("btn-success");
+            copyTokenBtn.innerText = "📋";
+        }, 1000);
+    });
+    tokenInput.focus();
+});
+if (saveTokenBtn) saveTokenBtn.onclick = function () {
+    localStorage.setItem("jwtToken", tokenInput.value.trim());
+    saveTokenBtn.classList.add("btn-success");
+    setTimeout(() => saveTokenBtn.classList.remove("btn-success"), 500);
+    const bsCollapse = bootstrap.Collapse.getOrCreateInstance(tokenCollapse);
+    setTimeout(() => bsCollapse.hide(), 500);
+};
+if (clearTokenBtn) clearTokenBtn.onclick = function () {
+    tokenInput.value = "";
+    localStorage.removeItem("jwtToken");
+    tokenInput.focus();
+};
+
+/* --- Main Dashboard logic --- */
+const API_BASE = "https://localhost:5513";
+const api = {
+    intents: API_BASE + '/api/dashboard/intent-stats',
+    unanswered: API_BASE + '/api/dashboard/unanswered-questions',
+    faq: API_BASE + '/api/dashboard/faq-stats'
+};
+
+let intentBarChart, faqTopicChart;
+let dashboardData = { intentStats: [], faqStats: [], unanswered: [] };
+let lastError = null, isLoading = false;
+
+function buildQuery({ withLanguage = false } = {}) {
+    const from = document.getElementById('fromDate').value;
+    const to = document.getElementById('toDate').value;
+    const params = [];
+    if (from) params.push('from=' + encodeURIComponent(from));
+    if (to) params.push('to=' + encodeURIComponent(to));
+    if (withLanguage) {
+        const lang = document.getElementById('lang')?.value || 'en';
+        params.push('language=' + encodeURIComponent(lang));
+    }
+    return params.length ? '?' + params.join('&') : '';
+}
+
+async function loadDashboard() {
+    isLoading = true; lastError = null; renderDashboard();
+    // Only pass the language param for the relevant endpoints
+    const queryWithLang = buildQuery({ withLanguage: true });
+    const query = buildQuery(); // No language param
+
+    try {
+        const jwt = localStorage.getItem("jwtToken") || "";
+        const fetchWithAuth = url => (q) =>
+            fetch(url + q, { headers: jwt ? { "Authorization": "Bearer " + jwt } : {} }).then(r => checkAndParse(r));
+        const [intentStats, faqStats, unanswered] = await Promise.all([
+            fetchWithAuth(api.intents)(queryWithLang),
+            fetchWithAuth(api.faq)(queryWithLang),
+            fetchWithAuth(api.unanswered)(query),
+        ]);
+        dashboardData = { intentStats, faqStats, unanswered };
+    } catch (err) {
+        lastError = err instanceof Error ? err.message : String(err);
+    }
+    isLoading = false;
+    renderDashboard();
+}
+
+async function checkAndParse(response) {
+    if (!response.ok) {
+        const text = await response.text();
+        throw new Error('API error: ' + response.status + (text ? ' – ' + text : ''));
+    }
+    return response.json();
+}
+
+/* --- Rendering --- */
+function renderDashboard() {
+    document.getElementById('dashboardTitle').textContent = t('dashboardTitle');
+    document.getElementById('intentSectionTitle').textContent = t('intentSectionTitle');
+    document.getElementById('fromLabel').textContent = t('from');
+    document.getElementById('toLabel').textContent = t('to');
+    document.getElementById('applyBtn').textContent = t('apply');
+    document.getElementById('resetBtn').textContent = t('reset');
+
+    renderFaqStatsPanel();
+    renderFaqTopicChart();
+    renderIntentTable();
+    renderIntentBarChart();
+}
+
+/* --- FAQ Stats Panel --- */
+function buildPerTopicStats(rawMetrics) {
+    const perTopic = {}; // topic -> { answered: number, notAnswered: number }
+    if (!Array.isArray(rawMetrics)) return perTopic;
+
+    rawMetrics.forEach(m => {
+        const topicKey = (m.topic && m.topic.trim()) || t('notAnsweredTopicLabel');
+        if (!perTopic[topicKey]) perTopic[topicKey] = { answered: 0, notAnswered: 0 };
+
+        if (m.metric === 'Answered') {
+            perTopic[topicKey].answered += m.count;
+        } else if (m.metric === 'NotAnswered') {
+            perTopic[topicKey].notAnswered += m.count;
+        }
+    });
+
+    return perTopic;
+}
+
+function renderFaqStatsPanel() {
+    const raw = dashboardData.faqStats;
+    const perTopic = buildPerTopicStats(raw);
+
+    let totalAnswered = 0;
+    let totalNotAnswered = 0;
+    Object.values(perTopic).forEach(v => {
+        totalAnswered += v.answered;
+        totalNotAnswered += v.notAnswered;
+    });
+    const totalQuestions = totalAnswered + totalNotAnswered;
+
+    const panel = document.getElementById('faqStatsPanel');
+    panel.innerHTML = `
+      <div><span class="stat-big">${escapeHtml(totalQuestions)}</span> ${t('faqTotal')}</div>
+      <div><span class="stat-big stat-green">${escapeHtml(totalAnswered)}</span> ${t('faqAnswered')}</div>
+      <div><span class="stat-big stat-red">${escapeHtml(totalNotAnswered)}</span> ${t('faqUnanswered')}</div>
+      <hr style="margin: 0.8em 0;">
+      <div>${t('answeredPercent')}: <b style="color:#288E2E">${totalQuestions ? Math.round(100 * totalAnswered / totalQuestions) : 0}%</b></div>
+      <div>${t('unansweredPercent')}: <b style="color:#d01018">${totalQuestions ? Math.round(100 * totalNotAnswered / totalQuestions) : 0}%</b></div>
+    `;
+}
+
+// Golden-angle based distinct color generator (skip red area)
+function hslToHex(h, s, l) {
+  s /= 100; l /= 100;
+  const c = (1 - Math.abs(2 * l - 1)) * s;
+  const hp = h / 60;
+  const x = c * (1 - Math.abs((hp % 2) - 1));
+  let [r1, g1, b1] = [0, 0, 0];
+  if (hp >= 0 && hp < 1) [r1, g1, b1] = [c, x, 0];
+  else if (hp >= 1 && hp < 2) [r1, g1, b1] = [x, c, 0];
+  else if (hp >= 2 && hp < 3) [r1, g1, b1] = [0, c, x];
+  else if (hp >= 3 && hp < 4) [r1, g1, b1] = [0, x, c];
+  else if (hp >= 4 && hp < 5) [r1, g1, b1] = [x, 0, c];
+  else if (hp >= 5 && hp < 6) [r1, g1, b1] = [c, 0, x];
+  const m = l - c / 2;
+  const to255 = v => Math.round((v + m) * 255);
+  const r = to255(r1), g = to255(g1), b = to255(b1);
+  return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+}
+
+function getDistinctTopicColors(count) {
+  const colors = [];
+  const goldenAngle = 137.508; // for even spread
+  let hue = 30; // start away from red (red reserved)
+  for (let i = 0; i < count; i++) {
+    hue = (hue + goldenAngle) % 360;
+    // avoid being too close to red (0°)
+    const delta = Math.min(Math.abs(hue - 0), Math.abs(hue - 360));
+    if (delta < 15) {
+      hue = (hue + 30) % 360;
+    }
+    colors.push(hslToHex(hue, 65, 55));
+  }
+  return colors;
+}
+
+const UNANSWERED_COLOR = "#f46b6b";           // red
+const TOTAL_ANSWERED_COLOR = "#197c35";       // green
+
+/* --- FAQ Topic Chart --- */
+function renderFaqTopicChart() {
+    if (faqTopicChart) faqTopicChart.destroy();
+
+    const raw = dashboardData.faqStats;
+    const perTopic = buildPerTopicStats(raw);
+    const topicLabels = Object.keys(perTopic);
+    const answered = topicLabels.map(tk => perTopic[tk].answered);
+    const notAnswered = topicLabels.map(tk => perTopic[tk].notAnswered);
+
+    const totalAnswered = answered.reduce((s, v) => s + v, 0);
+
+    const notAnsweredTopicLabel = t('notAnsweredTopicLabel');
+    const totalAnsweredLabel = t('totalAnsweredLabel');
+
+    // Use a robust palette (you can extend or use d3.schemeCategory20)
+    const palette = [
+        '#377eb8', // blue
+        '#4daf4a', // green
+        '#984ea3', // purple
+        '#ff7f00', // orange
+        '#a65628', // brown
+        '#f781bf', // pink
+        '#999999', // grey
+        '#e41a1c', // red (reserved for Not Answered)
+        '#197c35', // green (reserved for Total Answered)
+        '#8dd3c7', // teal
+        '#bebada', // violet
+        '#fb8072', // coral
+        '#80b1d3', // light blue
+        '#fdb462', // light orange
+        '#b3de69', // light green
+        '#fccde5', // very light pink (optional—can remove)
+        '#bc80bd', // muted violet
+       '#ccebc5', // very light green (optional—can remove)
+    ];
+
+    // Exclude "Not Answered" from color pool for topics
+    const topicLabelsNoNA = topicLabels.filter(t => t !== notAnsweredTopicLabel);
+
+    // Assign a unique palette color for each topic (wrap around if more topics than palette)
+    const topicColorMap = {};
+    topicLabelsNoNA.forEach((topic, i) => {
+        topicColorMap[topic] = palette[i % palette.length];
+    });
+    topicColorMap[notAnsweredTopicLabel] = UNANSWERED_COLOR;
+
+    const answeredColors = topicLabels.map(topic => topicColorMap[topic]).concat([TOTAL_ANSWERED_COLOR]);
+    const notAnsweredColors = topicLabels.map(topic =>
+        topic === notAnsweredTopicLabel ? UNANSWERED_COLOR : "rgba(0,0,0,0)"
+    ).concat(["rgba(0,0,0,0)"]);
+
+    const labels = [...topicLabels, totalAnsweredLabel];
+    const answeredData = [...answered, totalAnswered];
+    const notAnsweredData = [...notAnswered, 0];
+
+    const ctx = document.getElementById('faqTopicChart').getContext('2d');
+    faqTopicChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels,
+            datasets: [
+                {
+                    label: t('faqAnswered'),
+                    data: answeredData,
+                    backgroundColor: answeredColors,
+                    stack: 'stack1'
+                },
+                {
+                    label: t('faqUnanswered'),
+                    data: notAnsweredData,
+                    backgroundColor: notAnsweredColors,
+                    stack: 'stack1'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            interaction: {
+                mode: 'index',
+                intersect: false
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            const val = context.parsed.y ?? context.parsed;
+                            if (!val || val === 0) return '';
+                            return `${val}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    ticks: {
+                        callback: function () { return ''; } 
+                    }
+                },
+                y: {
+                    stacked: true,
+                    beginAtZero: true
+                }
+            }
+
+        }
+    });
+
+    // Custom legend
+    let legendHtml = `<div style="margin-bottom:4px; font-weight:600;">${t('faqChartLegend')}</div><div style="display:flex; flex-wrap:wrap; gap:12px;">`;
+    topicLabels.forEach(topic => {
+        if (topic === notAnsweredTopicLabel) return;
+        legendHtml += `
+            <div style="display:inline-flex; align-items:center; gap:6px;">
+                <span style="width:16px; height:16px; display:inline-block; border-radius:4px; background:${topicColorMap[topic]};"></span>
+                <span style="white-space:nowrap;">${escapeHtml(topic)}</span>
+            </div>`;
+    });
+    legendHtml += `
+        <div style="display:inline-flex; align-items:center; gap:6px;">
+            <span style="width:16px; height:16px; display:inline-block; border-radius:4px; background:${UNANSWERED_COLOR};"></span>
+            <span>${t('faqUnanswered')}</span>
+        </div>
+        <div style="display:inline-flex; align-items:center; gap:6px;">
+            <span style="width:16px; height:16px; display:inline-block; border-radius:4px; background:${TOTAL_ANSWERED_COLOR};"></span>
+            <span>${t('totalAnsweredLabel')}</span>
+        </div>
+    </div>`;
+    document.getElementById('faqChartLegend').innerHTML = legendHtml;
+}
+
+
+/* INTENT TABLE */
+function renderIntentTable() {
+    const wrap = document.getElementById('intentTableWrap');
+    const stats = dashboardData.intentStats || [];
+    if (!stats.length) {
+        wrap.innerHTML = `<div class="empty">${t('noIntents')}</div>`;
+        return;
+    }
+    wrap.innerHTML = `
+      <table class="intent-table">
+        <thead>
+            <tr>
+                <th>${t('intent')}</th>
+                <th>${t('count')}</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${stats.map(row => `
+                <tr>
+                  <td>${escapeHtml(row.intentName)}</td>
+                  <td>${escapeHtml(row.count)}</td>
+                </tr>
+            `).join('')}
+        </tbody>
+      </table>
+      <div class="chart-legend">${t('chartLegend')}</div>
+    `;
+}
+
+/* INTENT BAR CHART */
+function renderIntentBarChart() {
+    const c = document.getElementById('intentBarChart').getContext('2d');
+    if (intentBarChart) { intentBarChart.destroy(); }
+    const stats = dashboardData.intentStats || [];
+    const labels = stats.map(row => row.intentName);
+    const counts = stats.map(row => row.count);
+    intentBarChart = new Chart(c, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: t('intentSectionTitle'),
+                data: counts,
+                backgroundColor: '#4398e9d9',
+                borderColor: '#2273c5',
+                borderWidth: 1.5,
+                borderRadius: 7,
+                maxBarThickness: 60
+            }]
+        },
+        options: {
+            responsive: true,
+            indexAxis: 'y',
+            layout: { padding: { left: 18, right: 18, top: 8, bottom: 8 } },
+            plugins: {
+                legend: { display: false },
+                tooltip: { enabled: true }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    grid: { color: '#e5eef9' }
+                },
+                y: {
+                    grid: { color: '#f3f6f8' }
+                }
+            }
+        }
+    });
+}
+
+/* --- Event handlers --- */
+document.getElementById('lang').addEventListener('change', () => {
+    renderDashboard();
+    loadDashboard();
+});
+document.getElementById('filterForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    loadDashboard();
+});
+document.getElementById('resetBtn').addEventListener('click', function () {
+    setDefaultDateFilters();
+    loadDashboard();
+});
+function escapeHtml(text) {
+    return String(text)
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;").replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+/* --- Initial Load --- */
+window.addEventListener('DOMContentLoaded', function() {
+    setDefaultDateFilters();
+    loadDashboard();
+});
+</script>
+
+</body>
+</html>

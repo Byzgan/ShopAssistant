@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Assistant Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .chat-window {
+            max-width: 700px;
+            margin: 40px auto;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+        }
+
+        #messages {
+            min-height: 600px;
+            height: 1100px;
+            max-height: 1100px;
+            overflow-y: auto;
+            background: #fafbfc;
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 10px;
+            transition: height .2s;
+        }
+
+        .msg-user {
+            text-align: right;
+        }
+
+        .msg-assistant {
+            text-align: left;
+        }
+
+        .msg-bubble {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 22px;
+            margin: 6px 2px;
+            box-shadow: 0 2px 10px rgba(25,118,210,0.10);
+            border: 1px solid #e1e9f8;
+            font-size: 1.09em;
+            line-height: 1.5;
+            max-width: 95%;
+            word-break: break-word;
+            position: relative;
+            animation: popIn 0.18s cubic-bezier(.7,-0.3,.47,1.33);
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.96) translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .msg-user .msg-bubble {
+            background: #1976d2;
+            color: #fff;
+            position: relative;
+        }
+
+        .msg-user .msg-bubble:after {
+            content: "";
+            position: absolute;
+            right: -8px;
+            top: 14px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-left: 10px solid #1976d2;
+            border-bottom: 8px solid transparent;
+        }
+
+        .msg-assistant .msg-bubble {
+            background: #f3f4f6;
+            color: #333;
+            position: relative;
+        }
+
+        .msg-assistant .msg-bubble:after {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 18px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-right: 10px solid #f3f4f6;
+            z-index: 1;
+        }
+
+        /* Add a border to the tail to match the bubble border */
+        .msg-assistant .msg-bubble:before {
+            content: "";
+            position: absolute;
+            left: -10px;
+            top: 17px;
+            width: 0;
+            height: 0;
+            border-top: 9px solid transparent;
+            border-bottom: 9px solid transparent;
+            border-right: 12px solid #e1e9f8;
+            z-index: 0;
+        }
+
+        .spinner-border-sm {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-width: .2em;
+        }
+
+        #sendBtn {
+            min-width: 90px;
+            font-weight: 600;
+            border-radius: 2em;
+            background: linear-gradient(90deg, #1976d2 70%, #3ca1f7 100%);
+            color: #fff;
+            border: none;
+            box-shadow: 0 1px 8px rgba(25,118,210,0.08);
+            transition: background .2s, box-shadow .2s;
+            letter-spacing: .05em;
+            margin-left: 8px;
+            padding: 7px 26px;
+            white-space: nowrap;
+            font-size: 1.09em;
+            line-height: 1.2;
+        }
+
+        #sendBtn:hover, #sendBtn:focus {
+            background: linear-gradient(90deg, #1561ac 70%, #1976d2 100%);
+            box-shadow: 0 4px 16px rgba(25,118,210,0.16);
+        }
+
+        #sendBtn:active {
+            background: #115293;
+        }
+
+        #clearMessagesBtn {
+            min-width: 90px;
+            font-weight: 600;
+            border-radius: 2em;
+            border: 1px solid #e0e4e9;
+            background: #fff;
+            color: #555;
+            margin-left: 6px;
+            transition: background .15s;
+        }
+
+        #clearMessagesBtn:hover {
+            background: #f6f7fa;
+            color: #d32f2f;
+            border-color: #d32f2f;
+        }
+
+        @media (max-width:700px) {
+            .chat-window {
+                max-width: 99vw;
+            }
+
+            #messages {
+                height: 450px;
+                min-height: 250px;
+                max-height: 95vh;
+            }
+
+            #sendBtn, #clearMessagesBtn {
+                min-width: 70px;
+                font-size: .99em;
+            }
+        }
+
+        .clarification-btn {
+            background: linear-gradient(90deg, #e7f1fc 70%, #f4f8fc 100%);
+            border: 1.5px solid #b4cbe6;
+            color: #2470c7;
+            font-weight: 600;
+            font-size: 0.98em;
+            border-radius: 18px;
+            padding: 6px 20px;
+            margin: 4px 7px 4px 0;
+            transition: all 0.18s;
+            cursor: pointer;
+            box-shadow: 0 1px 3px #eaf3fc;
+        }
+
+        .clarification-btn:hover,
+        .clarification-btn:focus {
+            background: linear-gradient(95deg, #d5eafd 80%, #eaf6ff 100%);
+            border-color: #1976d2;
+            color: #15549c;
+            outline: none;
+            box-shadow: 0 2px 10px #b4d5ff;
+        }
+
+        .clarification-btn.selected,
+        .clarification-btn:active {
+            background: linear-gradient(100deg, #5e96e6 75%, #bcd8ff 100%);
+            color: #fff;
+            border: 2px solid #296ab7;
+            outline: none;
+            font-weight: 700;
+            box-shadow: 0 3px 14px 0 #b4d5ff, 0 1px 0 #bcd8ff;
+            transform: scale(1.04);
+        }
+
+        .clarification-btn-none {
+            background: #fff;
+            color: #ba0000;
+            border: 1.5px dashed #c6baba;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .clarification-btn-none.selected, .clarification-btn-none:active {
+            background: #ffeaea;
+            color: #fff;
+            border: 2px solid #d32f2f;
+        }
+
+        .link-tag,
+        .product-chip {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 2em;
+            padding: 0.35em 1.1em 0.35em 0.9em;
+            font-size: 1em;
+            font-weight: 500;
+            margin: 4px 8px 4px 0;
+            background: #f6f9ff;
+            box-shadow: 0 1px 6px 0 #b4d0ff;
+            border: 1.2px solid #e4eafd;
+            transition: box-shadow 0.13s, background 0.13s;
+            white-space: nowrap;
+            cursor: pointer;
+            min-width: 0;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-decoration: none;
+        }
+
+        .link-tag {
+            color: #3658a6;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.12s, box-shadow 0.13s;
+        }
+
+        .link-tag:hover,
+        .link-tag.selected {
+            background: #e6f0ff;
+            box-shadow: 0 2px 12px #427df8;
+            color: #193b75;
+            border-color: #b7d0ff;
+            text-decoration: none;
+        }
+
+        .product-chip {
+            color: #3b4865;
+            background: #f8fafd;
+            cursor: default;
+        }
+
+        .product-chip
+        .product-price,
+        .link-tag
+        .product-price {
+            color: #8fa0b7;
+            font-size: 0.97em;
+            font-weight: 400;
+            margin-left: 0.65em;
+            letter-spacing: 0.01em;
+        }
+
+        .link-tag
+        .product-name,
+        .product-chip
+        .product-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 12em;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .product-icon {
+            width: 1.15em;
+            height: 1.15em;
+            min-width: 1.15em;
+            min-height: 1.15em;
+            margin-right: 0.6em;
+            display: inline-block;
+            vertical-align: middle;
+            fill: none;
+        }
+
+        .link-tag
+        .product-icon {
+            color: #3658a6;
+            opacity: 0.7;
+        }
+
+        .product-chip
+        .product-icon {
+            color: #b2b9d8;
+            opacity: 0.45;
+        }
+        
+        #tokenCollapse {
+            border: 1px solid #e9eef5;
+            border-radius: 18px;
+            background: #f7fafd;
+            padding: 1rem 0.75rem;
+            box-shadow: 0 2px 10px 0 #e4ecfc22;
+            transition: box-shadow 0.2s;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="chat-window bg-white p-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <b id="chatTitle">Shop Assistant</b>
+            <select id="lang" class="form-select w-auto" style="max-width:120px;">
+                <option value="en">English</option>
+                <option value="no">Norsk</option>
+            </select>
+        </div>
+        <!-- Token Section -->
+        <div class="mb-3">
+            <button class="btn btn-link px-0 py-0 d-inline-flex align-items-center gap-2" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#tokenCollapse" aria-expanded="false" aria-controls="tokenCollapse" id="tokenCollapseBtn">
+                <span id="tokenToggleIcon"
+                      class="fs-5"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Show token settings"
+                      style="vertical-align: middle; line-height: 1;">🔒</span>
+                <span id="tokenToggleText" class="fw-semibold visually-hidden">Show token settings</span>
+            </button>
+            <div class="collapse mt-2" id="tokenCollapse">
+                <div class="d-flex gap-2 align-items-center flex-wrap" style="row-gap:8px;">
+                    <input id="token" type="password" class="form-control" style="max-width:500px;" placeholder="JWT token">
+                    <button id="showToken" class="btn btn-outline-secondary btn-sm" type="button"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Show/Hide token" tabindex="-1">
+                        👁️
+                    </button>
+                    <button id="copyToken" class="btn btn-outline-secondary btn-sm" type="button"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Copy token" tabindex="-1">
+                        📋
+                    </button>
+                    <button id="saveToken" class="btn btn-outline-primary btn-sm" type="button"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Save token">
+                        💾
+                    </button>
+                    <button id="clearToken" class="btn btn-outline-secondary btn-sm" type="button"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Clear">
+                        🗑️
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- End Token Section -->
+
+        <div class="d-flex justify-content-end mb-2">
+            <button id="clearMessagesBtn" class="btn btn-light" type="button">
+                🧹 <span id="clearBtnLabel">Clear chat</span>
+            </button>
+        </div>
+        <div id="messages"></div>
+        <div id="waiting" class="mb-2" style="display:none;">
+            <div class="d-flex align-items-center gap-2">
+                <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
+                <span id="waitingLabel">Waiting for response...</span>
+            </div>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            <input type="text" id="input" class="form-control" placeholder="Type your message..." autocomplete="off">
+            <button class="btn" id="sendBtn" type="button">Send</button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS for collapse -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const apiUrl = "https://localhost:5513/api/chat/message";
+        const langEl = document.getElementById('lang');
+        const messagesEl = document.getElementById('messages');
+        const inputEl = document.getElementById('input');
+        const sendBtn = document.getElementById('sendBtn');
+        const tokenInput = document.getElementById('token');
+        const saveTokenBtn = document.getElementById('saveToken');
+        const clearTokenBtn = document.getElementById('clearToken');
+        const waitingEl = document.getElementById('waiting');
+        const clearMessagesBtn = document.getElementById('clearMessagesBtn');
+        const clearBtnLabel = document.getElementById('clearBtnLabel');
+        const waitingLabel = document.getElementById('waitingLabel');
+        const chatTitle = document.getElementById('chatTitle');
+
+        // Collapsible token logic
+        const tokenCollapse = document.getElementById('tokenCollapse');
+        const tokenToggleText = document.getElementById('tokenToggleText');
+        const tokenToggleIcon = document.getElementById('tokenToggleIcon');
+        const tokenCollapseBtn = document.getElementById('tokenCollapseBtn');
+        const copyTokenBtn = document.getElementById('copyToken');
+        const showTokenBtn = document.getElementById('showToken');
+
+        // Update toggle label/icon
+        tokenCollapse.addEventListener('show.bs.collapse', () => {
+            tokenToggleText.textContent = "Hide token settings";
+            tokenToggleIcon.textContent = "🔓";
+            tokenToggleIcon.setAttribute("title", "Hide token settings");
+            bootstrap.Tooltip.getInstance(tokenToggleIcon).setContent({ '.tooltip-inner': 'Hide token settings' });
+        });
+        tokenCollapse.addEventListener('hide.bs.collapse', () => {
+            tokenToggleText.textContent = "Show token settings";
+            tokenToggleIcon.textContent = "🔒";
+            tokenToggleIcon.setAttribute("title", "Show token settings");
+            bootstrap.Tooltip.getInstance(tokenToggleIcon).setContent({ '.tooltip-inner': 'Show token settings' });
+        });
+
+
+        // Show/hide token
+        showTokenBtn.addEventListener('click', function () {
+            if (tokenInput.type === "password") {
+                tokenInput.type = "text";
+                showTokenBtn.innerText = "🙈";
+            } else {
+                tokenInput.type = "password";
+                showTokenBtn.innerText = "👁️";
+            }
+            tokenInput.focus();
+        });
+
+        // Copy to clipboard
+        copyTokenBtn.addEventListener('click', function () {
+            if (!tokenInput.value) return;
+            navigator.clipboard.writeText(tokenInput.value).then(() => {
+                copyTokenBtn.classList.add("btn-success");
+                copyTokenBtn.innerText = "✔️";
+                setTimeout(() => {
+                    copyTokenBtn.classList.remove("btn-success");
+                    copyTokenBtn.innerText = "📋";
+                }, 1000);
+            });
+            tokenInput.focus();
+        });
+
+        // For displayName fallback if needed
+        function capitalizeFirst(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        const labels = {
+            en: {
+                send: "Send",
+                clearChat: "Clear chat",
+                inputPlaceholder: "Type your message...",
+                waiting: "Waiting for response...",
+                saveToken: "Save token",
+                clearToken: "Clear",
+                chatTitle: "Shop Assistant",
+                clarify: "Just to be sure, did you mean:",
+                selectCategory: "Please select a category:"
+            },
+            no: {
+                send: "Send",
+                clearChat: "Tøm chat",
+                inputPlaceholder: "Skriv meldingen din...",
+                waiting: "Venter på svar...",
+                saveToken: "Lagre token",
+                clearToken: "Tøm",
+                chatTitle: "Butikkassistent",
+                clarify: "Bare for å være sikker, mente du:",
+                selectCategory: "Vennligst velg en kategori:"
+            }
+        };
+
+        tokenInput.value = localStorage.getItem("jwtToken") || "";
+
+        function updateLocale() {
+            const l = labels[langEl.value] || labels.en;
+            sendBtn.textContent = l.send;
+            clearBtnLabel.textContent = l.clearChat;
+            inputEl.placeholder = l.inputPlaceholder;
+            waitingLabel.textContent = l.waiting;
+            saveTokenBtn.textContent = l.saveToken;
+            clearTokenBtn.textContent = l.clearToken;
+            chatTitle.textContent = l.chatTitle;
+        }
+        langEl.addEventListener('change', updateLocale);
+        updateLocale();
+
+        function addMessage(sender, text) {
+            const div = document.createElement('div');
+            div.className = sender === 'user' ? 'msg-user mb-2' : 'msg-assistant mb-2';
+            const bubble = document.createElement('span');
+            bubble.className = 'msg-bubble';
+            bubble.innerHTML = text;            
+            div.appendChild(bubble);
+            messagesEl.appendChild(div);
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        function getLastUserMessage() {
+            const msgs = messagesEl.querySelectorAll('.msg-user .msg-bubble');
+            if (!msgs.length) return null;
+            return msgs[msgs.length - 1].innerText;
+        }
+
+        async function postChatMessage(body) {
+            // body is already { message, language, userClarification }
+            const jwt = localStorage.getItem("jwtToken") || "";
+            sendBtn.disabled = true;
+            waitingEl.style.display = "block";
+            try {
+                const res = await fetch(apiUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        ...(jwt ? { "Authorization": "Bearer " + jwt } : {}),
+                    },
+                    body: JSON.stringify(body)
+                });
+                await handleApiResponse(res);
+            } catch (e) {
+                addMessage('assistant', "Request failed: " + e);
+            }
+            sendBtn.disabled = false;
+            waitingEl.style.display = "none";
+        }
+
+        // When sending clarification:
+        async function sendClarification(clarificationObj) {
+            const lastUserMsg = getLastUserMessage();
+            if (!lastUserMsg) return;
+
+            const body = {
+                message: lastUserMsg,
+                language: langEl.value,
+                userClarification: clarificationObj // e.g., { type: "Category", value: ... }
+            };
+
+            console.dir(body);
+
+            await postChatMessage(body);
+        }
+
+        async function sendMessage() {
+            const text = inputEl.value.trim();
+            if (!text) return;
+            addMessage('user', text);
+            inputEl.value = "";
+            await postChatMessage({ message: text, language: langEl.value });
+        }
+
+        // Unified clarification message handler
+        function addClarificationMessage(alternatives, promptText) {
+            const div = document.createElement('div');
+            div.className = 'msg-assistant mb-2';
+            const prompt = document.createElement('span');
+            prompt.className = 'msg-bubble';
+            prompt.innerText = promptText;
+            div.appendChild(prompt);
+
+            const btnGroup = document.createElement('div');
+            btnGroup.style.marginTop = '8px';
+            btnGroup.style.display = 'flex';
+            btnGroup.style.flexWrap = 'wrap';
+            btnGroup.style.gap = '3px';
+
+            alternatives.forEach(alt => {
+                const btn = document.createElement('button');
+                btn.type = "button";
+                btn.className = "clarification-btn";
+                btn.textContent = alt.displayName;
+
+                btn.onclick = () => {
+                    // Remove 'selected' from all buttons
+                    const allBtns = btnGroup.querySelectorAll('.clarification-btn');
+                    allBtns.forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    allBtns.forEach(b => b.disabled = true);
+
+                    // Send the clarification object
+                    sendClarification({
+                        type: alt.slotType,
+                        value: alt.slotValue
+                    });
+                };
+                btnGroup.appendChild(btn);
+            });
+
+            // --- Add "None of the above" button correctly here ---
+            const noneOfTheAboveBtn = document.createElement('button');
+            noneOfTheAboveBtn.type = "button";
+            noneOfTheAboveBtn.className = "clarification-btn clarification-btn-none";
+            noneOfTheAboveBtn.textContent = (langEl.value === "no") ? "Ingen av disse" : "None of the above";
+            noneOfTheAboveBtn.onclick = () => {
+                const allBtns = btnGroup.querySelectorAll('.clarification-btn');
+                allBtns.forEach(b => b.classList.remove('selected'));
+                noneOfTheAboveBtn.classList.add('selected');
+                allBtns.forEach(b => b.disabled = true);
+
+                sendClarification({
+                    type: "None",
+                    value: ""
+                });
+            };
+            btnGroup.appendChild(noneOfTheAboveBtn);
+            // --- End fix ---
+
+            div.appendChild(btnGroup);
+            messagesEl.appendChild(div);
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        // Handles API response, including clarification logic (updated for clarificationType)
+        async function handleApiResponse(res) {
+            if (res.ok) {
+                const respText = await res.text();
+                let obj = null;
+                try { obj = JSON.parse(respText); } catch { }
+
+                if (obj && obj.isClarification && Array.isArray(obj.alternatives) && obj.alternatives.length > 1) {
+                    addClarificationMessage(obj.alternatives, obj.clarificationPrompt);
+                } else if (obj && typeof obj.answer !== 'undefined') {
+                    addMessage('assistant', obj.answer);
+                } else {
+                    addMessage('assistant', respText);
+                }
+            } else if (res.status === 401) {
+                addMessage('assistant', "Unauthorized (JWT token required or invalid).");
+            } else {
+                addMessage('assistant', "Server error: " + res.status);
+            }
+        }
+
+        // Save token: auto-collapse after save
+        saveTokenBtn.onclick = function () {
+            localStorage.setItem("jwtToken", tokenInput.value.trim());
+            saveTokenBtn.classList.add("btn-success");
+            setTimeout(() => saveTokenBtn.classList.remove("btn-success"), 500);
+
+            // Collapse token panel after save
+            const bsCollapse = bootstrap.Collapse.getOrCreateInstance(tokenCollapse);
+            setTimeout(() => bsCollapse.hide(), 500); // let user see the save color
+        }
+
+        clearTokenBtn.onclick = function () {
+            tokenInput.value = "";
+            localStorage.removeItem("jwtToken");
+            tokenInput.focus();
+        }
+        clearMessagesBtn.onclick = function () {
+            messagesEl.innerHTML = "";
+        };
+        inputEl.focus();
+        inputEl.addEventListener('keydown', function (e) { if (e.key === "Enter") sendMessage(); });
+        sendBtn.onclick = sendMessage;
+    </script>
+
+</body>
+</html>
