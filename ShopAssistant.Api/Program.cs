@@ -166,7 +166,7 @@ if (builder.Environment.IsDevelopment())
 }
 
 // ---------------------- JWT Authentication -----------------------------------------------
-var key = builder.Configuration.GetValue<string>("JWT:Key") ?? throw new InvalidOperationException("JWT signing key is missing.");
+var jwtKey = builder.Configuration.GetValue<string>("JWT:Key") ?? throw new InvalidOperationException("JWT signing key is missing.");
 
 builder.Services.AddAuthentication(options =>
 {
@@ -183,7 +183,7 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = false,
         ValidateIssuerSigningKey = true,
         ValidateLifetime = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
     };
 });
 
