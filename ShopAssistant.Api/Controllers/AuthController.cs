@@ -10,7 +10,7 @@ using Contracts.Models.User;
 /// </summary>
 [ApiController]
 [Route("api/auth")]
-public class AuthController(IAuthService authService, ITokenService tokenService) : ControllerBase
+public class AuthController(IAuthService authService, ITokenService tokenService, IHostEnvironment env) : ControllerBase
 {
     /// <summary>
     /// Authenticates a user and returns a JWT token if credentials are valid.
@@ -20,6 +20,9 @@ public class AuthController(IAuthService authService, ITokenService tokenService
     [HttpPost("token")]
     public IActionResult GetToken(LoginModel model)
     {
+        if (!env.IsDevelopment())
+            return NotFound(); // disabled outside Development
+
         User user = authService.Login(model);
 
         string userToken = tokenService.GenerateToken(user);
