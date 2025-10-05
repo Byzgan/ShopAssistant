@@ -18,10 +18,8 @@ using Infrastructure.TextProcessing.Normalization;
 /// 
 /// IMPORTANT:
 /// - "RequiredTokens" are modeled as groups (OR inside a group, AND across groups).
-///   These are enforced for ALL positive match types, including SEMANTIC, to avoid
-///   topic drift from KB questions into intents.
+///   These are enforced for ALL positive match types, including SEMANTIC, to avoid topic drift from KB questions into intents.
 /// - The global floor is used when the pattern does not specify a threshold.
-///   (Pattern.EmbeddingThreshold takes precedence if present.)
 /// </summary>
 public sealed class IntentPatternMatcher : IIntentPatternMatcher
 {
@@ -56,7 +54,6 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
         // Evaluate "required token groups" upfront; this is a SOFT gate:
         // - If no groups provided => treat as satisfied (backward-compatible).
         // - If groups exist => each group must be satisfied (any-of within group).
-        // We ENFORCE this gate for all positive matches (exact/regex/fuzzy/semantic).
         bool anchorsSatisfied = AreRequiredGroupsSatisfied(language, stemmer, pattern.RequiredTokens, lowered, msgTokens);
 
         // Hard negatives
@@ -126,11 +123,10 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
                     string.Equals(rawNorm, TextNormalization.NormalizeSpaces(pTrim), StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(softLower, TextNormalization.NormalizeLowerTrimEndPunct(pTrim), StringComparison.Ordinal);
 
-                if (isDirectEqual)
-                {
-                    if (anchorsSatisfied)
-                        return new IntentPatternMatchResult(true, MatchType.KeyWord, 1.0f, phrase);
-                }
+                if (!isDirectEqual) 
+                    continue;
+                if (anchorsSatisfied)
+                    return new IntentPatternMatchResult(true, MatchType.KeyWord, 1.0f, phrase);
             }
         }
 
@@ -295,8 +291,10 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
         double sim = dot / denom;
 
         // Clamp to [-1, 1] to counter tiny floating-point drift.
-        if (sim > 1d) sim = 1d;
-        if (sim < -1d) sim = -1d;
+        if (sim > 1d) 
+            sim = 1d;
+        if (sim < -1d) 
+            sim = -1d;
 
         return (float)sim;
     }
@@ -345,6 +343,7 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
                 // a) Phrase containment ONLY for multi-word anchors, with word boundaries.
                 //    This prevents single words like "hvor" from matching inside "hvordan".
                 bool phraseContained = false;
+
                 if (aNormTokens.Count >= 2)
                 {
                     // Build a word-bounded, whitespace-tolerant regex from the normalized tokens.
@@ -357,11 +356,11 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
                     phraseContained = rx.IsMatch(loweredMessage);
                 }
 
-                if (phraseContained || allTokensPresent)
-                {
-                    anyAnchorHit = true;
-                    break;
-                }
+                if (!phraseContained && !allTokensPresent) 
+                    continue;
+
+                anyAnchorHit = true;
+                break;
             }
 
             if (!anyAnchorHit)

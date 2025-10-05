@@ -21,7 +21,7 @@ public class UserContextMiddleware(RequestDelegate next)
             ? parsedRole
             : UserRole.Anonymous;
 
-        int userId = int.TryParse(claims.FirstOrDefault(c => c.Type == "userId")?.Value, out var id) ? id : 0;
+        var userId = int.TryParse(claims.FirstOrDefault(c => c.Type == "userId")?.Value, out int id) ? id : 0;
         var userName = claims.FirstOrDefault(c => c.Type == "userName")?.Value ?? string.Empty;
         var userLanguage = claims.FirstOrDefault(c => c.Type == "userLanguage")?.Value;
         var externalSystem = claims.FirstOrDefault(c => c.Type == "systemName")?.Value ?? "UnknownSystem";
