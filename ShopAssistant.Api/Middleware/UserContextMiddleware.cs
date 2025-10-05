@@ -15,7 +15,7 @@ public class UserContextMiddleware(RequestDelegate next)
         var claims = principal.Claims.ToList();
 
         // Role (case-insensitive). Try standard role, then raw "role".
-        var roleValue = claims.FirstOrDefault(c => c.Type == "role")?.Value;
+        var roleValue = claims.FirstOrDefault(c => c.Type == "userRole")?.Value;
 
         var userRole = Enum.TryParse<UserRole>(roleValue, ignoreCase: true, out var parsedRole)
             ? parsedRole
@@ -23,7 +23,7 @@ public class UserContextMiddleware(RequestDelegate next)
 
         int userId = int.TryParse(claims.FirstOrDefault(c => c.Type == "userId")?.Value, out var id) ? id : 0;
         var userName = claims.FirstOrDefault(c => c.Type == "userName")?.Value ?? string.Empty;
-        var userLanguage = claims.FirstOrDefault(c => c.Type == "language")?.Value;
+        var userLanguage = claims.FirstOrDefault(c => c.Type == "userLanguage")?.Value;
         var externalSystem = claims.FirstOrDefault(c => c.Type == "systemName")?.Value ?? "UnknownSystem";
         var sessionId = claims.FirstOrDefault(c => c.Type == "session_id")?.Value ?? claims.FirstOrDefault(c => c.Type == "sid")?.Value;
 
