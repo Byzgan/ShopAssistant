@@ -53,7 +53,7 @@
   },
   {
     "topic": "Order",
-    "allowedRoles": ["Admin", "User"]
+    "allowedRoles": ["Admin", "User", "Anonymous"]
   },
   {
     "topic": "Portal",
