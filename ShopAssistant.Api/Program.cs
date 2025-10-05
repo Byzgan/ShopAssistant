@@ -1,3 +1,5 @@
+using System.Data;
+using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
@@ -30,8 +32,7 @@ using ShopAssistant.Infrastructure.User;
 using ShopAssistant.Infrastructure.Validations;
 using ShopAssistant.IntentProcessing.IntentDetectors;
 using ShopAssistant.IntentProcessing.IntentHandlers;
-using System.Data;
-using System.Text;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -183,7 +184,8 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = false,
         ValidateIssuerSigningKey = true,
         ValidateLifetime = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+        RoleClaimType = "userRole",
     };
 });
 
