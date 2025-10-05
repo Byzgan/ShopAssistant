@@ -40,7 +40,7 @@ public class KnowledgeItemCacheService(IMemoryCache memoryCache) : IKnowledgeIte
 
         var item = memoryCache.Get<KnowledgeItem>(QuestionTextKey(normalizedQuestion, language));
 
-        if (item is null || allowedTopics is not null && !allowedTopics.Contains(item.Topic))
+        if (item is null || allowedTopics is null || !allowedTopics.Contains(item.Topic))
             return null;
 
         return item;

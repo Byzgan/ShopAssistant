@@ -18,7 +18,7 @@ public class KnowledgeCacheInitializer(IKnowledgeLoader knowledgeLoader, Embeddi
     public async Task InitializeCacheAsync()
     {
         // 1) Load all KnowledgeItems once
-        var knowledgeItems = await knowledgeLoader.LoadAllAsync().ConfigureAwait(false);
+        var knowledgeItems = await knowledgeLoader.LoadAllAsync();
         if (knowledgeItems.Count == 0)
         {
             logger.LogWarning("No knowledge items found to initialize cache.");

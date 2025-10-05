@@ -82,9 +82,8 @@ public class HybridKnowledgeBaseQueryService(
         logger.LogDebug("HybridKB: start | lang={Lang} | raw=\"{Raw}\" | clean=\"{Clean}\"", lang, question, qClean);
 
         // 1) Semantic shortlist (distinct KIDs; ANN similarity in [0,1])
-        var embedding = await embedder.GetEmbeddingAsync(qClean).ConfigureAwait(false);
-        var semanticList = await semanticSearch.SemanticSearchAsync(embedding, lang, allowedTopics, topK: SemanticTopK)
-                                               .ConfigureAwait(false);
+        var embedding = await embedder.GetEmbeddingAsync(qClean);
+        var semanticList = await semanticSearch.SemanticSearchAsync(embedding, lang, allowedTopics, topK: SemanticTopK);
         if (semanticList.Count == 0)
         {
             logger.LogDebug("HybridKB: semantic shortlist is empty.");
@@ -107,7 +106,7 @@ public class HybridKnowledgeBaseQueryService(
         var semanticKidSet = new HashSet<int>(semanticScoreByKid.Keys);
 
         // 2) BM25 on CLEANED query; expect (QID, Score) with higher=better
-        var bm25 = await Task.Run(() => bm25Index.Query(lang, qClean, Bm25TopK)).ConfigureAwait(false);
+        var bm25 = await Task.Run(() => bm25Index.Query(lang, qClean, Bm25TopK));
 
         // Map QID→KID via exported mapping
         var mappingStore = indexCache.GetKnowledgeBaseMappingStore(lang);
