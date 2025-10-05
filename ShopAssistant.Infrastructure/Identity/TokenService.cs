@@ -19,11 +19,11 @@ public class TokenService(IConfiguration configuration) : ITokenService
         {
             new Claim("userId", user.Id.ToString() ?? string.Empty),
             new Claim("userName",user.Name ?? string.Empty),
-            new Claim(ClaimTypes.Role, user.Role.ToString()),
-            new Claim("language", user.Language ?? string.Empty),
+            new Claim("userRole", user.Role.ToString()),
+            new Claim("userLanguage", user.Language ?? string.Empty),
             new Claim("systemName", user.ExternalSystem),
             new Claim("session_id", user.UniqueKey),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim("jti", Guid.NewGuid().ToString()),
         };
         
         var tokenDescriptor = new SecurityTokenDescriptor
