@@ -1,16 +1,16 @@
 ﻿namespace ShopAssistant.Infrastructure.KnowledgeBase;
 
-using Contracts.Enums;
-using Helpers;
-using Microsoft.Extensions.Logging;
-using ShopAssistant.Contracts.Interfaces.KnowledgeBase;
-using ShopAssistant.Contracts.Interfaces.TextProcessing;
-using ShopAssistant.Contracts.Models.Chat;
-using TextProcessing.SemanticSearch.Embeddings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Contracts.Enums;
+using Helpers;
+using ShopAssistant.Contracts.Interfaces.KnowledgeBase;
+using ShopAssistant.Contracts.Interfaces.TextProcessing;
+using ShopAssistant.Contracts.Models.Chat;
+using TextProcessing.SemanticSearch.Embeddings;
 
 /// <summary>
 /// Hybrid retrieval:
@@ -49,15 +49,15 @@ public class HybridKnowledgeBaseQueryService(
     private const int Bm25InjectRankCutoff = 10;
 
     // Lexical overlap analysis window and scaling
-    private const int OverlapWindowTopKids = 8;    // analyze top-N fused KIDs
-    private const double OverlapGamma = 0.20; // bonus added to fused score: fused2 = fused + γ * overlap_norm
+    private const int OverlapWindowTopKids = 8; // analyze top-N fused KIDs
+    private const double OverlapGamma = 0.20;   // bonus added to fused score: fused2 = fused + γ * overlap_norm
     private const int OverlapNormaliser = 2;    // overlap_norm = min(1, overlap / OverlapNormaliser)
 
     // Lexical sanity-guard margin:
     // If top fused has 0 overlap and some overlapping candidate is within this margin,
     // prefer the overlapping one.
-    private const double LexicalOverrideMargin = 0.15;
-
+    //private const double LexicalOverrideMargin = 0.15;
+   
     // Minimal English stopword set (generic; safe)
     private static readonly HashSet<string> Stop = new(StringComparer.Ordinal)
     {
@@ -73,8 +73,10 @@ public class HybridKnowledgeBaseQueryService(
 
     public async Task<SearchResult?> FindAnswerAsync(string question, string language, HashSet<KnowledgeTopic> allowedTopics)
     {
-        if (string.IsNullOrWhiteSpace(question)) return null;
-        if (string.IsNullOrWhiteSpace(language)) throw new ArgumentException("language must be provided", nameof(language));
+        if (string.IsNullOrWhiteSpace(question))
+            return null;
+        if (string.IsNullOrWhiteSpace(language))
+            throw new ArgumentException("language must be provided", nameof(language));
 
         var lang = language.Trim().ToLowerInvariant();
         var qClean = TextPreprocessor.Clean(question); // critical: match exporter
@@ -90,18 +92,16 @@ public class HybridKnowledgeBaseQueryService(
             return null;
         }
 
-        logger.LogDebug("HybridKB: semantic KIDs (top 10): {Kids}",
-            string.Join(",", semanticList.Take(10).Select(r => r.KnowledgeId)));
+        logger.LogDebug("HybridKB: semantic KIDs (top 10): {Kids}", string.Join(",", semanticList.Take(10).Select(r => r.KnowledgeId)));
 
         var semanticScoreByKid = new Dictionary<int, double>(semanticList.Count);
         var bestSemanticRowByKid = new Dictionary<int, SearchResult>(semanticList.Count);
         foreach (var row in semanticList)
         {
-            if (!semanticScoreByKid.ContainsKey(row.KnowledgeId))
-            {
-                semanticScoreByKid[row.KnowledgeId] = NormalizeToUnitInterval(row.Score);
-                bestSemanticRowByKid[row.KnowledgeId] = row;
-            }
+            if (semanticScoreByKid.ContainsKey(row.KnowledgeId))
+                continue;
+            semanticScoreByKid[row.KnowledgeId] = NormalizeToUnitInterval(row.Score);
+            bestSemanticRowByKid[row.KnowledgeId] = row;
         }
         var semanticKidSet = new HashSet<int>(semanticScoreByKid.Keys);
 
@@ -122,13 +122,24 @@ public class HybridKnowledgeBaseQueryService(
 
         foreach (var (qid, rawScore) in bm25)
         {
-            if (!qidToKid.TryGetValue(qid, out var kid)) { rank++; continue; }
+            if (!qidToKid.TryGetValue(qid, out var kid))
+            {
+                rank++;
+                continue;
+            }
 
             // ACL via cache
             if (!knowledgeItemCache.TryGetKnowledgeItemByQuestionId(qid, lang, out var item) || item is null)
-            { rank++; continue; }
+            {
+                rank++;
+                continue;
+            }
+
             if (allowedTopics is not null && allowedTopics.Count > 0 && !allowedTopics.Contains(item.Topic))
-            { rank++; continue; }
+            {
+                rank++;
+                continue;
+            }
 
             if (!bm25RawScoreByKid.TryGetValue(kid, out var prev) || rawScore > prev)
                 bm25RawScoreByKid[kid] = rawScore;
@@ -143,6 +154,7 @@ public class HybridKnowledgeBaseQueryService(
             rank++;
         }
 
+        // (small log fix: kv.Value not kV.Value)
         logger.LogDebug("HybridKB: BM25 top-KIDs (up to 10): {Kids}", string.Join(",", bm25RankByKid.OrderBy(kv => kv.Value).Take(10).Select(kv => $"{kv.Key}#r{kv.Value}")));
 
         // 3) Inject a few BM25-only KIDs so fusion can consider them at all
@@ -151,7 +163,7 @@ public class HybridKnowledgeBaseQueryService(
         {
             foreach (var (kid, _) in bm25OnlyToInject)
             {
-                if (semanticKidSet.Contains(kid) || !kidToAnyQid.TryGetValue(kid, out var anyQid) || !knowledgeItemCache.TryGetKnowledgeItemByQuestionId(anyQid, lang, out var item) || item is null) 
+                if (semanticKidSet.Contains(kid) || !kidToAnyQid.TryGetValue(kid, out var anyQid) || !knowledgeItemCache.TryGetKnowledgeItemByQuestionId(anyQid, lang, out var item) || item is null)
                     continue;
 
                 bestSemanticRowByKid[kid] = new SearchResult
@@ -163,12 +175,12 @@ public class HybridKnowledgeBaseQueryService(
                     Language = item.Language,
                     Score = 0.0 // no ANN sim observed; fusion decides
                 };
-                    
+
                 semanticScoreByKid[kid] = 0.0;
                 semanticKidSet.Add(kid);
                 injected = true;
             }
-            
+
             if (injected)
                 logger.LogDebug("HybridKB: injected BM25-only KIDs: {Kids}", string.Join(",", bm25OnlyToInject.Select(x => $"{x.Kid}#r{x.Rank}")));
         }
@@ -181,7 +193,9 @@ public class HybridKnowledgeBaseQueryService(
             var bm25NormByKid = new Dictionary<int, double>(bm25RawScoreByKid.Count);
             foreach (var (kid, raw) in bm25RawScoreByKid)
             {
-                var norm = (raw <= 0 || maxBm25Score <= 0) ? 0.0 : (raw / maxBm25Score); // [0,1]
+                double norm = (raw <= 0 || maxBm25Score <= 0)
+                    ? 0.0
+                    : (raw / maxBm25Score); // [0,1]
                 bm25NormByKid[kid] = NormalizeToUnitInterval(norm);
             }
 
@@ -218,12 +232,12 @@ public class HybridKnowledgeBaseQueryService(
 
         foreach (var kid in topKidsForOverlap)
         {
-            if (!TryGetAnyQidForKid(kid, kidToAnyQid, qidToKid, out var anyQid)) 
+            if (!TryGetAnyQidForKid(kid, kidToAnyQid, qidToKid, out var anyQid))
                 continue;
-            if (!knowledgeItemCache.TryGetKnowledgeItemByQuestionId(anyQid, lang, out var item) || item is null) 
+            if (!knowledgeItemCache.TryGetKnowledgeItemByQuestionId(anyQid, lang, out var item) || item is null)
                 continue;
 
-            var candTokens = BuildCandidateTokenSet(item); // from item.Questions (preferred) or item.Answer
+            HashSet<string> candTokens = BuildCandidateTokenSet(item); // from item.Questions (preferred) or item.Answer
             int overlap = CountOverlap(queryTokens, candTokens);
             overlapByKid[kid] = overlap;
 
@@ -233,7 +247,10 @@ public class HybridKnowledgeBaseQueryService(
             logger.LogDebug("HybridKB: overlap kid={Kid} overlap={Overlap} base={Base:F3} bonus={Bonus:F3} final={Final:F3}", kid, overlap, fused[kid], bonus, finalScore[kid]);
         }
 
-        // FINAL SELECTION with lexical sanity-guard
+        // =========================
+        // FINAL SELECTION (hard lexical floor for multi-term queries)
+        // =========================
+
         var ordered = finalScore
             .OrderByDescending(kv => kv.Value)
             .ThenByDescending(kv => semanticScoreByKid.GetValueOrDefault(kv.Key, 0.0))
@@ -242,37 +259,22 @@ public class HybridKnowledgeBaseQueryService(
 
         logger.LogDebug("HybridKB: fused+overlap top-KIDs (up to 10): {Kids}", string.Join(",", ordered.Take(10)));
 
-        // If the top fused has zero overlap, prefer the best overlapping candidate within a small margin.
-        int winnerKid = ordered[0];
-        int topOverlap = overlapByKid.GetValueOrDefault(winnerKid, 0);
+        // Define query richness: TokenizeContent removes stopwords/short tokens already.
+        int contentQueryCount = queryTokens.Count;
+        int minSafeOverlap = contentQueryCount >= 2 ? 2 : 1;
 
-        if (topOverlap == 0)
+        // Build the eligible set by the minimum safe overlap.
+        var eligible = ordered.Where(k => overlapByKid.GetValueOrDefault(k, 0) >= minSafeOverlap).ToList();
+
+        if (contentQueryCount >= 2 && eligible.Count == 0)
         {
-            double topScore = finalScore[winnerKid];
-            int bestOverlapKid = -1;
-            double bestOverlapScore = double.NegativeInfinity;
-
-            foreach (var kid in ordered)
-            {
-                int ov = overlapByKid.GetValueOrDefault(kid, 0);
-                if (ov <= 0) 
-                    continue;
-
-                double sc = finalScore[kid];
-                
-                if (sc > bestOverlapScore)
-                {
-                    bestOverlapScore = sc; 
-                    bestOverlapKid = kid;
-                }
-            }
-
-            if (bestOverlapKid >= 0 && (topScore - bestOverlapScore) <= LexicalOverrideMargin)
-            {
-                logger.LogDebug("HybridKB: lexical override -> prefer kid={Kid} (overlap>0) over kid={TopKid} (overlap=0) within margin={Margin:F3}.", bestOverlapKid, winnerKid, LexicalOverrideMargin);
-                winnerKid = bestOverlapKid;
-            }
+            // Multi-term query but no candidate covers at least two content tokens.
+            // This avoids single-token false positives like "paypal".
+            logger.LogDebug("HybridKB: no candidate meets minSafeOverlap={Min} for multi-term query (|Q|={Cnt}). Returning null.", minSafeOverlap, contentQueryCount);
+            return null;
         }
+
+        int winnerKid = (eligible.Count > 0) ? eligible[0] : ordered[0];
 
         // Ensure we have a returnable row; materialize if needed.
         if (!bestSemanticRowByKid.TryGetValue(winnerKid, out var winnerRow))
@@ -299,9 +301,13 @@ public class HybridKnowledgeBaseQueryService(
         return semanticList[0];
     }
 
+
+
     // ---------------- helpers ----------------
 
-    /// <summary> Normalizes a score to [0,1]: NaN/negatives→0, >1→1, otherwise unchanged. </summary>
+    /// <summary>
+    /// Normalizes a score to [0,1]: NaN/negatives→0, >1→1, otherwise unchanged.
+    /// </summary>
     private static double NormalizeToUnitInterval(double v)
     {
         if (double.IsNaN(v) || v < 0) 
@@ -311,7 +317,9 @@ public class HybridKnowledgeBaseQueryService(
         return v;
     }
 
-    /// <summary> Adds weighted RRF contributions to <paramref name="scores"/>. </summary>
+    /// <summary>
+    /// Adds weighted RRF contributions to <paramref name="scores"/>.
+    /// </summary>
     private static void ApplyRrf(IReadOnlyDictionary<int, int> rankByKid, IDictionary<int, double> scores, double weight)
     {
         if (rankByKid.Count == 0 || weight <= 0) 
@@ -393,7 +401,9 @@ public class HybridKnowledgeBaseQueryService(
         return false;
     }
 
-    /// <summary> Gets any QID for the given KID, preferring one from BM25; otherwise from mapping. </summary>
+    /// <summary>
+    /// Gets any QID for the given KID, preferring one from BM25; otherwise from mapping.
+    /// </summary>
     private static bool TryGetAnyQidForKid(int kid, IReadOnlyDictionary<int, int> kidToAnyQid, IReadOnlyDictionary<int, int> qidToKid, out int qid)
     {
         if (kidToAnyQid.TryGetValue(kid, out qid)) 
@@ -443,7 +453,9 @@ public class HybridKnowledgeBaseQueryService(
         return set;
     }
 
-    /// <summary> Builds a candidate token set from KnowledgeItem questions; falls back to answer text. </summary>
+    /// <summary>
+    /// Builds a candidate token set from KnowledgeItem questions; falls back to answer text.
+    /// </summary>
     private static HashSet<string> BuildCandidateTokenSet(ShopAssistant.Contracts.Models.KnowledgeBase.KnowledgeItem item)
     {
         if (item.Questions is not { Count: > 0 }) 
@@ -452,7 +464,8 @@ public class HybridKnowledgeBaseQueryService(
         var acc = new HashSet<string>(StringComparer.Ordinal);
         foreach (var q in item.Questions)
         {
-            if (string.IsNullOrWhiteSpace(q)) continue;
+            if (string.IsNullOrWhiteSpace(q)) 
+                continue;
             var t = TokenizeContent(q);
             acc.UnionWith(t);
         }
@@ -462,7 +475,9 @@ public class HybridKnowledgeBaseQueryService(
             : TokenizeContent(item.Answer);
     }
 
-    /// <summary> Counts set intersection. </summary>
+    /// <summary>
+    /// Counts set intersection.
+    /// </summary>
     private static int CountOverlap(HashSet<string> a, HashSet<string> b)
     {
         if (a.Count == 0 || b.Count == 0) 

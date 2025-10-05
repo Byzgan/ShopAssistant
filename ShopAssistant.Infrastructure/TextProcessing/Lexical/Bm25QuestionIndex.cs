@@ -19,6 +19,11 @@ public class Bm25QuestionIndex(IMemoryCache cache) : IBm25QuestionIndex
     private const double K1 = 1.2;
     private const double B = 0.75;
 
+    // Query-time guardrails to reduce one-term false positives when the user query is richer.
+    private const int MinContentOverlapIfQueryHasAtLeastTwo = 2; // require >=2 distinct content terms to hit
+    private const double OneTermHitPenalty = 0.65;                // optional: dampen single-term hits instead of dropping
+
+
     // Inverted index for each language:
     // Dictionary structure: term -> (questionId -> term frequency in that question variant)
     // - Outer dictionary key: lexical term (string)
@@ -102,12 +107,11 @@ public class Bm25QuestionIndex(IMemoryCache cache) : IBm25QuestionIndex
     /// </summary>
     public IReadOnlyList<(int QuestionId, double Score)> Query(string language, string queryText, int topK)
     {
-        if (topK <= 0 || string.IsNullOrWhiteSpace(language) || string.IsNullOrWhiteSpace(queryText)) 
+        if (topK <= 0 || string.IsNullOrWhiteSpace(language) || string.IsNullOrWhiteSpace(queryText))
             return [];
 
         var lang = language.Trim().ToLowerInvariant();
 
-        // Ensure fast-path fields exist; if not, restore from cache.
         if (!TryEnsureLanguage(lang))
             return [];
 
@@ -115,92 +119,112 @@ public class Bm25QuestionIndex(IMemoryCache cache) : IBm25QuestionIndex
         var qLen = _qLen[lang];
         var avgQLen = _avgQLen[lang];
 
-        // Normalized & de-duplicated tokens (no need for additional Distinct later).
+        // 1) Tokens (deduped)
         var terms = TextNormalization.Tokenize(lang, queryText.Trim(), deduplicate: true);
-        if (terms.Length == 0 || avgQLen <= 0) 
+        if (terms.Length == 0 || avgQLen <= 0)
             return [];
 
-        var n = qLen.Count;
-        if (n == 0) 
-            return [];
+        // 2) Define "content" tokens: length >= 4 and not purely numeric
+        static bool IsContent(string t) => t.Length >= 4 && !t.All(char.IsDigit);
+        var contentTerms = terms.Where(IsContent).ToArray();
+        int contentTermCount = contentTerms.Length;
+        var contentTermSet = new HashSet<string>(contentTerms, StringComparer.Ordinal);
 
-        // Precompute IDF for unique query terms that exist in the vocabulary.
-        // We intentionally skip terms missing from the index to avoid extra dictionary lookups later.
-        var idf = new Dictionary<string, double>(terms.Length, StringComparer.Ordinal);
+        // 3) Pre-compute IDF for query terms that exist in the index
+        int n = qLen.Count;
+        var idf = new Dictionary<string, double>(terms.Length);
         foreach (var t in terms)
         {
-            if (idf.ContainsKey(t)) 
-                continue;
-
             if (!inv.TryGetValue(t, out var postings) || postings.Count == 0)
                 continue;
 
-            var df = postings.Count;
-            var value = Math.Log((n - df + 0.5) / (df + 0.5) + 1d);
-            if (value > 0d) 
+            int df = postings.Count;
+            double value = Math.Log((n - df + 0.5) / (df + 0.5) + 1d);
+            if (value > 0d)
                 idf[t] = value; // zero/negative idf carries no weight
         }
-
-        if (idf.Count == 0) 
+        if (idf.Count == 0)
             return [];
 
-        // Accumulate BM25 scores: qid -> score
+        // 4) Accumulate BM25 scores and track how many DISTINCT content terms matched per doc
         var scores = new Dictionary<int, double>();
+        var matchedContentCount = new Dictionary<int, int>(); // qid -> #distinct content terms matched
+
         foreach (var (term, idfT) in idf)
         {
-            // We already checked inv.ContainsKey(term) above; TryGetValue should succeed.
-            if (!inv.TryGetValue(term, out var postings) || postings.Count == 0) continue;
+            if (!inv.TryGetValue(term, out var postings) || postings.Count == 0)
+                continue;
 
             foreach (var (qid, tf) in postings)
             {
-                if (!qLen.TryGetValue(qid, out var ql) || ql <= 0)
-                    continue;
-
-                var denom = tf + K1 * (1d - B + B * (ql / avgQLen));
-                var contrib = idfT * (tf * (K1 + 1d)) / denom;
+                // Standard BM25 contribution
+                int dl = qLen[qid];
+                double denom = tf + K1 * (1d - B + B * (dl / avgQLen));
+                double contrib = idfT * (tf * (K1 + 1d)) / denom;
 
                 if (scores.TryGetValue(qid, out var s))
                     scores[qid] = s + contrib;
                 else
                     scores[qid] = contrib;
+
+                // Count DISTINCT content-term hits (once per (qid, term))
+                if (contentTermCount >= MinContentOverlapIfQueryHasAtLeastTwo && contentTermSet.Contains(term))
+                {
+                    if (matchedContentCount.TryGetValue(qid, out var c))
+                        matchedContentCount[qid] = c + 1;
+                    else
+                        matchedContentCount[qid] = 1;
+                }
             }
         }
-
-        if (scores.Count == 0) 
+        if (scores.Count == 0)
             return [];
 
-        // Select topK via a min-heap to avoid sorting the entire scores map (O(M log K) vs O(M log M)).
+        // 5) Apply the content-match floor / penalty
+        if (contentTermCount >= MinContentOverlapIfQueryHasAtLeastTwo)
+        {
+            // either drop or dampen single-term hits
+            foreach (var qid in scores.Keys.ToArray())
+            {
+                int m = matchedContentCount.GetValueOrDefault(qid, 0);
+                if (m == 0)
+                {
+                    // no content overlap at all: drop it
+                    scores.Remove(qid);
+                }
+                else if (m == 1)
+                {
+                    // Option A (strict): remove
+                    // scores.Remove(qid);
+
+                    // Option B (softer): dampen — usually enough for hybrids
+                    scores[qid] *= OneTermHitPenalty;
+                }
+                // m >= 2: keep as-is
+            }
+
+            if (scores.Count == 0)
+                return [];
+        }
+
+        // 6) Top-K selection via min-heap (existing code)
         var heap = new PriorityQueue<(int Qid, double Score), double>();
         foreach (var (qid, s) in scores)
         {
-            if (heap.Count < topK)
-            {
-                heap.Enqueue((qid, s), s);
-            }
-            else if (s > heap.Peek().Score)
-            {
-                heap.Dequeue();
-                heap.Enqueue((qid, s), s);
-            }
+            if (heap.Count < topK) heap.Enqueue((qid, s), s);
+            else if (s > heap.Peek().Score) { heap.Dequeue(); heap.Enqueue((qid, s), s); }
         }
 
-        // Materialize result in descending score order with stable tie-break by QuestionId ascending.
-        var resultCount = Math.Min(topK, heap.Count);
+        int resultCount = Math.Min(topK, heap.Count);
         var buffer = new (int QuestionId, double Score)[resultCount];
         for (int i = resultCount - 1; i >= 0; i--)
         {
-            var item = heap.Dequeue();
-            buffer[i] = (item.Qid, item.Score);
+            var (qid, s) = heap.Dequeue();
+            buffer[i] = (qid, s);
         }
-
-        Array.Sort(buffer, static (a, b) =>
-        {
-            var cmp = b.Score.CompareTo(a.Score);
-            return cmp != 0 ? cmp : a.QuestionId.CompareTo(b.QuestionId);
-        });
-
         return buffer;
     }
+
 
     /// <summary>
     /// Removes all data for a specific language (both fields and cache entry).
