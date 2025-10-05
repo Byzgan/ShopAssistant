@@ -32,7 +32,8 @@
       "Help me pick something",
       "Best item to get?",
       "What should I try?",
-      "Suggest me a product"
+      "Suggest me a product",
+	  "Suggest me something"
     ],
     "negativePhrases": [
       "add",
@@ -113,7 +114,8 @@
       "Show products list",
       "I want to look at your products",
       "Display your merchandise",
-      "Suggest me something"
+	  "What products do you have?",
+      "Suggest me something"	  
     ],
     "negativePhrases": [
       "add",
@@ -173,6 +175,7 @@
     "intent": "ChangeDeliveryAddress",
     "semanticPhrases": [
       "I want to change my delivery address",
+	  "I want to change shipping address",
       "How do I update my shipping address?",
       "Can I change the delivery address for my order?",
       "I need to modify my delivery address",

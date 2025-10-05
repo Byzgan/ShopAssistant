@@ -19,7 +19,10 @@
 			"Can I use PayPal to pay?",
 			"What forms of payment do you accept?",
 			"What types of payment do you accept?",
-			"Can I use a bank card to pay?"
+			"Can I use a bank card to pay?",
+			"Do you accept credit cards?",
+			"What cards are allowed?",
+			"Is Visa accepted?"
 		],
 		"answer": "You can pay by Visa, MasterCard, debit card or PayPal."
 	},

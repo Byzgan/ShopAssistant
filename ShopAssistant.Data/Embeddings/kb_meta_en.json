@@ -81,677 +81,1082 @@
   },
   {
     "Id": 16,
+    "Question": "do you accept credit cards",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 17,
+    "Question": "what cards are allowed",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 18,
+    "Question": "is visa accepted",
+    "KnowledgeId": 1
+  },
+  {
+    "Id": 19,
     "Question": "can i pay upon delivery",
     "KnowledgeId": 2
   },
   {
-    "Id": 17,
+    "Id": 20,
     "Question": "do you offer cash on delivery",
     "KnowledgeId": 2
   },
   {
-    "Id": 18,
+    "Id": 21,
     "Question": "is it possible to pay when my order arrives",
     "KnowledgeId": 2
   },
   {
-    "Id": 19,
+    "Id": 22,
     "Question": "can i pay after receiving the order",
     "KnowledgeId": 2
   },
   {
-    "Id": 20,
+    "Id": 23,
     "Question": "do you support payment at the door",
     "KnowledgeId": 2
   },
   {
-    "Id": 21,
+    "Id": 24,
     "Question": "how long does shipping take",
     "KnowledgeId": 3
   },
   {
-    "Id": 22,
+    "Id": 25,
     "Question": "how long does delivery take",
     "KnowledgeId": 3
   },
   {
-    "Id": 23,
+    "Id": 26,
     "Question": "what is the delivery time",
     "KnowledgeId": 3
   },
   {
-    "Id": 24,
+    "Id": 27,
     "Question": "how soon can i get my package",
     "KnowledgeId": 3
   },
   {
-    "Id": 25,
+    "Id": 28,
     "Question": "how much is shipping",
     "KnowledgeId": 3
   },
   {
-    "Id": 26,
+    "Id": 29,
     "Question": "what are your shipping times",
     "KnowledgeId": 3
   },
   {
-    "Id": 27,
+    "Id": 30,
     "Question": "how quickly do you process orders",
     "KnowledgeId": 3
   },
   {
-    "Id": 28,
+    "Id": 31,
     "Question": "how fast will my parcel reach me",
     "KnowledgeId": 3
   },
   {
-    "Id": 29,
+    "Id": 32,
     "Question": "is shipping free",
     "KnowledgeId": 4
   },
   {
-    "Id": 30,
+    "Id": 33,
     "Question": "what is the minimum order amount for free delivery",
     "KnowledgeId": 4
   },
   {
-    "Id": 31,
+    "Id": 34,
     "Question": "how can i get free shipping",
     "KnowledgeId": 4
   },
   {
-    "Id": 32,
+    "Id": 35,
     "Question": "when do you offer complimentary shipping",
     "KnowledgeId": 4
   },
   {
-    "Id": 33,
+    "Id": 36,
     "Question": "how much do i need to spend for free delivery",
     "KnowledgeId": 4
   },
   {
-    "Id": 34,
+    "Id": 37,
     "Question": "how are orders shipped",
     "KnowledgeId": 5
   },
   {
-    "Id": 35,
+    "Id": 38,
     "Question": "which shipping company do you use",
     "KnowledgeId": 5
   },
   {
-    "Id": 36,
+    "Id": 39,
     "Question": "who delivers my package",
     "KnowledgeId": 5
   },
   {
-    "Id": 37,
+    "Id": 40,
     "Question": "which carrier handles deliveries",
     "KnowledgeId": 5
   },
   {
-    "Id": 38,
+    "Id": 41,
     "Question": "through which company will my order be shipped",
     "KnowledgeId": 5
   },
   {
-    "Id": 39,
+    "Id": 42,
     "Question": "do you ship internationally",
     "KnowledgeId": 6
   },
   {
-    "Id": 40,
+    "Id": 43,
     "Question": "can i order from outside norway",
     "KnowledgeId": 6
   },
   {
-    "Id": 41,
+    "Id": 44,
     "Question": "is international shipping available",
     "KnowledgeId": 6
   },
   {
-    "Id": 42,
+    "Id": 45,
     "Question": "do you deliver to other countries",
     "KnowledgeId": 6
   },
   {
-    "Id": 43,
+    "Id": 46,
     "Question": "can products be shipped abroad",
     "KnowledgeId": 6
   },
   {
-    "Id": 44,
+    "Id": 47,
     "Question": "how do i return a product",
     "KnowledgeId": 7
   },
   {
-    "Id": 45,
+    "Id": 48,
     "Question": "how can i send items back",
     "KnowledgeId": 7
   },
   {
-    "Id": 46,
+    "Id": 49,
     "Question": "what is your return policy",
     "KnowledgeId": 7
   },
   {
-    "Id": 47,
+    "Id": 50,
     "Question": "how do i send a return",
     "KnowledgeId": 7
   },
   {
-    "Id": 48,
+    "Id": 51,
     "Question": "what steps should i follow to return an item",
     "KnowledgeId": 7
   },
   {
-    "Id": 49,
+    "Id": 52,
     "Question": "do i have to pay for return shipping",
     "KnowledgeId": 8
   },
   {
-    "Id": 50,
+    "Id": 53,
     "Question": "is return shipping free",
     "KnowledgeId": 8
   },
   {
-    "Id": 51,
+    "Id": 54,
     "Question": "who pays for return shipping",
     "KnowledgeId": 8
   },
   {
-    "Id": 52,
+    "Id": 55,
     "Question": "will i be charged for sending items back",
     "KnowledgeId": 8
   },
   {
-    "Id": 53,
+    "Id": 56,
     "Question": "is there a cost for returning products",
     "KnowledgeId": 8
   },
   {
-    "Id": 54,
+    "Id": 57,
     "Question": "can i get a refund",
     "KnowledgeId": 9
   },
   {
-    "Id": 55,
+    "Id": 58,
     "Question": "how long does it take to get a refund",
     "KnowledgeId": 9
   },
   {
-    "Id": 56,
+    "Id": 59,
     "Question": "when will my money be refunded",
     "KnowledgeId": 9
   },
   {
-    "Id": 57,
+    "Id": 60,
     "Question": "how soon will i receive a refund",
     "KnowledgeId": 9
   },
   {
-    "Id": 58,
+    "Id": 61,
     "Question": "can i exchange a product",
     "KnowledgeId": 10
   },
   {
-    "Id": 59,
+    "Id": 62,
     "Question": "is it possible to exchange an item",
     "KnowledgeId": 10
   },
   {
-    "Id": 60,
+    "Id": 63,
     "Question": "how do i swap my item for another",
     "KnowledgeId": 10
   },
   {
-    "Id": 61,
+    "Id": 64,
     "Question": "can i replace my product with a different one",
     "KnowledgeId": 10
   },
   {
-    "Id": 62,
+    "Id": 65,
     "Question": "can i exchange my order for another size or color",
     "KnowledgeId": 10
   },
   {
-    "Id": 63,
+    "Id": 66,
     "Question": "can i trade my purchase for something else",
     "KnowledgeId": 11
   },
   {
-    "Id": 64,
+    "Id": 67,
     "Question": "do you offer tradein options",
     "KnowledgeId": 11
   },
   {
-    "Id": 65,
+    "Id": 68,
     "Question": "is it possible to exchange my used product for another item",
     "KnowledgeId": 11
   },
   {
-    "Id": 66,
+    "Id": 69,
     "Question": "can i swap my order for store credit or another product",
     "KnowledgeId": 11
   },
   {
-    "Id": 67,
+    "Id": 70,
     "Question": "do you allow partexchange or barter",
     "KnowledgeId": 11
   },
   {
-    "Id": 68,
+    "Id": 71,
     "Question": "is there a warranty on the products",
     "KnowledgeId": 12
   },
   {
-    "Id": 69,
+    "Id": 72,
     "Question": "do you offer a guarantee",
     "KnowledgeId": 12
   },
   {
-    "Id": 70,
+    "Id": 73,
     "Question": "how long is the warranty period",
     "KnowledgeId": 12
   },
   {
-    "Id": 71,
+    "Id": 74,
     "Question": "do products come with a warranty",
     "KnowledgeId": 12
   },
   {
-    "Id": 72,
+    "Id": 75,
     "Question": "what is the warranty duration",
     "KnowledgeId": 12
   },
   {
-    "Id": 73,
+    "Id": 76,
     "Question": "what does the warranty cover",
     "KnowledgeId": 13
   },
   {
-    "Id": 74,
+    "Id": 77,
     "Question": "is accidental damage covered",
     "KnowledgeId": 13
   },
   {
-    "Id": 75,
+    "Id": 78,
     "Question": "does the warranty include wear and tear",
     "KnowledgeId": 13
   },
   {
-    "Id": 76,
+    "Id": 79,
     "Question": "what issues are included in the warranty",
     "KnowledgeId": 13
   },
   {
-    "Id": 77,
+    "Id": 80,
     "Question": "is misuse covered by the warranty",
     "KnowledgeId": 13
   },
   {
-    "Id": 78,
+    "Id": 81,
     "Question": "how do i claim the warranty",
     "KnowledgeId": 14
   },
   {
-    "Id": 79,
+    "Id": 82,
     "Question": "what is the process for warranty claims",
     "KnowledgeId": 14
   },
   {
-    "Id": 80,
+    "Id": 83,
     "Question": "how do i request a warranty repair",
     "KnowledgeId": 14
   },
   {
-    "Id": 81,
+    "Id": 84,
     "Question": "how can i submit a warranty claim",
     "KnowledgeId": 14
   },
   {
-    "Id": 82,
+    "Id": 85,
     "Question": "how can i reset my password",
     "KnowledgeId": 15
   },
   {
-    "Id": 83,
+    "Id": 86,
     "Question": "i forgot my password what should i do",
     "KnowledgeId": 15
   },
   {
-    "Id": 84,
+    "Id": 87,
     "Question": "how do i change my password",
     "KnowledgeId": 15
   },
   {
-    "Id": 85,
+    "Id": 88,
     "Question": "where do i go to reset my password",
     "KnowledgeId": 15
   },
   {
-    "Id": 86,
+    "Id": 89,
     "Question": "what should i do if i cant remember my password",
     "KnowledgeId": 15
   },
   {
-    "Id": 87,
+    "Id": 90,
     "Question": "how do i update my account information",
     "KnowledgeId": 16
   },
   {
-    "Id": 88,
+    "Id": 91,
     "Question": "how do i create an account",
     "KnowledgeId": 16
   },
   {
-    "Id": 89,
+    "Id": 92,
     "Question": "can i delete my account",
     "KnowledgeId": 16
   },
   {
-    "Id": 90,
+    "Id": 93,
     "Question": "how can i modify my account details",
     "KnowledgeId": 16
   },
   {
-    "Id": 91,
+    "Id": 94,
     "Question": "where do i sign up for an account",
     "KnowledgeId": 16
   },
   {
-    "Id": 92,
+    "Id": 95,
     "Question": "how can i contact support",
     "KnowledgeId": 17
   },
   {
-    "Id": 93,
+    "Id": 96,
     "Question": "is there a customer service phone number",
     "KnowledgeId": 17
   },
   {
-    "Id": 94,
+    "Id": 97,
     "Question": "how do i get help",
     "KnowledgeId": 17
   },
   {
-    "Id": 95,
+    "Id": 98,
     "Question": "how can i reach customer service",
     "KnowledgeId": 17
   },
   {
-    "Id": 96,
+    "Id": 99,
     "Question": "where can i find your contact details",
     "KnowledgeId": 17
   },
   {
-    "Id": 97,
+    "Id": 100,
     "Question": "do you offer live chat",
     "KnowledgeId": 17
   },
   {
-    "Id": 98,
+    "Id": 101,
     "Question": "how do i speak with customer support",
     "KnowledgeId": 17
   },
   {
-    "Id": 99,
+    "Id": 102,
     "Question": "what is the best way to reach your support team",
     "KnowledgeId": 17
   },
   {
-    "Id": 100,
+    "Id": 103,
     "Question": "is this product in stock",
     "KnowledgeId": 18
   },
   {
-    "Id": 101,
+    "Id": 104,
     "Question": "when will the item be available again",
     "KnowledgeId": 18
   },
   {
-    "Id": 102,
+    "Id": 105,
     "Question": "do you have this item available",
     "KnowledgeId": 18
   },
   {
-    "Id": 103,
+    "Id": 106,
     "Question": "is this item currently available",
     "KnowledgeId": 18
   },
   {
-    "Id": 104,
+    "Id": 107,
     "Question": "how can i check if a product is available",
     "KnowledgeId": 18
   },
   {
-    "Id": 105,
+    "Id": 108,
     "Question": "can i find out if this product is in stock",
     "KnowledgeId": 18
   },
   {
-    "Id": 106,
+    "Id": 109,
     "Question": "will this item be restocked soon",
     "KnowledgeId": 18
   },
   {
-    "Id": 107,
+    "Id": 110,
     "Question": "are there any ongoing discounts",
     "KnowledgeId": 19
   },
   {
-    "Id": 108,
+    "Id": 111,
     "Question": "do you offer promo codes",
     "KnowledgeId": 19
   },
   {
-    "Id": 109,
+    "Id": 112,
     "Question": "how can i use a discount code",
     "KnowledgeId": 19
   },
   {
-    "Id": 110,
+    "Id": 113,
     "Question": "are there any special offers right now",
     "KnowledgeId": 19
   },
   {
-    "Id": 111,
+    "Id": 114,
     "Question": "where can i enter my coupon code",
     "KnowledgeId": 19
   },
   {
-    "Id": 112,
+    "Id": 115,
     "Question": "how do i get a discount",
     "KnowledgeId": 19
   },
   {
-    "Id": 113,
+    "Id": 116,
     "Question": "do you have any sales",
     "KnowledgeId": 19
   },
   {
-    "Id": 114,
+    "Id": 117,
     "Question": "are there any current promotions",
     "KnowledgeId": 19
   },
   {
-    "Id": 115,
+    "Id": 118,
     "Question": "how do i apply a promo code at checkout",
     "KnowledgeId": 19
   },
   {
-    "Id": 116,
+    "Id": 119,
     "Question": "how can i track my order",
     "KnowledgeId": 20
   },
   {
-    "Id": 117,
+    "Id": 120,
     "Question": "when will i get my tracking number",
     "KnowledgeId": 20
   },
   {
-    "Id": 118,
+    "Id": 121,
     "Question": "where can i find my order tracking information",
     "KnowledgeId": 20
   },
   {
-    "Id": 119,
+    "Id": 122,
     "Question": "will i be notified about my order shipment",
     "KnowledgeId": 20
   },
   {
-    "Id": 120,
+    "Id": 123,
     "Question": "how do i know when my order has been shipped",
     "KnowledgeId": 20
   },
   {
-    "Id": 121,
+    "Id": 124,
     "Question": "can i cancel my order",
     "KnowledgeId": 21
   },
   {
-    "Id": 122,
+    "Id": 125,
     "Question": "how do i cancel my order",
     "KnowledgeId": 21
   },
   {
-    "Id": 123,
+    "Id": 126,
     "Question": "is it possible to stop my order",
     "KnowledgeId": 21
   },
   {
-    "Id": 124,
+    "Id": 127,
     "Question": "can i change or cancel my order after placing it",
     "KnowledgeId": 21
   },
   {
-    "Id": 125,
+    "Id": 128,
     "Question": "how do i withdraw my order",
     "KnowledgeId": 21
   },
   {
-    "Id": 126,
+    "Id": 129,
     "Question": "can i reverse my order",
     "KnowledgeId": 21
   },
   {
-    "Id": 127,
+    "Id": 130,
     "Question": "can i change my order",
     "KnowledgeId": 22
   },
   {
-    "Id": 128,
+    "Id": 131,
     "Question": "how do i change the shipping address",
     "KnowledgeId": 22
   },
   {
-    "Id": 129,
+    "Id": 132,
     "Question": "can i add or remove items from my order",
     "KnowledgeId": 22
   },
   {
-    "Id": 130,
+    "Id": 133,
     "Question": "how do i update my order details",
     "KnowledgeId": 22
   },
   {
-    "Id": 131,
+    "Id": 134,
     "Question": "is it possible to modify my order",
     "KnowledgeId": 22
   },
   {
-    "Id": 132,
+    "Id": 135,
     "Question": "how can i change my delivery information",
     "KnowledgeId": 22
   },
   {
-    "Id": 133,
+    "Id": 136,
     "Question": "do you sell gift cards",
     "KnowledgeId": 23
   },
   {
-    "Id": 134,
+    "Id": 137,
     "Question": "how can i buy a gift card",
     "KnowledgeId": 23
   },
   {
-    "Id": 135,
+    "Id": 138,
     "Question": "can i use a gift card for my purchase",
     "KnowledgeId": 23
   },
   {
-    "Id": 136,
+    "Id": 139,
     "Question": "how do i redeem a gift card",
     "KnowledgeId": 23
   },
   {
-    "Id": 137,
+    "Id": 140,
     "Question": "can i get a voucher for your store",
     "KnowledgeId": 23
   },
   {
-    "Id": 138,
+    "Id": 141,
     "Question": "how are gift cards used at checkout",
     "KnowledgeId": 23
   },
   {
-    "Id": 139,
+    "Id": 142,
     "Question": "do you have physical stores",
     "KnowledgeId": 24
   },
   {
-    "Id": 140,
+    "Id": 143,
     "Question": "where are your stores located",
     "KnowledgeId": 24
   },
   {
-    "Id": 141,
+    "Id": 144,
     "Question": "can i pick up my order instore",
     "KnowledgeId": 24
   },
   {
-    "Id": 142,
+    "Id": 145,
     "Question": "is instore pickup available",
     "KnowledgeId": 24
   },
   {
-    "Id": 143,
+    "Id": 146,
     "Question": "do you have any brickandmortar locations",
     "KnowledgeId": 24
   },
   {
-    "Id": 144,
+    "Id": 147,
     "Question": "can i collect my purchase at a shop",
     "KnowledgeId": 24
   },
   {
-    "Id": 145,
+    "Id": 148,
     "Question": "where can i find more information about a product",
     "KnowledgeId": 25
   },
   {
-    "Id": 146,
+    "Id": 149,
     "Question": "is there a size guide",
     "KnowledgeId": 25
   },
   {
-    "Id": 147,
+    "Id": 150,
     "Question": "can i get more details about this item",
     "KnowledgeId": 25
   },
   {
-    "Id": 148,
+    "Id": 151,
     "Question": "is there a manual or instructions included",
     "KnowledgeId": 25
   },
   {
-    "Id": 149,
+    "Id": 152,
     "Question": "where can i see product specifications",
     "KnowledgeId": 25
   },
   {
-    "Id": 150,
+    "Id": 153,
     "Question": "can i read more about product features",
     "KnowledgeId": 25
+  },
+  {
+    "Id": 154,
+    "Question": "how do i add a new product",
+    "KnowledgeId": 1001
+  },
+  {
+    "Id": 155,
+    "Question": "where can i create a new product",
+    "KnowledgeId": 1001
+  },
+  {
+    "Id": 156,
+    "Question": "how do i set product details like name price and description",
+    "KnowledgeId": 1001
+  },
+  {
+    "Id": 157,
+    "Question": "how do i add variants or options to a product",
+    "KnowledgeId": 1001
+  },
+  {
+    "Id": 158,
+    "Question": "what steps are needed to list a new product",
+    "KnowledgeId": 1001
+  },
+  {
+    "Id": 159,
+    "Question": "how can i include product variations",
+    "KnowledgeId": 1001
+  },
+  {
+    "Id": 160,
+    "Question": "how do i upload product images",
+    "KnowledgeId": 1002
+  },
+  {
+    "Id": 161,
+    "Question": "where can i add or change product photos",
+    "KnowledgeId": 1002
+  },
+  {
+    "Id": 162,
+    "Question": "can i update multiple images at once",
+    "KnowledgeId": 1002
+  },
+  {
+    "Id": 163,
+    "Question": "how do i add pictures to a product",
+    "KnowledgeId": 1002
+  },
+  {
+    "Id": 164,
+    "Question": "is it possible to replace product images",
+    "KnowledgeId": 1002
+  },
+  {
+    "Id": 165,
+    "Question": "how do i set up discounts or promotions",
+    "KnowledgeId": 1003
+  },
+  {
+    "Id": 166,
+    "Question": "where can i add a discount code",
+    "KnowledgeId": 1003
+  },
+  {
+    "Id": 167,
+    "Question": "how do i schedule a sale for products",
+    "KnowledgeId": 1003
+  },
+  {
+    "Id": 168,
+    "Question": "can i limit discounts to specific products or categories",
+    "KnowledgeId": 1003
+  },
+  {
+    "Id": 169,
+    "Question": "how do i configure special offers",
+    "KnowledgeId": 1003
+  },
+  {
+    "Id": 170,
+    "Question": "where do i manage promo codes",
+    "KnowledgeId": 1003
+  },
+  {
+    "Id": 171,
+    "Question": "how do i configure payment methods",
+    "KnowledgeId": 1004
+  },
+  {
+    "Id": 172,
+    "Question": "where do i enable or disable payment options",
+    "KnowledgeId": 1004
+  },
+  {
+    "Id": 173,
+    "Question": "can i integrate paypal or stripe",
+    "KnowledgeId": 1004
+  },
+  {
+    "Id": 174,
+    "Question": "how do i change payment settings",
+    "KnowledgeId": 1004
+  },
+  {
+    "Id": 175,
+    "Question": "how do i activate different payment types",
+    "KnowledgeId": 1004
+  },
+  {
+    "Id": 176,
+    "Question": "where can i set up payment providers",
+    "KnowledgeId": 1004
+  },
+  {
+    "Id": 177,
+    "Question": "how do i set up shipping methods",
+    "KnowledgeId": 1005
+  },
+  {
+    "Id": 178,
+    "Question": "where can i manage shipping options",
+    "KnowledgeId": 1005
+  },
+  {
+    "Id": 179,
+    "Question": "can i set different shipping rates",
+    "KnowledgeId": 1005
+  },
+  {
+    "Id": 180,
+    "Question": "how do i offer free shipping over a certain amount",
+    "KnowledgeId": 1005
+  },
+  {
+    "Id": 181,
+    "Question": "how do i adjust shipping prices",
+    "KnowledgeId": 1005
+  },
+  {
+    "Id": 182,
+    "Question": "where can i configure delivery methods",
+    "KnowledgeId": 1005
+  },
+  {
+    "Id": 183,
+    "Question": "how do i pay for my order in the portal",
+    "KnowledgeId": 1006
+  },
+  {
+    "Id": 184,
+    "Question": "how do i connect the store to google or facebook",
+    "KnowledgeId": 1006
+  },
+  {
+    "Id": 185,
+    "Question": "where do i set up google analytics or facebook pixel",
+    "KnowledgeId": 1006
+  },
+  {
+    "Id": 186,
+    "Question": "how do i enable social media integrations",
+    "KnowledgeId": 1006
+  },
+  {
+    "Id": 187,
+    "Question": "can i run ads directly from the portal",
+    "KnowledgeId": 1006
+  },
+  {
+    "Id": 188,
+    "Question": "how can i link my shop to google",
+    "KnowledgeId": 1006
+  },
+  {
+    "Id": 189,
+    "Question": "is it possible to connect with facebook advertising",
+    "KnowledgeId": 1006
+  },
+  {
+    "Id": 190,
+    "Question": "how can i view and process customer orders",
+    "KnowledgeId": 1007
+  },
+  {
+    "Id": 191,
+    "Question": "where do i see pending or completed orders",
+    "KnowledgeId": 1007
+  },
+  {
+    "Id": 192,
+    "Question": "how do i update order status eg shipped delivered",
+    "KnowledgeId": 1007
+  },
+  {
+    "Id": 193,
+    "Question": "can i print invoices or packing slips",
+    "KnowledgeId": 1007
+  },
+  {
+    "Id": 194,
+    "Question": "how do i manage customer orders",
+    "KnowledgeId": 1007
+  },
+  {
+    "Id": 195,
+    "Question": "where can i access order details",
+    "KnowledgeId": 1007
+  },
+  {
+    "Id": 196,
+    "Question": "how do i process refunds",
+    "KnowledgeId": 1008
+  },
+  {
+    "Id": 197,
+    "Question": "can i refund part of an order",
+    "KnowledgeId": 1008
+  },
+  {
+    "Id": 198,
+    "Question": "where do i manage refunds and returns",
+    "KnowledgeId": 1008
+  },
+  {
+    "Id": 199,
+    "Question": "how do i issue a partial refund",
+    "KnowledgeId": 1008
+  },
+  {
+    "Id": 200,
+    "Question": "where can i see refund status",
+    "KnowledgeId": 1008
+  },
+  {
+    "Id": 201,
+    "Question": "how do i reset my portal password",
+    "KnowledgeId": 1009
+  },
+  {
+    "Id": 202,
+    "Question": "what if i forgot my admin password",
+    "KnowledgeId": 1009
+  },
+  {
+    "Id": 203,
+    "Question": "how can i help staff reset their passwords",
+    "KnowledgeId": 1009
+  },
+  {
+    "Id": 204,
+    "Question": "where do i recover my portal login",
+    "KnowledgeId": 1009
+  },
+  {
+    "Id": 205,
+    "Question": "how do i assist others in changing passwords",
+    "KnowledgeId": 1009
+  },
+  {
+    "Id": 206,
+    "Question": "how to update my email address",
+    "KnowledgeId": 1010
+  },
+  {
+    "Id": 207,
+    "Question": "how do i connect paypal to my store",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 208,
+    "Question": "how to connect paypal to my store",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 209,
+    "Question": "how to set paypal settings",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 210,
+    "Question": "how to configure paypal",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 211,
+    "Question": "how to integrate paypal",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 212,
+    "Question": "how do i get paypal working on my shop",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 213,
+    "Question": "how do i set up paypal for payments",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 214,
+    "Question": "how do i link my paypal account so customers can pay",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 215,
+    "Question": "how do i link my shop to paypal",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 216,
+    "Question": "how do i link my store with my paypal account",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 217,
+    "Question": "how do i connect my storefront to paypal",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 218,
+    "Question": "how do i pair my shop and paypal",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 219,
+    "Question": "how do i integrate paypal with my site",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 220,
+    "Question": "how do i tie my store to paypal",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 221,
+    "Question": "how do i enable paypal checkout on my site",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 222,
+    "Question": "how do i turn on paypal checkout",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 223,
+    "Question": "how do i add paypal as a payment option",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 224,
+    "Question": "how do i activate the paypal button at checkout",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 225,
+    "Question": "how do i let customers pay with paypal",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 226,
+    "Question": "how do i set up paypal to accept payments",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 227,
+    "Question": "how do i connect my site with paypal",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 228,
+    "Question": "how do i pair my shop with paypal",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 229,
+    "Question": "how do i integrate paypal into my site",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 230,
+    "Question": "how can i tie my store into paypal",
+    "KnowledgeId": 1011
+  },
+  {
+    "Id": 231,
+    "Question": "how do i turn on paypal checkout for my site",
+    "KnowledgeId": 1011
   }
 ]
