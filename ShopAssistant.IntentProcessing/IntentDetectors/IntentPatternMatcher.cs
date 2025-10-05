@@ -70,13 +70,40 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
             }
         }
 
-        // Negative phrases (normalized containment)
+        // Build tokens for the normalized, lowered user text once.
+        var textTokens = TextNormalization
+            .Tokenize(language, lowered, deduplicate: false)   // keep order; we'll scan for sequences
+            .Where(t => !string.IsNullOrWhiteSpace(t))
+            .ToArray();
+
+        var textTokenSet = new HashSet<string>(textTokens, StringComparer.Ordinal); // for fast single-word checks
+
         if (pattern.NegativePhrases is { Count: > 0 })
         {
             foreach (var neg in pattern.NegativePhrases.Where(s => !string.IsNullOrWhiteSpace(s)))
             {
                 var negNorm = TextNormalization.NormalizeLower(language, neg);
-                if (!string.IsNullOrWhiteSpace(negNorm) && lowered.Contains(negNorm, StringComparison.Ordinal))
+                if (string.IsNullOrWhiteSpace(negNorm))
+                    continue;
+
+                var negTokens = TextNormalization
+                    .Tokenize(language, negNorm, deduplicate: false)
+                    .Where(t => !string.IsNullOrWhiteSpace(t))
+                    .ToArray();
+
+                if (negTokens.Length == 0)
+                    continue;
+
+                // Single-word negative: require exact token match (whole word).
+                if (negTokens.Length == 1)
+                {
+                    if (textTokenSet.Contains(negTokens[0]))
+                        return new IntentPatternMatchResult(false, MatchType.None, 0f);
+                    continue;
+                }
+
+                // Multi-word negative: require exact subsequence match across tokens (whole phrase).
+                if (ContainsTokenSubsequence(textTokens, negTokens))
                     return new IntentPatternMatchResult(false, MatchType.None, 0f);
             }
         }
@@ -212,6 +239,30 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
             .Select(stemmer.Stem);
 
         return string.Join(' ', tokens);
+    }
+
+    /// <summary>
+    /// Returns true if 'needle' appears as an exact, contiguous subsequence of 'haystack'.
+    /// Comparison is Ordinal because both sides are already normalized/lowercased.
+    /// </summary>
+    static bool ContainsTokenSubsequence(IReadOnlyList<string> haystack, IReadOnlyList<string> needle)
+    {
+        if (needle.Count == 0 || haystack.Count < needle.Count)
+            return false;
+
+        for (int i = 0; i <= haystack.Count - needle.Count; i++)
+        {
+            bool allEqual = true;
+            for (int j = 0; j < needle.Count; j++)
+            {
+                if (string.Equals(haystack[i + j], needle[j], StringComparison.Ordinal)) 
+                    continue;
+                allEqual = false;
+                break;
+            }
+            if (allEqual) return true;
+        }
+        return false;
     }
 
     /// <summary>
