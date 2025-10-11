@@ -68,7 +68,7 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
         }
 
         // Build tokens for the normalized, lowered user text once.
-        var textTokens = TextNormalization
+        List<string> textTokens = TextNormalization
             .Tokenize(language, lowered, deduplicate: false)   // keep order; we'll scan for sequences
             .Where(t => !string.IsNullOrWhiteSpace(t))
             .ToList();
@@ -83,7 +83,7 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
                 if (string.IsNullOrWhiteSpace(negNorm))
                     continue;
 
-                var negTokens = TextNormalization
+                List<string> negTokens = TextNormalization
                     .Tokenize(language, negNorm, deduplicate: false)
                     .Where(t => !string.IsNullOrWhiteSpace(t))
                     .ToList();
