@@ -52,11 +52,6 @@ public class HybridKnowledgeBaseQueryService(
     private const int OverlapWindowTopKids = 8; // analyze top-N fused KIDs
     private const double OverlapGamma = 0.20;   // bonus added to fused score: fused2 = fused + γ * overlap_norm
     private const int OverlapNormaliser = 2;    // overlap_norm = min(1, overlap / OverlapNormaliser)
-
-    // Lexical sanity-guard margin:
-    // If top fused has 0 overlap and some overlapping candidate is within this margin,
-    // prefer the overlapping one.
-    //private const double LexicalOverrideMargin = 0.15;
    
     // Minimal English stopword set (generic; safe)
     private static readonly HashSet<string> Stop = new(StringComparer.Ordinal)
@@ -301,20 +296,19 @@ public class HybridKnowledgeBaseQueryService(
         return semanticList[0];
     }
 
-
-
-    // ---------------- helpers ----------------
+    // ---------------- Helpers ----------------
 
     /// <summary>
     /// Normalizes a score to [0,1]: NaN/negatives→0, >1→1, otherwise unchanged.
     /// </summary>
     private static double NormalizeToUnitInterval(double v)
     {
-        if (double.IsNaN(v) || v < 0) 
-            return 0;
-        if (v > 1) 
-            return 1;
-        return v;
+        return v switch
+        {
+            double.NaN or < 0 => 0,
+            > 1 => 1,
+            _ => v
+        };
     }
 
     /// <summary>
