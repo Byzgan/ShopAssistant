@@ -43,11 +43,11 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
         language = language.ToLowerInvariant();
 
         // Normalize message (two views)
-        var lowered = TextNormalization.NormalizeLower(language, message);
-        var normalizedStem = NormalizeAndStem(lowered, stemmer);
+        string lowered = TextNormalization.NormalizeLower(language, message);
+        string normalizedStem = NormalizeAndStem(lowered, stemmer);
 
         // Build token set once (for quick membership checks)
-        var msgTokens = Regex.Split(normalizedStem, @"\W+")
+        HashSet<string> msgTokens = Regex.Split(normalizedStem, @"\W+")
             .Where(t => !string.IsNullOrWhiteSpace(t))
             .ToHashSet();
 
@@ -71,28 +71,28 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
         var textTokens = TextNormalization
             .Tokenize(language, lowered, deduplicate: false)   // keep order; we'll scan for sequences
             .Where(t => !string.IsNullOrWhiteSpace(t))
-            .ToArray();
+            .ToList();
 
-        var textTokenSet = new HashSet<string>(textTokens, StringComparer.Ordinal); // for fast single-word checks
+        HashSet<string> textTokenSet = new HashSet<string>(textTokens, StringComparer.Ordinal); // for fast single-word checks
 
         if (pattern.NegativePhrases is { Count: > 0 })
         {
-            foreach (var neg in pattern.NegativePhrases.Where(s => !string.IsNullOrWhiteSpace(s)))
+            foreach (string neg in pattern.NegativePhrases.Where(s => !string.IsNullOrWhiteSpace(s)))
             {
-                var negNorm = TextNormalization.NormalizeLower(language, neg);
+                string negNorm = TextNormalization.NormalizeLower(language, neg);
                 if (string.IsNullOrWhiteSpace(negNorm))
                     continue;
 
                 var negTokens = TextNormalization
                     .Tokenize(language, negNorm, deduplicate: false)
                     .Where(t => !string.IsNullOrWhiteSpace(t))
-                    .ToArray();
+                    .ToList();
 
-                if (negTokens.Length == 0)
+                if (negTokens.Count == 0)
                     continue;
 
                 // Single-word negative: require exact token match (whole word).
-                if (negTokens.Length == 1)
+                if (negTokens.Count == 1)
                 {
                     if (textTokenSet.Contains(negTokens[0]))
                         return new IntentPatternMatchResult(false, MatchType.None, 0f);
@@ -109,14 +109,15 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
         // Fast path: raw/space-normalized/lower-with-trailing-punct-ignored equality
         if (pattern.SemanticPhrases is { Count: > 0 })
         {
-            var rawTrim = message.Trim();
-            var rawNorm = TextNormalization.NormalizeSpaces(rawTrim);
-            var softLower = TextNormalization.NormalizeLowerTrimEndPunct(rawTrim);
+            string rawTrim = message.Trim();
+            string rawNorm = TextNormalization.NormalizeSpaces(rawTrim);
+            string softLower = TextNormalization.NormalizeLowerTrimEndPunct(rawTrim);
 
-            foreach (var phrase in pattern.SemanticPhrases)
+            foreach (string phrase in pattern.SemanticPhrases)
             {
-                if (string.IsNullOrWhiteSpace(phrase)) continue;
-                var pTrim = phrase.Trim();
+                if (string.IsNullOrWhiteSpace(phrase))
+                    continue;
+                string pTrim = phrase.Trim();
 
                 bool isDirectEqual =
                     string.Equals(rawTrim, pTrim, StringComparison.OrdinalIgnoreCase) ||
@@ -135,22 +136,21 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
         {
             foreach (var phrase in pattern.SemanticPhrases)
             {
-                if (string.IsNullOrWhiteSpace(phrase)) continue;
+                if (string.IsNullOrWhiteSpace(phrase))
+                    continue;
 
                 bool looksLikeRegex = Regex.IsMatch(phrase, @"[\[\]\(\)\{\}\.\*\+\?\|\^\$]");
                 string rxSource = looksLikeRegex
                     ? phrase
                     : @"^\s*" + Regex.Escape(phrase.Trim()) + @"\s*$";
 
-                var cacheKey = $"{language}::{phrase}";
-                var rx = RegexCache.GetOrAdd(cacheKey,
-                    _ => new Regex(rxSource, RegexOptions.IgnoreCase | RegexOptions.Compiled));
+                string cacheKey = $"{language}::{phrase}";
+                Regex rx = RegexCache.GetOrAdd(cacheKey, _ => new Regex(rxSource, RegexOptions.IgnoreCase | RegexOptions.Compiled));
 
-                if (rx.IsMatch(message) || rx.IsMatch(lowered))
-                {
-                    if (anchorsSatisfied)
-                        return new IntentPatternMatchResult(true, MatchType.KeyWord, 1.0f, phrase);
-                }
+                if (!rx.IsMatch(message) && !rx.IsMatch(lowered)) 
+                    continue;
+                if (anchorsSatisfied)
+                    return new IntentPatternMatchResult(true, MatchType.KeyWord, 1.0f, phrase);
             }
         }
 
@@ -159,14 +159,15 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
         {
             foreach (var phrase in pattern.SemanticPhrases)
             {
-                if (string.IsNullOrWhiteSpace(phrase)) continue;
+                if (string.IsNullOrWhiteSpace(phrase)) 
+                    continue;
 
                 // Skip if contains regex-specific chars; handled above
                 if (phrase.IndexOfAny(['\\', '[', ']', '(', ')', '{', '}', '.', '*', '+', '?', '|', '^', '$']) != -1)
                     continue;
 
-                var phraseLower = TextNormalization.NormalizeLower(language, phrase);
-                var patternTokens = Regex.Split(phraseLower, @"\W+")
+                string phraseLower = TextNormalization.NormalizeLower(language, phrase);
+                List<string> patternTokens = Regex.Split(phraseLower, @"\W+")
                     .Where(t => !string.IsNullOrWhiteSpace(t))
                     .Select(stemmer.Stem)
                     .ToList();
@@ -230,7 +231,7 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
         if (string.IsNullOrWhiteSpace(lowered))
             return string.Empty;
 
-        var tokens = Regex.Split(lowered, @"\W+")
+        IEnumerable<string> tokens = Regex.Split(lowered, @"\W+")
             .Where(t => !string.IsNullOrWhiteSpace(t))
             .Select(stemmer.Stem);
 
@@ -256,7 +257,8 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
                 allEqual = false;
                 break;
             }
-            if (allEqual) return true;
+            if (allEqual) 
+                return true;
         }
         return false;
     }
@@ -324,14 +326,14 @@ public sealed class IntentPatternMatcher : IIntentPatternMatcher
                 if (string.IsNullOrWhiteSpace(anchor)) continue;
 
                 // Lower-case and normalize the anchor phrase for phrase-contains checks.
-                var aNorm = TextNormalization.NormalizeLower(language, anchor).Trim();
+                string aNorm = TextNormalization.NormalizeLower(language, anchor).Trim();
 
                 // Tokenize the normalized anchor (for phrase regex) and stem it (for token presence).
-                var aNormTokens = Regex.Split(aNorm, @"\W+")
+                List<string> aNormTokens = Regex.Split(aNorm, @"\W+")
                     .Where(t => !string.IsNullOrWhiteSpace(t))
                     .ToList();
 
-                var aStemmedTokens = aNormTokens
+                List<string> aStemmedTokens = aNormTokens
                     .Select(stemmer.Stem)
                     .Where(t => !string.IsNullOrWhiteSpace(t))
                     .ToList();
