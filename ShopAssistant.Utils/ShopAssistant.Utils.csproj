@@ -6,10 +6,10 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <PackageReference Include="HNSW" Version="25.7.60036" />
-	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.8" />
-	  <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.8" />
-	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.8" />
-	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.8" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.9" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.9" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.9" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.9" />
 	</ItemGroup>
 
 	<ItemGroup>
