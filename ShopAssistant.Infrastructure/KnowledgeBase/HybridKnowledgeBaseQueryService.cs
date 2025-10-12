@@ -79,8 +79,8 @@ public class HybridKnowledgeBaseQueryService(
         logger.LogDebug("HybridKB: start | lang={Lang} | raw=\"{Raw}\" | clean=\"{Clean}\"", lang, question, qClean);
 
         // 1) Semantic shortlist (distinct KIDs; ANN similarity in [0,1])
-        var embedding = await embedder.GetEmbeddingAsync(qClean);
-        var semanticList = await semanticSearch.SemanticSearchAsync(embedding, lang, allowedTopics, topK: SemanticTopK);
+        float[] embedding = await embedder.GetEmbeddingAsync(qClean);
+        List<SearchResult> semanticList = await semanticSearch.SemanticSearchAsync(embedding, lang, allowedTopics, topK: SemanticTopK);
         if (semanticList.Count == 0)
         {
             logger.LogDebug("HybridKB: semantic shortlist is empty.");
@@ -145,7 +145,8 @@ public class HybridKnowledgeBaseQueryService(
             if (!semanticKidSet.Contains(kid) && bm25OnlyToInject.Count < Bm25InjectMax && rank <= Bm25InjectRankCutoff)
                 bm25OnlyToInject.Add((kid, rank));
 
-            if (rawScore > maxBm25Score) maxBm25Score = rawScore;
+            if (rawScore > maxBm25Score) 
+                maxBm25Score = rawScore;
             rank++;
         }
 
@@ -196,8 +197,8 @@ public class HybridKnowledgeBaseQueryService(
 
             foreach (var kid in semanticKidSet.Union(bm25NormByKid.Keys))
             {
-                var sem = NormalizeToUnitInterval(semanticScoreByKid.GetValueOrDefault(kid, 0.0));
-                var lex = bm25NormByKid.GetValueOrDefault(kid, 0.0);
+                double sem = NormalizeToUnitInterval(semanticScoreByKid.GetValueOrDefault(kid, 0.0));
+                double lex = bm25NormByKid.GetValueOrDefault(kid, 0.0);
                 fused[kid] = (AlphaSemantic * sem) + (BetaBm25 * lex);
             }
         }
@@ -232,7 +233,7 @@ public class HybridKnowledgeBaseQueryService(
             if (!knowledgeItemCache.TryGetKnowledgeItemByQuestionId(anyQid, lang, out var item) || item is null)
                 continue;
 
-            HashSet<string> candTokens = BuildCandidateTokenSet(item); // from item.Questions (preferred) or item.Answer
+            HashSet<string> candTokens = BuildCandidateTokenSet(item);
             int overlap = CountOverlap(queryTokens, candTokens);
             overlapByKid[kid] = overlap;
 

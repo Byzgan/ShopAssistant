@@ -26,8 +26,8 @@ public class SemanticSearchService(EmbeddingIndexCacheService indexCache, IKnowl
 
     // Candidate sizing knobs.
     private const int ReserveCandidates = 5;
-    private const int RequestedNearestNeighbors = 200; // wider than before to reduce early pruning errors
-    private const int MinimumShortlistWidth = 100; // ensure enough distinct KIDs for re-ranking
+    private const int RequestedNearestNeighbors = 100; // wider than before to reduce early pruning errors
+    private const int MinimumShortlistWidth = 50; // ensure enough distinct KIDs for re-ranking
 
     /// <inheritdoc />
     public async Task<List<SearchResult>> SemanticSearchAsync(float[] embedding, string language, HashSet<KnowledgeTopic>? allowedTopics, int topK = 1)

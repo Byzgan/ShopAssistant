@@ -249,12 +249,12 @@ public class ChatService : IChatService
 
         // 7. Fallback: semantic KB search with role access control
         _logger.LogInformation("[{UserId}] {Timestamp} - Step 5: Fallback: semantic KB search", uniqueUserId, DateTime.Now.ToString("O"));
-        var searchResult = await _knowledgeBaseService.FindSemanticAnswerAsync(question, language, allowedTopics);
+        SearchResult? searchResult = await _knowledgeBaseService.FindSemanticAnswerAsync(question, language, allowedTopics);
         if (searchResult != null)
         {
             if (searchResult.Score > 0.98)
             {
-                var knowledgeItem = CreateKnowledgeItem(question, searchResult.Answer, language, searchResult.Topic);
+                KnowledgeItem knowledgeItem = CreateKnowledgeItem(question, searchResult.Answer, language, searchResult.Topic);
                 await _knowledgeBaseService.SaveAnswerToCacheAsync(question, language, knowledgeItem);
             }
 
