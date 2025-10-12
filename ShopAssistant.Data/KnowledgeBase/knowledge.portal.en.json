@@ -46,6 +46,9 @@
 		"language": "en",
 		"questions": [
 			"How do I configure payment methods?",
+			"How do I set up payment methods?",
+			"How can I set up payment methods?",
+			"Where can I set up payment methods?",
 			"Where do I enable or disable payment options?",
 			"Can I integrate PayPal or Stripe?",
 			"How do I change payment settings?",
@@ -60,6 +63,7 @@
 		"language": "en",
 		"questions": [
 			"How do I set up shipping methods?",
+			"How can I set up shipping methods?",
 			"Where can I manage shipping options?",
 			"Can I set different shipping rates?",
 			"How do I offer free shipping over a certain amount?",
