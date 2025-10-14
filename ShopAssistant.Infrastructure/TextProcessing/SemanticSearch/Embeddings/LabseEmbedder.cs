@@ -22,7 +22,6 @@ public class LabseEmbedder : ITextEmbedder
     // The ONNX Runtime session for the LaBSE model; heavy-weight, should be reused (thread-safe).
     private readonly InferenceSession _session;
 
-    // NOTE: Cache model input/output names to be robust to different ONNX exports (some don't have token_type_ids).
     private readonly HashSet<string> _inputNames;
     private readonly string _primaryOutputName;
 
@@ -107,17 +106,16 @@ public class LabseEmbedder : ITextEmbedder
 
         for (int i = 0; i < MaxLength; i++)
         {
+            tokenTypeIds[i] = 0;
             if (i < inputLen)
             {
                 inputIds[i] = inputIdsRaw[i];
                 attentionMask[i] = 1; // Attend to this token
-                tokenTypeIds[i] = 0; // All zeros (single-sentence)
             }
             else
             {
                 inputIds[i] = _padTokenId; // [PAD]
                 attentionMask[i] = 0; // Mask out
-                tokenTypeIds[i] = 0; // All zeros (still required for input shape)
             }
         }
 
@@ -152,13 +150,20 @@ public class LabseEmbedder : ITextEmbedder
             int dim = output.Dimensions[2];
 
             int valid = 0;
-            for (int i = 0; i < inputLen; i++) if (attentionMask[i] == 1) valid++;
-            if (valid == 0) valid = 1;
+            for (int i = 0; i < inputLen; i++)
+            {
+                if (attentionMask[i] == 1)
+                    valid++;
+            }
+            
+            if (valid == 0) 
+                valid = 1;
 
             embedding = new float[dim];
             for (int t = 0; t < seqLen && t < MaxLength; t++)
             {
-                if (attentionMask[t] == 0) break;
+                if (attentionMask[t] == 0) 
+                    break;
                 for (int d = 0; d < dim; d++)
                     embedding[d] += output[0, t, d];
             }
