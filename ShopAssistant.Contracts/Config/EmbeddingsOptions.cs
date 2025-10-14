@@ -2,6 +2,7 @@
 
 public class EmbeddingsOptions
 {
-    public string ModelPath { get; set; } = "";
-    public string VocabPath { get; set; } = "";
+    public required string ModelPath { get; set; }
+    public required string VocabPath { get; set; }
+    public required int VectorSize { get; set; }
 }

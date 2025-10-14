@@ -60,36 +60,40 @@ builder.Services.AddControllers();
 
 // ---------------------- Swagger + JWT Auth ----------------------
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
+
+if (builder.Environment.IsDevelopment())
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "ShopAssistant API", Version = "v1" });
-    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    builder.Services.AddSwaggerGen(options =>
     {
-        Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\"",
-        Name = "Authorization",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.Http,
-        Scheme = "bearer"
-    });
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
+        options.SwaggerDoc("v1", new OpenApiInfo { Title = "ShopAssistant API", Version = "v1" });
+        options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
         {
-            new OpenApiSecurityScheme
+            Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\"",
+            Name = "Authorization",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.Http,
+            Scheme = "bearer"
+        });
+        options.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
             {
-                Reference = new OpenApiReference
+                new OpenApiSecurityScheme
                 {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            []
-        }
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                },
+                []
+            }
+        });
     });
-});
+}
 
 builder.Services.Configure<AnalyticsOptions>(builder.Configuration.GetSection("AnalyticsOptions"));
 builder.Services.Configure<IntentLoggingOptions>(builder.Configuration.GetSection("IntentLogging"));
-builder.Services.Configure<EmbeddingsOptions>(builder.Configuration.GetSection("LaBSE"));
+builder.Services.Configure<EmbeddingsOptions>(builder.Configuration.GetSection("LLM"));
 
 // ---------------------- Ollama embedding (typed HttpClient) ----------------------
 //builder.Services.Configure<OllamaOptions>(builder.Configuration.GetSection("Ollama"));
