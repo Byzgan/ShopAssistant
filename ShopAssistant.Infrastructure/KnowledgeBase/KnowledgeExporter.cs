@@ -16,9 +16,9 @@ public class KnowledgeExporter(IConfiguration config, ITextEmbedder embedder, IL
     /// </summary>
     public async Task ExportAsync()
     {
-        var vectorSize = config.GetValue<int>("VectorSize");
+        var vectorSize = config.GetValue<int>("LLM:VectorSize");
         if (vectorSize <= 0)
-            throw new InvalidOperationException("VectorSize must be set and positive in appsettings.json");
+            throw new InvalidOperationException("LLM:VectorSize must be set and positive in appsettings.json");
 
         var exportFolder = config.GetValue<string>("EmbeddingsPath")
             ?? throw new InvalidOperationException("Missing folder for ANN embeddings (EmbeddingsPath).");
